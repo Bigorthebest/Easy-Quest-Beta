@@ -39,3 +39,4 @@ func _on_button_supr_all_pressed() -> void:
 	for data in Bdd.get_sections() :
 		Bdd.erase_section(data)
 	$ButtonSuprAll.position.y = 180 
+	Bdd.save("res://bdd_quete.cfg")

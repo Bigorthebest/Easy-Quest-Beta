@@ -32,11 +32,14 @@ text = "Listes des quetes :"
 layout_mode = 0
 offset_top = 113.0
 offset_right = 149.0
-offset_bottom = 175.0
-item_count = 3
+offset_bottom = 268.0
+item_count = 6
 item_0/text = "oui"
 item_1/text = "oui"
 item_2/text = "non"
+item_3/text = "oui"
+item_4/text = "non"
+item_5/text = "quete"
 
 [node name="LineEditTitre" type="LineEdit" parent="."]
 layout_mode = 0
@@ -53,9 +56,9 @@ label_settings = SubResource("LabelSettings_8xbd5")
 
 [node name="ButtonSuprAll" type="Button" parent="."]
 layout_mode = 0
-offset_top = 179.0
+offset_top = 272.0
 offset_right = 150.0
-offset_bottom = 210.0
+offset_bottom = 303.0
 text = "Tout Reset"
 
 [connection signal="pressed" from="ButtonAddQuest" to="." method="_on_button_pressed"]
