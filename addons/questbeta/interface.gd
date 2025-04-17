@@ -1,12 +1,18 @@
 @tool
 extends Control
 
+var Bdd = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	#On essaye de charger les données d'une configurations existante 
+	var err = Bdd.load("res://bdd_quete.cfg")
+	if (err != OK):
+		return
+	else : 
+		for data in Bdd.get_sections() :
+			$ItemList.add_item(data.get_basename())
+			$ItemList.size.y += $LineEditTitre.size.y
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -21,3 +27,5 @@ func _on_button_pressed() -> void:
 		$LabelErreur.hide()
 		$ItemList.add_item($LineEditTitre.text)
 		$ItemList.size.y += $LineEditTitre.size.y
+		Bdd.set_value($LineEditTitre.text,"Description","Vide")
+		Bdd.save("res://bdd_quete.cfg")
