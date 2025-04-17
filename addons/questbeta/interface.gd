@@ -36,4 +36,6 @@ func _on_button_pressed() -> void:
 func _on_button_supr_all_pressed() -> void:
 	$ItemList.clear() 
 	$ItemList.size.y = 0 
-	#Pas de fonction clear pour la bdd :(
+	for data in Bdd.get_sections() :
+		Bdd.erase_section(data)
+	$ButtonSuprAll.position.y = 180 
