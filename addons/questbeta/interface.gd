@@ -13,6 +13,8 @@ func _ready() -> void:
 		for data in Bdd.get_sections() :
 			$ItemList.add_item(data.get_basename())
 			$ItemList.size.y += $LineEditTitre.size.y
+			$ButtonSuprAll.position.y += $LineEditTitre.size.y
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -29,3 +31,9 @@ func _on_button_pressed() -> void:
 		$ItemList.size.y += $LineEditTitre.size.y
 		Bdd.set_value($LineEditTitre.text,"Description","Vide")
 		Bdd.save("res://bdd_quete.cfg")
+
+
+func _on_button_supr_all_pressed() -> void:
+	$ItemList.clear() 
+	$ItemList.size.y = 0 
+	#Pas de fonction clear pour la bdd :(
