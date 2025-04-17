@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvhrko772an7l"]
+
+[ext_resource type="Texture2D" uid="uid://csvpsbqxatn4r" path="res://RPG-test/sprites/Mini-cube1.png" id="1_7ymk5"]
+[ext_resource type="Texture2D" uid="uid://cec8lrj72fwvh" path="res://RPG-test/sprites/Mini-cube2.png" id="2_hbh70"]
+[ext_resource type="Texture2D" uid="uid://d3jfatgky36p" path="res://RPG-test/sprites/Mini-cube3.png" id="3_j3n7g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0icr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7ymk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hbh70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j3n7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0ued"]
+size = Vector2(10, 16)
+
+[node name="Personnage" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_0icr5")
+frame_progress = 0.384962
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_d0ued")
