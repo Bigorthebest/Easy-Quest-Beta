@@ -13,14 +13,21 @@ script = ExtResource("1_l87gu")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 54.0
-offset_bottom = 13.0
-text = "1er Bouton"
+offset_right = 95.0
+offset_bottom = 31.0
+text = "Ajoutez quetes [+]"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 31.0
+offset_right = 141.0
+offset_bottom = 54.0
 text = "Listes des quetes :"
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 149.0
+offset_bottom = 55.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

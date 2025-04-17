@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	$Button.text = "Wouhouu !!!"
+	$ItemList.add_item("Item !")
+	$ItemList.size.y += 20
