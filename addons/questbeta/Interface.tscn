@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0mxxvnmd5n78"]
+[gd_scene load_steps=3 format=3 uid="uid://c0mxxvnmd5n78"]
 
 [ext_resource type="Script" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xbd5"]
+font_color = Color(0.643254, 0, 0.0846696, 1)
 
 [node name="Interface" type="Control"]
 layout_mode = 3
@@ -11,23 +14,37 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l87gu")
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonAddQuest" type="Button" parent="."]
 layout_mode = 0
-offset_right = 95.0
-offset_bottom = 31.0
+offset_top = 58.0
+offset_right = 147.0
+offset_bottom = 89.0
 text = "Ajoutez quetes [+]"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_top = 31.0
+offset_top = 89.0
 offset_right = 141.0
-offset_bottom = 54.0
+offset_bottom = 112.0
 text = "Listes des quetes :"
 
 [node name="ItemList" type="ItemList" parent="."]
 layout_mode = 0
-offset_top = 55.0
+offset_top = 113.0
 offset_right = 149.0
-offset_bottom = 55.0
+offset_bottom = 113.0
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="LineEditTitre" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 31.0
+text = "Nom de quete :"
+
+[node name="LabelErreur" type="Label" parent="."]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 40.0
+offset_bottom = 56.0
+label_settings = SubResource("LabelSettings_8xbd5")
+
+[connection signal="pressed" from="ButtonAddQuest" to="." method="_on_button_pressed"]

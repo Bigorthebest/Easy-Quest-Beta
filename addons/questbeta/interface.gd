@@ -13,5 +13,11 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	$ItemList.add_item("Item !")
-	$ItemList.size.y += 20
+	if ($LineEditTitre.text == "Nom de quete :"):
+		$LabelErreur.show()
+		$LabelErreur.text = "Aucun titre entrée !"
+	else :
+		print($LineEditTitre.text)
+		$LabelErreur.hide()
+		$ItemList.add_item($LineEditTitre.text)
+		$ItemList.size.y += $LineEditTitre.size.y
