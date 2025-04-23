@@ -35,7 +35,7 @@ offset_top = 113.0
 offset_right = 149.0
 offset_bottom = 113.0
 
-[node name="LineEditTitre(0)" type="LineEdit" parent="."]
+[node name="LineEditTitre" type="LineEdit" parent="."]
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 31.0
@@ -56,7 +56,7 @@ offset_bottom = 186.0
 text = "Tout Reset"
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(36, 36)
+position = Vector2i(-299, -99)
 size = Vector2i(600, 200)
 visible = false
 script = ExtResource("2_y6lw3")
@@ -78,9 +78,9 @@ placeholder_text = "Nom de quete :"
 
 [node name="LabelErreur" type="Label" parent="Window"]
 offset_left = 200.0
-offset_top = 60.0
+offset_top = 90.0
 offset_right = 240.0
-offset_bottom = 83.0
+offset_bottom = 113.0
 label_settings = SubResource("LabelSettings_8xbd5")
 
 [node name="LineEditDescription" type="LineEdit" parent="Window"]

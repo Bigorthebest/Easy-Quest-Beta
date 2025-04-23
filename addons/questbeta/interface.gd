@@ -48,8 +48,11 @@ func _on_button_supr_all_pressed() -> void:
 
 func _on_window_close_requested() -> void:
 	$Window.hide()
-
-
+	for data in Bdd.get_sections() :
+		$ItemList.add_item(data)
+		$ItemList.size.y += $LineEditTitre.size.y
+		$ButtonSuprAll.position.y += $LineEditTitre.size.y
+	
 func _on_button_valider_pressed() -> void:
 	if ($Window/LineEditTitre.text == ""):
 		$Window/LabelErreur.show()
