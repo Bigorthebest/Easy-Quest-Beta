@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0mxxvnmd5n78"]
+[gd_scene load_steps=4 format=3 uid="uid://c0mxxvnmd5n78"]
 
 [ext_resource type="Script" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
+[ext_resource type="Script" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8xbd5"]
 font_color = Color(0.643254, 0, 0.0846696, 1)
@@ -34,11 +35,11 @@ offset_top = 113.0
 offset_right = 149.0
 offset_bottom = 113.0
 
-[node name="LineEditTitre" type="LineEdit" parent="."]
+[node name="LineEditTitre(0)" type="LineEdit" parent="."]
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 31.0
-text = "Nom de quete :"
+placeholder_text = "Nom de quete :"
 
 [node name="LabelErreur" type="Label" parent="."]
 layout_mode = 0
@@ -49,10 +50,54 @@ label_settings = SubResource("LabelSettings_8xbd5")
 
 [node name="ButtonSuprAll" type="Button" parent="."]
 layout_mode = 0
-offset_top = 272.0
+offset_top = 155.0
 offset_right = 150.0
-offset_bottom = 303.0
+offset_bottom = 186.0
 text = "Tout Reset"
+
+[node name="Window" type="Window" parent="."]
+position = Vector2i(36, 36)
+size = Vector2i(600, 200)
+visible = false
+script = ExtResource("2_y6lw3")
+
+[node name="Label" type="Label" parent="Window"]
+offset_left = 200.0
+offset_right = 425.0
+offset_bottom = 23.0
+text = "Menu de création de quetes : 
+"
+horizontal_alignment = 1
+
+[node name="LineEditTitre" type="LineEdit" parent="Window"]
+offset_left = 200.0
+offset_top = 30.0
+offset_right = 350.0
+offset_bottom = 61.0
+placeholder_text = "Nom de quete :"
+
+[node name="LabelErreur" type="Label" parent="Window"]
+offset_left = 200.0
+offset_top = 60.0
+offset_right = 240.0
+offset_bottom = 83.0
+label_settings = SubResource("LabelSettings_8xbd5")
+
+[node name="LineEditDescription" type="LineEdit" parent="Window"]
+offset_left = 200.0
+offset_top = 60.0
+offset_right = 400.0
+offset_bottom = 91.0
+placeholder_text = "Description : "
+
+[node name="ButtonValider" type="Button" parent="Window"]
+offset_left = 200.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 151.0
+text = "Valider"
 
 [connection signal="pressed" from="ButtonAddQuest" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonSuprAll" to="." method="_on_button_supr_all_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="Window/ButtonValider" to="Window" method="_on_button_valider_pressed"]

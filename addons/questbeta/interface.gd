@@ -21,16 +21,17 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	if ($LineEditTitre.text == "Nom de quete :"):
-		$LabelErreur.show()
-		$LabelErreur.text = "Aucun titre entrée !"
-	else :
-		print($LineEditTitre.text)
-		$LabelErreur.hide()
-		$ItemList.add_item($LineEditTitre.text)
-		$ItemList.size.y += $LineEditTitre.size.y
-		Bdd.set_value($LineEditTitre.text,"Description","Vide")
-		Bdd.save("res://bdd_quete.cfg")
+	#if ($LineEditTitre.text == ""):
+	#	$LabelErreur.show()
+	#	$LabelErreur.text = "Aucun titre entrée !"
+	#else :
+	#	print($LineEditTitre.text)
+	#	$LabelErreur.hide()
+	#	$ItemList.add_item($LineEditTitre.text)
+	#	$ItemList.size.y += $LineEditTitre.size.y
+	#	Bdd.set_value($LineEditTitre.text,"Description","Vide")
+	#	Bdd.save("res://bdd_quete.cfg")
+		$Window.show()
 
 
 func _on_button_supr_all_pressed() -> void:
@@ -40,6 +41,24 @@ func _on_button_supr_all_pressed() -> void:
 	for data in Bdd.get_sections() :
 		Bdd.erase_section(data)
 		print("section : ",data," supprimer")
-	$ButtonSuprAll.position.y = 180 
+	$ButtonSuprAll.position.y = 155
 	Bdd.save("res://bdd_quete.cfg")
 	print("Fin de suppression ?")
+
+
+func _on_window_close_requested() -> void:
+	$Window.hide()
+
+
+func _on_button_valider_pressed() -> void:
+	if ($Window/LineEditTitre.text == ""):
+		$Window/LabelErreur.show()
+		$Window/LabelErreur.text = "Aucun titre entrée !"
+	else :
+		print($WIndow/LineEditTitre.text)
+		$Window/LabelErreur.hide()
+		$ItemList.add_item($Window/LineEditTitre.text)
+		$ItemList.size.y += $Window/LineEditTitre.size.y
+		Bdd.set_value($Window/LineEditTitre.text,$Window/LineEditDescription.text,"Vide")
+		Bdd.save("res://bdd_quete.cfg")
+		$Window.hide()
