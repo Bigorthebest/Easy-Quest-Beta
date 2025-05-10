@@ -2,6 +2,31 @@
 extends Control
 
 var Bdd = ConfigFile.new()
+var fichier = "user://bdd.json"
+
+func in_list(item_list: ItemList, valeur: String) -> bool:
+	for i in item_list.get_item_count():
+		if item_list.get_item_text(i) == valeur:
+			return true
+	return false
+
+
+func reloadQuete(fichier) :
+	if FileAccess.file_exists(fichier):
+		var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
+		var contenu = file.get_as_text()
+		file.close()
+		
+		var parse_result = JSON.parse_string(contenu)
+		if typeof(parse_result) == TYPE_DICTIONARY:
+			for quete in parse_result :
+				if not in_list($ItemList,parse_result[quete]["Titre"]) :
+					#print(parse_result[quete]["Titre"])
+					$ItemList.add_item(parse_result[quete]["Titre"])
+					$ItemList.size.y += $LineEditTitre.size.y
+					$ButtonSuprAll.position.y += $LineEditTitre.size.y
+		else:
+			push_warning("Le fichier existe mais ne contient pas un dictionnaire valide. Écrasement.")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +39,7 @@ func _ready() -> void:
 			$ItemList.add_item(data)
 			$ItemList.size.y += $LineEditTitre.size.y
 			$ButtonSuprAll.position.y += $LineEditTitre.size.y
+	reloadQuete(fichier)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -48,10 +74,11 @@ func _on_button_supr_all_pressed() -> void:
 
 func _on_window_close_requested() -> void:
 	$Window.hide()
-	for data in Bdd.get_sections() :
-		$ItemList.add_item(data)
-		$ItemList.size.y += $LineEditTitre.size.y
-		$ButtonSuprAll.position.y += $LineEditTitre.size.y
+	#for data in Bdd.get_sections() :
+	#	$ItemList.add_item(data)
+	#	$ItemList.size.y += $LineEditTitre.size.y
+	#	$ButtonSuprAll.position.y += $LineEditTitre.size.y
+	reloadQuete(fichier)
 	
 func _on_button_valider_pressed() -> void:
 	if ($Window/LineEditTitre.text == ""):

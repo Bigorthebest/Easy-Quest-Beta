@@ -2,6 +2,49 @@
 extends Window
 
 var Bdd = ConfigFile.new()
+var jsonfile = "user://bdd.json"#"res://addons/questbeta/data/bdd.json"
+
+var premiere_save = {
+	"nom": "Quete Principale",
+	"description": "Une super quete incroyable"
+}
+
+func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
+	var data = {}
+	var cle = 0 
+	var nouvelle_entrer ={
+			'Titre' : $LineEditTitre.text,
+			'Description' : $LineEditDescription.text
+		}
+
+	# Lire le fichier s’il existe
+	if FileAccess.file_exists(fichier_path):
+		var file = FileAccess.open(fichier_path, FileAccess.ModeFlags.READ)
+		var contenu = file.get_as_text()
+		file.close()
+		
+		var parse_result = JSON.parse_string(contenu)
+		if typeof(parse_result) == TYPE_DICTIONARY:
+			data = parse_result
+			cle = parse_result.size()
+		else:
+			push_warning("Le fichier existe mais ne contient pas un dictionnaire valide. Écrasement.")
+
+	# Ajouter le nouveau dictionnaire
+	data[cle] = nouvelle_entrer
+
+	# Réécrire le fichier JSON
+	var file = FileAccess.open(fichier_path, FileAccess.ModeFlags.WRITE)
+	file.store_string(JSON.stringify(data, "\t"))  # "\t" pour indenter joliment
+	file.close()
+
+
+func loadBDD(file) :
+	var json_as_text = FileAccess.get_file_as_string(file)
+	var json_as_dict = JSON.parse_string(json_as_text)
+	print(typeof(json_as_dict))
+	print("renvois :" + str(json_as_dict))
+	return json_as_dict
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,11 +53,31 @@ func _ready() -> void:
 	if (err != OK):
 		return
 	move_to_center()
+	print("ready")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _enter_tree() -> void:
+	print("Enter tree...")
+		# Convertir le dictionnaire en chaîne JSON
+	#var json = JSON.new()
+	#var json_string = json.stringify(premiere_save)
+	
+	var tab = loadBDD(jsonfile)
+	print(tab)
 
+	# Écrire la chaîne JSON dans un fichier
+	#var file = FileAccess.open("jsonfile", FileAccess.WRITE)
+	#if file.file_exists(jsonfile) :
+	#	file.store_string(json_string)
+	#	file.close()
+	#else : 
+	#	print("Impossible d'ouvrir le fichier :" + jsonfile)
+
+func _init() -> void:
+	print("init")
 
 func _on_button_valider_pressed() -> void:
 	print("Bouton valider presser")
@@ -29,7 +92,22 @@ func _on_button_valider_pressed() -> void:
 		$LabelErreur.text = "" #pour "cacher" la potentiel erreur 
 		#$ItemList.add_item($Window/LineEditTitre.text)
 		#$ItemList.size.y += $Window/LineEditTitre.size.y
-		Bdd.set_value($LineEditTitre.text,$LineEditDescription.text,"Vide")
-		Bdd.save("res://bdd_quete.cfg")
-		print("Donner sauvegarder dans la bdd")
+		
+		#Bdd.set_value($LineEditTitre.text,$LineEditDescription.text,"Vide")
+		#Bdd.save("res://bdd_quete.cfg")
+		#print("Donner sauvegarder dans la bdd")
+		#close_requested.emit()
+		#Etape de récupération
+		#var file = FileAccess.get_file_as_string(jsonfile)
+		#var tab = loadBDD(jsonfile)
+		#print(tab.size())
+		#Etape de stockage
+		
+		#var file = FileAccess.open(jsonfile,FileAccess.ModeFlags.WRITE)
+		#var text_to_json = JSON.stringify(tab.merge(nouvelle_entrer))
+		#file.store_string(text_to_json)
+		ajouter_dictionnaire_au_json(jsonfile)
+		print("Store in json")
+		#file.close()
 		close_requested.emit()
+		

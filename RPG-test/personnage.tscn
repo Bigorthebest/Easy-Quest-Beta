@@ -30,7 +30,8 @@ size = Vector2(10, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_0icr5")
-frame_progress = 0.384962
+frame_progress = 0.241667
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
 shape = SubResource("RectangleShape2D_d0ued")
