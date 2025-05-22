@@ -61,6 +61,8 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_supr_all_pressed() -> void:
+	#Reset de la liste
+	
 	print("Bouton reset cliquer")
 	$ItemList.clear() 
 	$ItemList.size.y = 0 
@@ -70,7 +72,17 @@ func _on_button_supr_all_pressed() -> void:
 	$ButtonSuprAll.position.y = 155
 	Bdd.save("res://bdd_quete.cfg")
 	print("Fin de suppression ?")
-
+	
+	#Reset de la BDD 
+	var quetes_vides = {}
+	var json_string = JSON.stringify(quetes_vides)
+	var file = FileAccess.open(fichier, FileAccess.ModeFlags.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+		print("La base de données a été réinitialisée.")
+	else:
+		push_error("Impossible d'écrire dans le fichier : " + fichier)
 
 func _on_window_close_requested() -> void:
 	$Window.hide()
