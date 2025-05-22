@@ -23,8 +23,8 @@ func reloadQuete(fichier) :
 				if not in_list($ItemList,parse_result[quete]["Titre"]) :
 					#print(parse_result[quete]["Titre"])
 					$ItemList.add_item(parse_result[quete]["Titre"])
-					$ItemList.size.y += $LineEditTitre.size.y
-					$ButtonSuprAll.position.y += $LineEditTitre.size.y
+					$ItemList.size.y += $ButtonAddQuest.size.y
+					$ButtonSuprAll.position.y += $ButtonAddQuest.size.y
 		else:
 			push_warning("Le fichier existe mais ne contient pas un dictionnaire valide. Écrasement.")
 
@@ -37,8 +37,8 @@ func _ready() -> void:
 	else : 
 		for data in Bdd.get_sections() :
 			$ItemList.add_item(data)
-			$ItemList.size.y += $LineEditTitre.size.y
-			$ButtonSuprAll.position.y += $LineEditTitre.size.y
+			$ItemList.size.y += $ButtonAddQuest.size.y
+			$ButtonSuprAll.position.y += $ButtonAddQuest.size.y
 	reloadQuete(fichier)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
