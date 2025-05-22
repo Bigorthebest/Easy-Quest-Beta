@@ -1,7 +1,6 @@
 @tool
 extends Window
 
-var Bdd = ConfigFile.new()
 var jsonfile = "user://bdd.json"#"res://addons/questbeta/data/bdd.json"
 
 var premiere_save = {
@@ -49,9 +48,6 @@ func loadBDD(file) :
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#On essaye de charger les données d'une configurations existante 
-	var err = Bdd.load("res://bdd_quete.cfg")
-	if (err != OK):
-		return
 	move_to_center()
 	print("ready")
 
