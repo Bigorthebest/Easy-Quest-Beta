@@ -15,9 +15,9 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 	var nouvelle_entrer = {
 		'Titre': $LineEditTitre.text,
 		'Description': $LineEditDescription.text,
-		'Active': $CheckBoxActive.button_pressed,  
-		'Recompense': $LineEditRecompense.text,    
-		'QueteSuivante': $LineEditQueteSuivante.text  
+		'Active': $CheckBoxActive.button_pressed,
+		'Recompense': $LineEditRecompense.text,
+		'QueteSuivante': $LineEditQueteSuivante.text
 	}
 	
 	# Lire le fichier s'il existe
@@ -37,10 +37,10 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 	
 	# Réécrire le fichier JSON
 	var file = FileAccess.open(fichier_path, FileAccess.ModeFlags.WRITE)
-	file.store_string(JSON.stringify(data, "\t"))  # "\t" pour indenter joliment
+	file.store_string(JSON.stringify(data, "\t")) # "\t" pour indenter joliment
 	file.close()
 
-# Nouvelle fonction pour modifier une quête existante
+# pour modifier une quête existante
 func modifier_quete_dans_json(fichier_path: String, ancien_nom: String) -> void:
 	if FileAccess.file_exists(fichier_path):
 		var file = FileAccess.open(fichier_path, FileAccess.ModeFlags.READ)
@@ -126,11 +126,11 @@ func _on_button_valider_pressed() -> void:
 		# pour empêcher les doublons de noms
 		var interface_node = get_parent()
 		
-		if interface_node.quete_en_modification == null:  # mode création seulement
+		if interface_node.quete_en_modification == null: # mode création seulement
 			if verifier_quete_existe($LineEditTitre.text):
 				$LabelErreur.text = "Erreur : Une quête avec ce nom existe déjà !"
 				return
-		else:  # mode modification
+		else: # mode modification
 			# permettre de garder le même nom lors de la modification
 			if verifier_quete_existe($LineEditTitre.text) and $LineEditTitre.text != interface_node.quete_en_modification:
 				$LabelErreur.text = "Erreur : Une quête avec ce nom existe déjà !"
@@ -141,10 +141,10 @@ func _on_button_valider_pressed() -> void:
 			if not verifier_quete_existe($LineEditQueteSuivante.text):
 				$LabelErreur.text = "Attention : La quête suivante n'existe pas encore"
 				# la suite c'est si on veut empêcher de créer si y'a pas de quête suivante (au cas ou)
-				# return  # bon c'est un peu bête, ça sera jamais utile
+				# return # bon c'est un peu bête, ça sera jamais utile
 		
 		print("Création de quête : " + $LineEditTitre.text)
-		$LabelErreur.text = ""  #pour "cacher" la potentiel erreur
+		$LabelErreur.text = "" #pour "cacher" la potentiel erreur
 		
 		# vérifier si on est en mode modification ou création
 		if interface_node.quete_en_modification != null:
@@ -162,16 +162,13 @@ func _on_button_valider_pressed() -> void:
 		#Bdd.save("res://bdd_quete.cfg")
 		#print("Donner sauvegarder dans la bdd")
 		#close_requested.emit()
-		
 		#Etape de récupération
 		#var file = FileAccess.get_file_as_string(jsonfile)
 		#var tab = loadBDD(jsonfile)
 		#print(tab.size())
-		
 		#Etape de stockage
 		#var file = FileAccess.open(jsonfile, FileAccess.ModeFlags.WRITE)
 		#var text_to_json = JSON.stringify(tab.merge(nouvelle_entrer))
 		#file.store_string(text_to_json)
 		#file.close()
-		
 		close_requested.emit()
