@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd8vi33gqplcn"]
 
-[ext_resource type="Script" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
+[ext_resource type="Script" uid="uid://bxwe8xcm2aht2" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bvtd"]
 size = Vector2(16, 14)
