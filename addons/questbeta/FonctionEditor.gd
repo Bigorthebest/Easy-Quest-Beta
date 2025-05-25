@@ -18,4 +18,6 @@ func _on_button_pressed():
 	if fenetre == null : 
 		print("fenetre ouverte")
 		fenetre = Window.new()
-		
+		fenetre.title = "Menu de Selection de quete"
+		fenetre.size = Vector2(300, 200)
+		fenetre.resizable = false
