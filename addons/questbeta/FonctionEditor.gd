@@ -1,0 +1,17 @@
+extends EditorProperty
+
+var property_control = Button.new()
+var icon = load("res://addons/questbeta/icon/icon_quest.png")
+
+
+func _init():
+	add_child(property_control)
+	add_focusable(property_control)
+	
+	property_control.text = "Lier une Quete"
+	property_control.icon = icon
+	property_control.pressed.connect(_on_button_pressed)
+	
+
+func _on_button_pressed():
+	print("Liée une quete cliquer")
