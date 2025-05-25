@@ -2,7 +2,7 @@ extends EditorProperty
 
 var property_control = Button.new()
 var icon = load("res://addons/questbeta/icon/icon_quest.png")
-
+var fenetre = null 
 
 func _init():
 	add_child(property_control)
@@ -15,3 +15,7 @@ func _init():
 
 func _on_button_pressed():
 	print("Liée une quete cliquer")
+	if fenetre == null : 
+		print("fenetre ouverte")
+		fenetre = Window.new()
+		
