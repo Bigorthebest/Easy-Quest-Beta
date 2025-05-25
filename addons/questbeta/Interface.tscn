@@ -51,7 +51,7 @@ offset_bottom = 307.0
 text = "Tout Reset"
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(0, 248)
+position = Vector2i(0, 36)
 size = Vector2i(600, 200)
 script = ExtResource("2_y6lw3")
 
@@ -71,11 +71,13 @@ offset_bottom = 61.0
 placeholder_text = "Nom de quete :"
 
 [node name="LabelErreur" type="Label" parent="Window"]
-offset_left = 200.0
-offset_top = 90.0
-offset_right = 240.0
-offset_bottom = 113.0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 171.0
+offset_bottom = 177.0
 label_settings = SubResource("LabelSettings_8xbd5")
+autowrap_mode = 3
+clip_text = true
 
 [node name="LineEditDescription" type="LineEdit" parent="Window"]
 offset_left = 200.0
@@ -156,6 +158,14 @@ offset_right = 150.0
 offset_bottom = 447.0
 disabled = true
 text = "Modifier"
+
+[node name="LineEditRecherche" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 241.0
+offset_right = 150.0
+offset_bottom = 272.0
+placeholder_text = "Rechercher"
 
 [connection signal="pressed" from="ButtonAddQuest" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonSuprAll" to="." method="_on_button_supr_all_pressed"]
