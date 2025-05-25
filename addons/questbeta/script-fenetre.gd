@@ -100,7 +100,7 @@ func _enter_tree() -> void:
 func _init() -> void:
 	print("init")
 
-func verifier_quete_existe(nom_quete: String) -> bool:  #
+func verifier_quete_existe(nom_quete: String) -> bool:
 	if FileAccess.file_exists(jsonfile):
 		var file = FileAccess.open(jsonfile, FileAccess.ModeFlags.READ)
 		var contenu = file.get_as_text()
@@ -123,6 +123,19 @@ func _on_button_valider_pressed() -> void:
 		print("Bouton valider presser et sans Description")
 		$LabelErreur.text = "Erreur : Pas de Description "
 	else:
+		# pour empêcher les doublons de noms
+		var interface_node = get_parent()
+		
+		if interface_node.quete_en_modification == null:  # mode création seulement
+			if verifier_quete_existe($LineEditTitre.text):
+				$LabelErreur.text = "Erreur : Une quête avec ce nom existe déjà !"
+				return
+		else:  # mode modification
+			# permettre de garder le même nom lors de la modification
+			if verifier_quete_existe($LineEditTitre.text) and $LineEditTitre.text != interface_node.quete_en_modification:
+				$LabelErreur.text = "Erreur : Une quête avec ce nom existe déjà !"
+				return
+		
 		# validation optionnelle pour la quête suivante
 		if $LineEditQueteSuivante.text != "":
 			if not verifier_quete_existe($LineEditQueteSuivante.text):
@@ -134,7 +147,6 @@ func _on_button_valider_pressed() -> void:
 		$LabelErreur.text = ""  #pour "cacher" la potentiel erreur
 		
 		# vérifier si on est en mode modification ou création
-		var interface_node = get_parent()
 		if interface_node.quete_en_modification != null:
 			# mode modification
 			modifier_quete_dans_json(jsonfile, interface_node.quete_en_modification)
@@ -146,18 +158,20 @@ func _on_button_valider_pressed() -> void:
 		
 		#$ItemList.add_item($Window/LineEditTitre.text)
 		#$ItemList.size.y += $Window/LineEditTitre.size.y
-		#Bdd.set_value($LineEditTitre.text,$LineEditDescription.text,"Vide")
+		#Bdd.set_value($LineEditTitre.text, $LineEditDescription.text, "Vide")
 		#Bdd.save("res://bdd_quete.cfg")
 		#print("Donner sauvegarder dans la bdd")
 		#close_requested.emit()
+		
 		#Etape de récupération
 		#var file = FileAccess.get_file_as_string(jsonfile)
 		#var tab = loadBDD(jsonfile)
 		#print(tab.size())
+		
 		#Etape de stockage
-		#var file = FileAccess.open(jsonfile,FileAccess.ModeFlags.WRITE)
+		#var file = FileAccess.open(jsonfile, FileAccess.ModeFlags.WRITE)
 		#var text_to_json = JSON.stringify(tab.merge(nouvelle_entrer))
 		#file.store_string(text_to_json)
-		
 		#file.close()
+		
 		close_requested.emit()
