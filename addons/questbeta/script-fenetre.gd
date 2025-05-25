@@ -13,7 +13,10 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 	var cle = 0 
 	var nouvelle_entrer ={
 			'Titre' : $LineEditTitre.text,
-			'Description' : $LineEditDescription.text
+			'Description' : $LineEditDescription.text,
+			'Active': $CheckBoxActive.button_pressed,  # NOUVEAU
+			'Recompense': $LineEditRecompense.text,    # NOUVEAU
+			'QueteSuivante': $LineEditQueteSuivante.text  # NOUVEAU
 		}
 
 	# Lire le fichier s’il existe
@@ -75,16 +78,37 @@ func _enter_tree() -> void:
 func _init() -> void:
 	print("init")
 
+func verifier_quete_existe(nom_quete: String) -> bool: #
+	if FileAccess.file_exists(jsonfile):
+		var file = FileAccess.open(jsonfile, FileAccess.ModeFlags.READ)
+		var contenu = file.get_as_text()
+		file.close()
+		
+		var parse_result = JSON.parse_string(contenu)
+		if typeof(parse_result) == TYPE_DICTIONARY:
+			for quete in parse_result:
+				if parse_result[quete]["Titre"] == nom_quete:
+					return true
+	return false
+
 func _on_button_valider_pressed() -> void:
 	print("Bouton valider presser")
+	
 	if ($LineEditTitre.text == ""):
 		print("Bouton valider presser et sans Titre")
 		$LabelErreur.text = "Erreur : Pas de titre !"
 	elif ($LineEditDescription.text == ""):
 		print("Bouton valider presser et sans Description")
 		$LabelErreur.text = "Erreur : Pas de Description "
-	else :
-		print($LineEditTitre.text)
+	else:
+		# validation optionnelle pour la quête suivante
+		if $LineEditQueteSuivante.text != "":
+			if not verifier_quete_existe($LineEditQueteSuivante.text):
+				$LabelErreur.text = "Attention : La quête suivante n'existe pas encore"
+				# la suite c'est si on veut empêcher de créer si y'a pas de quête suivante (au cas ou)
+				# return  # bon c'est un peu bête, ça sera jamais utile
+		
+		print("Création de quête : " + $LineEditTitre.text)
 		$LabelErreur.text = "" #pour "cacher" la potentiel erreur 
 		#$ItemList.add_item($Window/LineEditTitre.text)
 		#$ItemList.size.y += $Window/LineEditTitre.size.y
@@ -106,4 +130,3 @@ func _on_button_valider_pressed() -> void:
 		print("Store in json")
 		#file.close()
 		close_requested.emit()
-		

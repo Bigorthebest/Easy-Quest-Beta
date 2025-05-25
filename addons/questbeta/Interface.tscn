@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0mxxvnmd5n78"]
 
-[ext_resource type="Script" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
-[ext_resource type="Script" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
+[ext_resource type="Script" uid="uid://dw21vk13siy3r" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
+[ext_resource type="Script" uid="uid://caqqppqxmp0j0" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8xbd5"]
 font_color = Color(0.643254, 0, 0.0846696, 1)
@@ -50,7 +50,7 @@ offset_bottom = 307.0
 text = "Tout Reset"
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -99)
+position = Vector2i(0, 36)
 size = Vector2i(600, 200)
 visible = false
 script = ExtResource("2_y6lw3")
@@ -64,9 +64,10 @@ text = "Menu de création de quetes :
 horizontal_alignment = 1
 
 [node name="LineEditTitre" type="LineEdit" parent="Window"]
+anchors_preset = -1
 offset_left = 200.0
 offset_top = 30.0
-offset_right = 350.0
+offset_right = 400.0
 offset_bottom = 61.0
 placeholder_text = "Nom de quete :"
 
@@ -78,6 +79,7 @@ offset_bottom = 113.0
 label_settings = SubResource("LabelSettings_8xbd5")
 
 [node name="LineEditDescription" type="LineEdit" parent="Window"]
+anchors_preset = -1
 offset_left = 200.0
 offset_top = 60.0
 offset_right = 400.0
@@ -85,11 +87,70 @@ offset_bottom = 91.0
 placeholder_text = "Description : "
 
 [node name="ButtonValider" type="Button" parent="Window"]
+anchors_preset = -1
 offset_left = 200.0
-offset_top = 120.0
-offset_right = 300.0
-offset_bottom = 151.0
+offset_top = 142.0
+offset_right = 400.0
+offset_bottom = 173.0
 text = "Valider"
+
+[node name="CheckBoxActive" type="CheckBox" parent="Window"]
+offset_left = 450.0
+offset_top = 61.0
+offset_right = 577.0
+offset_bottom = 92.0
+text = "Quête Active"
+
+[node name="LineEditQueteSuivante" type="LineEdit" parent="Window"]
+anchors_preset = -1
+offset_left = 200.0
+offset_top = 94.0
+offset_right = 400.0
+offset_bottom = 125.0
+placeholder_text = "Quête suivante"
+
+[node name="LineEditRecompense" type="LineEdit" parent="Window"]
+offset_left = 454.0
+offset_top = 102.0
+offset_right = 565.0
+offset_bottom = 139.0
+placeholder_text = "Récompense "
+
+[node name="LabelDescription" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 320.0
+offset_right = 400.0
+offset_bottom = 320.0
+text = "Description: "
+
+[node name="LabelRecompense" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 340.0
+offset_right = 400.0
+offset_bottom = 320.0
+text = "Récompense: "
+
+[node name="LabelActive" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 360.0
+offset_right = 400.0
+offset_bottom = 320.0
+text = "Statut: "
+
+[node name="LabelQueteSuivante" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 380.0
+offset_right = 400.0
+offset_bottom = 320.0
+text = "Quête Suivante:"
 
 [connection signal="pressed" from="ButtonAddQuest" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonSuprAll" to="." method="_on_button_supr_all_pressed"]
