@@ -32,6 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 			var parse_result = JSON.parse_string(contenu)
 			if typeof(parse_result) == TYPE_DICTIONARY:
 				print(parse_result)
+				print("Le bind est :", bind)
 				for quete in parse_result:
 					if parse_result[quete]["Titre"] == bind:
 						print(parse_result[quete]["Titre"])
