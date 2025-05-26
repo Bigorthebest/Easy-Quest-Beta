@@ -18,10 +18,6 @@ config/icon="res://icon.svg"
 
 project/assembly_name="test_quete_beta"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/questbeta/plugin.cfg")
-
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
