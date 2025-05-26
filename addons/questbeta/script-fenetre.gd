@@ -1,7 +1,7 @@
 @tool
 extends Window
 
-var jsonfile = "user://bdd.json"#"res://addons/questbeta/data/bdd.json" #bdd
+var jsonfile = "user://bdd.json"#"res://addons/questbeta/data/bdd.json" #comment pour commit
 
 var premiere_save = {
 	"nom": "Quete Principale",
