@@ -11,3 +11,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _transmettre_quest(valeur):
+	print("Donnée reçue chez le quete trigger :", valeur)
