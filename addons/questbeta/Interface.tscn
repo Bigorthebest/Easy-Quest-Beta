@@ -65,6 +65,11 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
+item_count = 4
+item_0/text = "hihihi"
+item_1/text = "quete de fou"
+item_2/text = "laalalala"
+item_3/text = "Mécépakomsa"
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
@@ -105,7 +110,7 @@ text = "Quête Suivante:"
 autowrap_mode = 3
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(0, 294)
+position = Vector2i(-299, -124)
 size = Vector2i(600, 250)
 min_size = Vector2i(500, 200)
 script = ExtResource("2_y6lw3")
