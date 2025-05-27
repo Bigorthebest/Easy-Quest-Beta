@@ -3,7 +3,7 @@ extends Area2D
 
 @export var bind : String
 var fichier = "user://bdd.json"
-var dico_quete 
+@export var dico_quete : Dictionary
 
 func _enter_tree():
 	pass
@@ -19,26 +19,26 @@ func _process(delta: float) -> void:
 func _transmettre_quest(valeur):
 	print("Donnée reçue chez le quete trigger :", valeur)
 	bind = valeur 
+	if FileAccess.file_exists(fichier):
+		var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
+		var contenu = file.get_as_text()
+		file.close()
+		var parse_result = JSON.parse_string(contenu)
+		if typeof(parse_result) == TYPE_DICTIONARY:
+			print("Le bind est :", bind)
+			for quete in parse_result:
+				if parse_result[quete]["Titre"] == bind:
+						dico_quete = parse_result[quete]
+				else:
+					push_warning("Le fichier existe mais ne contient pas un dictionnaire valide.")
+			
+			print("Pret à etre utiliser : ",dico_quete)
+		else :
+			push_warning("Fichier JSON innexistant !")
 
 func _on_body_entered(body: Node2D) -> void:
 	if bind == "null" :
 		print("Acune quete n'est lier")
 	else : 
-		print("Personnage dans la boite")
-		if FileAccess.file_exists(fichier):
-			var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
-			var contenu = file.get_as_text()
-			file.close()
-			var parse_result = JSON.parse_string(contenu)
-			if typeof(parse_result) == TYPE_DICTIONARY:
-				print("Le bind est :", bind)
-				for quete in parse_result:
-					if parse_result[quete]["Titre"] == bind:
-						dico_quete = parse_result[quete]
-			else:
-				push_warning("Le fichier existe mais ne contient pas un dictionnaire valide.")
-			
-			print("Pret à etre utiliser : ",dico_quete)
-		else :
-			push_warning("Fichier JSON innexistant !")
+		print("Personnage dans la boite", dico_quete)
 		
