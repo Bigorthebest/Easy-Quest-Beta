@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://d361fkscvnpq7"]
+
+[ext_resource type="Script" uid="uid://in2723h7hmkd" path="res://addons/questbeta/interface_select.gd" id="1_m6gop"]
+
+[node name="Interface-select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m6gop")
+
+[node name="titre" type="Label" parent="."]
+layout_mode = 0
+offset_left = 245.0
+offset_right = 400.0
+offset_bottom = 23.0
+text = "Menu de Selection : "
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 34.0
+offset_right = 168.0
+offset_bottom = 108.0
+item_count = 4
+item_0/text = "hihihi"
+item_1/text = "quete de fou"
+item_2/text = "laalalala"
+item_3/text = "Mécépakomsa"
+
+[node name="LineEditRecherche" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 17.0
+offset_top = 123.0
+offset_right = 167.0
+offset_bottom = 154.0
+placeholder_text = "Rechercher"
+
+[node name="LabelDescription" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 190.0
+offset_top = 52.0
+offset_right = 580.0
+offset_bottom = 75.0
+text = "Description: "
+
+[node name="LabelRecompense" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 190.0
+offset_top = 72.0
+offset_right = 580.0
+offset_bottom = 95.0
+text = "Récompense: "
+
+[node name="LabelTitre" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 190.0
+offset_top = 31.0
+offset_right = 580.0
+offset_bottom = 54.0
+text = "Titre: "
+
+[node name="LabelQueteSuivante" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 190.0
+offset_top = 91.0
+offset_right = 581.0
+offset_bottom = 114.0
+text = "Quête Suivante:"
+
+[node name="ButtonSelection" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 288.0
+offset_top = 124.0
+offset_right = 438.0
+offset_bottom = 155.0
+disabled = true
+text = "Lier"
+
+[connection signal="pressed" from="ButtonSelection" to="." method="_on_button_selection_pressed"]
