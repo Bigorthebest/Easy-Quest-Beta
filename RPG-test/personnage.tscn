@@ -1,25 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvhrko772an7l"]
+[gd_scene load_steps=8 format=3 uid="uid://cvhrko772an7l"]
 
-[ext_resource type="Texture2D" uid="uid://csvpsbqxatn4r" path="res://RPG-test/sprites/Mini-cube1.png" id="1_7ymk5"]
-[ext_resource type="Script" uid="uid://cwi1ei8da0fox" path="res://RPG-test/personnage.gd" id="1_wcgww"]
-[ext_resource type="Texture2D" uid="uid://cec8lrj72fwvh" path="res://RPG-test/sprites/Mini-cube2.png" id="2_hbh70"]
-[ext_resource type="Texture2D" uid="uid://d3jfatgky36p" path="res://RPG-test/sprites/Mini-cube3.png" id="3_j3n7g"]
+[ext_resource type="Script" path="res://RPG-test/personnage.gd" id="1_wcgww"]
+[ext_resource type="Texture2D" uid="uid://bhhy40dcx6dmg" path="res://RPG-test/sprites/cubien/apotre du cube1.png" id="2_ny0ss"]
+[ext_resource type="Texture2D" uid="uid://pbi15gbek3g7" path="res://RPG-test/sprites/cubien/apotre du cube3.png" id="3_2ybw3"]
+[ext_resource type="Texture2D" uid="uid://wxo723rw8kyc" path="res://RPG-test/sprites/cubien/apotre du cube4.png" id="4_rm3f8"]
+[ext_resource type="Texture2D" uid="uid://bltym5e3l5i3j" path="res://RPG-test/sprites/cubien/apotre du cube5.png" id="5_2rvqm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0icr5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_7ymk5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_hbh70")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_j3n7g")
+"texture": ExtResource("2_ny0ss")
 }],
 "loop": true,
-"name": &"default",
-"speed": 4.0
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2ybw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rm3f8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2rvqm")
+}],
+"loop": true,
+"name": &"marche",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0ued"]
@@ -29,12 +38,11 @@ size = Vector2(10, 16)
 script = ExtResource("1_wcgww")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_0icr5")
-frame_progress = 0.241667
-speed_scale = 2.0
+animation = &"marche"
+frame_progress = 0.206957
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 visible = false

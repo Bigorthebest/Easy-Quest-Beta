@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=4 uid="uid://bd8vi33gqplcn"]
 
-[ext_resource type="Script" uid="uid://bxwe8xcm2aht2" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
+[ext_resource type="Script" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
 [ext_resource type="Texture2D" uid="uid://cpevrn2nwywf3" path="res://icon.svg" id="2_vev7c"]
 [ext_resource type="Texture2D" uid="uid://tqpi3elefnu5" path="res://RPG-test/sprites/tileset/autotile_prairie.png" id="2_xdidp"]
 [ext_resource type="PackedScene" uid="uid://cvhrko772an7l" path="res://RPG-test/personnage.tscn" id="3_002ju"]
 [ext_resource type="Texture2D" uid="uid://ctoehgegsdlsn" path="res://RPG-test/sprites/tileset/tree1.png" id="5_rm7f4"]
-[ext_resource type="Script" uid="uid://0xa0ohs4txur" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
+[ext_resource type="Script" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bvtd"]
 size = Vector2(32, 32)
