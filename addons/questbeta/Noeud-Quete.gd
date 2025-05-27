@@ -1,7 +1,7 @@
 @tool
 extends Area2D
 
-var bind : String
+@export var bind : String
 var fichier = "user://bdd.json"
 var dico_quete 
 
@@ -31,18 +31,14 @@ func _on_body_entered(body: Node2D) -> void:
 			file.close()
 			var parse_result = JSON.parse_string(contenu)
 			if typeof(parse_result) == TYPE_DICTIONARY:
-				print(parse_result)
 				print("Le bind est :", bind)
 				for quete in parse_result:
 					if parse_result[quete]["Titre"] == bind:
-						print(parse_result[quete]["Titre"])
-						print(parse_result[quete])
-						print(parse_result[quete]["Description"])
 						dico_quete = parse_result[quete]
 			else:
 				push_warning("Le fichier existe mais ne contient pas un dictionnaire valide.")
 			
-			print(dico_quete)
+			print("Pret à etre utiliser : ",dico_quete)
 		else :
 			push_warning("Fichier JSON innexistant !")
 		

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blp1v6wxaosvx"
-path="res://.godot/imported/autotile_prairie.png-60920c94862edcded6f8899592005de8.ctex"
+uid="uid://ctoehgegsdlsn"
+path="res://.godot/imported/tree1.png-a5871cf9bc1238ea3881bdb7b5f5a195.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RPG-test/sprites/tileset/autotile_prairie.png"
-dest_files=["res://.godot/imported/autotile_prairie.png-60920c94862edcded6f8899592005de8.ctex"]
+source_file="res://RPG-test/sprites/tileset/tree1.png"
+dest_files=["res://.godot/imported/tree1.png-a5871cf9bc1238ea3881bdb7b5f5a195.ctex"]
 
 [params]
 
