@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0mxxvnmd5n78"]
 
-[ext_resource type="Script" uid="uid://dw21vk13siy3r" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
-[ext_resource type="Script" uid="uid://caqqppqxmp0j0" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
+[ext_resource type="Script" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
+[ext_resource type="Script" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8xbd5"]
 font_color = Color(0.643254, 0, 0.0846696, 1)
@@ -111,7 +111,7 @@ text = "Quête Suivante:"
 autowrap_mode = 3
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(0, 186)
+position = Vector2i(-299, -124)
 size = Vector2i(600, 250)
 min_size = Vector2i(500, 200)
 script = ExtResource("2_y6lw3")

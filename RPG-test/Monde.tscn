@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://bd8vi33gqplcn"]
+[gd_scene load_steps=9 format=4 uid="uid://bd8vi33gqplcn"]
 
-[ext_resource type="Script" uid="uid://bxwe8xcm2aht2" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
+[ext_resource type="Script" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
 [ext_resource type="Texture2D" uid="uid://cpevrn2nwywf3" path="res://icon.svg" id="2_vev7c"]
 [ext_resource type="Texture2D" uid="uid://balbu0j6ygexq" path="res://RPG-test/sprites/tileset/autotile_prairie.png" id="2_xdidp"]
 [ext_resource type="PackedScene" uid="uid://cvhrko772an7l" path="res://RPG-test/personnage.tscn" id="3_002ju"]
+[ext_resource type="Texture2D" uid="uid://co3guio4wof6y" path="res://RPG-test/sprites/test arbre.png" id="5_tvue1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bvtd"]
 size = Vector2(32, 32)
@@ -173,5 +174,25 @@ top_level = true
 
 [node name="Camera2D" type="Camera2D" parent="Personnage"]
 zoom = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16, -70)
+texture = ExtResource("5_tvue1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-48, 32)
+texture = ExtResource("5_tvue1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(48, -129)
+texture = ExtResource("5_tvue1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(112, 96)
+texture = ExtResource("5_tvue1")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(208, -99)
+texture = ExtResource("5_tvue1")
 
 [connection signal="body_entered" from="Quete Trigger" to="Quete Trigger" method="_on_body_entered"]
