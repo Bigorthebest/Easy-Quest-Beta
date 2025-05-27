@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0mxxvnmd5n78"]
 
-[ext_resource type="Script" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
-[ext_resource type="Script" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
+[ext_resource type="Script" uid="uid://dw21vk13siy3r" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
+[ext_resource type="Script" uid="uid://caqqppqxmp0j0" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8xbd5"]
 font_color = Color(0.643254, 0, 0.0846696, 1)
@@ -37,6 +37,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Ajoutez quetes [+]"
 
+[node name="ButtonSupprimer" type="Button" parent="MainContainer/TopButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Supprimer [-]"
+
 [node name="LabelErreur" type="Label" parent="MainContainer/TopButtonsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,11 +71,6 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 4
-item_0/text = "hihihi"
-item_1/text = "quete de fou"
-item_2/text = "laalalala"
-item_3/text = "Mécépakomsa"
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
@@ -110,7 +111,7 @@ text = "Quête Suivante:"
 autowrap_mode = 3
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -124)
+position = Vector2i(0, 186)
 size = Vector2i(600, 250)
 min_size = Vector2i(500, 200)
 script = ExtResource("2_y6lw3")
@@ -174,6 +175,7 @@ offset_bottom = 139.0
 placeholder_text = "Récompense "
 
 [connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonAddQuest" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonSupprimer" to="." method="_on_button_supprimer_pressed"]
 [connection signal="text_changed" from="MainContainer/QuestListContainer/ListHeaderContainer/LineEditRecherche" to="." method="_on_line_edit_recherche_text_changed"]
 [connection signal="item_selected" from="MainContainer/QuestListContainer/ItemList" to="." method="_on_item_list_item_selected"]
 [connection signal="pressed" from="MainContainer/QuestListContainer/ListButtonsContainer/ButtonSuprAll" to="." method="_on_button_supr_all_pressed"]

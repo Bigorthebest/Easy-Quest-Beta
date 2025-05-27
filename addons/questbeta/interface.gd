@@ -34,9 +34,13 @@ func get_itemlist() -> ItemList:
 func get_search_bar() -> LineEdit:
 	return $MainContainer/QuestListContainer/ListHeaderContainer/LineEditRecherche
 
-#  obtenir le bouton modifier
+# obtenir le bouton modifier
 func get_modifier_button() -> Button:
 	return $MainContainer/QuestListContainer/ListButtonsContainer/ButtonModifier
+
+# obtenir le bouton supprimer
+func get_supprimer_button() -> Button:
+	return $MainContainer/TopButtonsContainer/ButtonSupprimer
 
 # afficher les quêtes (avec ou sans filtre)
 func afficher_quetes(quetes_a_afficher: Dictionary):
@@ -85,9 +89,10 @@ func _on_line_edit_recherche_text_changed(new_text: String) -> void:
 	var quetes_filtrees = filtrer_quetes(new_text)
 	afficher_quetes(quetes_filtrees)
 	
-	# désactiver le bouton modifier si aucune quête n'est sélectionnée après filtrage
+	# désactiver les boutons si aucune quête n'est sélectionnée après filtrage
 	if get_itemlist().get_item_count() == 0:
 		get_modifier_button().disabled = true
+		get_supprimer_button().disabled = true
 	
 	print("Recherche : '", new_text, "' - ", quetes_filtrees.size(), " quête(s) trouvée(s)")
 
@@ -96,8 +101,9 @@ func _on_item_list_item_selected(index: int) -> void:
 	var nom_quete = get_itemlist().get_item_text(index).split(" [")[0] # Enlever le statut
 	afficher_details_quete(nom_quete)
 	
-	# activer le bouton modifier quand une quête est sélectionnée
+	# activer les boutons modifier et supprimer quand une quête est sélectionnée
 	get_modifier_button().disabled = false
+	get_supprimer_button().disabled = false
 
 func afficher_details_quete(nom_quete: String):
 	if FileAccess.file_exists(fichier):
@@ -158,6 +164,40 @@ func charger_quete_pour_modification(nom_quete: String):
 					$Window.show()
 					break
 
+# supprimer une quête
+func supprimer_quete(nom_quete: String):
+	if FileAccess.file_exists(fichier):
+		var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
+		var contenu = file.get_as_text()
+		file.close()
+		
+		var parse_result = JSON.parse_string(contenu)
+		if typeof(parse_result) == TYPE_DICTIONARY:
+			# Trouver et supprimer la quête
+			for quete_id in parse_result:
+				if parse_result[quete_id]["Titre"] == nom_quete:
+					parse_result.erase(quete_id)
+					print("Quête supprimée : ", nom_quete)
+					break
+			
+			# réécrire le fichier JSON
+			var file_write = FileAccess.open(fichier, FileAccess.ModeFlags.WRITE)
+			file_write.store_string(JSON.stringify(parse_result, "\t"))
+			file_write.close()
+			reloadQuete(fichier)
+			if has_node("MainContainer/QuestDetailsContainer/LabelDescription"):
+				$MainContainer/QuestDetailsContainer/LabelDescription.text = "Description: "
+			if has_node("MainContainer/QuestDetailsContainer/LabelRecompense"):
+				$MainContainer/QuestDetailsContainer/LabelRecompense.text = "Récompense: "
+			if has_node("MainContainer/QuestDetailsContainer/LabelActive"):
+				$MainContainer/QuestDetailsContainer/LabelActive.text = "Statut: "
+			if has_node("MainContainer/QuestDetailsContainer/LabelQueteSuivante"):
+				$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: "
+			
+			# désactiver les boutons
+			get_modifier_button().disabled = true
+			get_supprimer_button().disabled = true
+
 func _ready() -> void:
 	reloadQuete(fichier)
 	# connecter le signal de sélection d'item
@@ -168,8 +208,9 @@ func _ready() -> void:
 	if not get_search_bar().text_changed.is_connected(_on_line_edit_recherche_text_changed):
 		get_search_bar().text_changed.connect(_on_line_edit_recherche_text_changed)
 	
-	# désactiver le bouton modifier au démarrage
+	# désactiver les boutons au démarrage
 	get_modifier_button().disabled = true
+	get_supprimer_button().disabled = true
 
 func _process(delta: float) -> void:
 	pass
@@ -179,8 +220,6 @@ func _on_button_pressed() -> void:
 	quete_en_modification = null
 	$Window/Label.text = "Menu de création de quêtes :"
 	$Window/ButtonValider.text = "Valider"
-	
-	# Vider les champs (RETOUR AUX CHEMINS ORIGINAUX)
 	$Window/LineEditTitre.text = ""
 	$Window/LineEditDescription.text = ""
 	$Window/CheckBoxActive.button_pressed = true
@@ -210,6 +249,16 @@ func _on_button_modifier_pressed() -> void:
 	else:
 		print("Aucune quête sélectionnée")
 
+# pour le bouton supprimer
+func _on_button_supprimer_pressed() -> void:
+	var selected_index = get_itemlist().get_selected_items()
+	if selected_index.size() > 0:
+		var nom_quete = get_itemlist().get_item_text(selected_index[0]).split(" [")[0]
+		print("Suppression de la quête : ", nom_quete)
+		supprimer_quete(nom_quete)
+	else:
+		print("Aucune quête sélectionnée")
+
 func _on_button_supr_all_pressed() -> void:
 	#Reset de la liste
 	print("Bouton reset cliquer")
@@ -228,8 +277,9 @@ func _on_button_supr_all_pressed() -> void:
 	if has_node("MainContainer/QuestDetailsContainer/LabelQueteSuivante"):
 		$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: "
 	
-	# Désactiver le bouton modifier
+	# Désactiver les boutons
 	get_modifier_button().disabled = true
+	get_supprimer_button().disabled = true
 	
 	# Vider le cache des quêtes
 	toutes_les_quetes = {}
