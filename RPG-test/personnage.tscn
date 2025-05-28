@@ -1,30 +1,48 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvhrko772an7l"]
+[gd_scene load_steps=13 format=3 uid="uid://cvhrko772an7l"]
 
 [ext_resource type="Script" path="res://RPG-test/personnage.gd" id="1_wcgww"]
-[ext_resource type="Texture2D" uid="uid://bhhy40dcx6dmg" path="res://RPG-test/sprites/cubien/apotre du cube1.png" id="2_ny0ss"]
 [ext_resource type="Texture2D" uid="uid://bq8ptn4wvu7ec" path="res://RPG-test/sprites/cubien/apotre_du_cube_final.png" id="3_tb7sm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_epd70"]
-atlas = ExtResource("3_tb7sm")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fan0c"]
+size = Vector2(16, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqbb5"]
-atlas = ExtResource("3_tb7sm")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3tug5"]
-atlas = ExtResource("3_tb7sm")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iym52"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sun0w"]
 atlas = ExtResource("3_tb7sm")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0icr5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1708"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtnfl"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q1iu"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uvxe"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4cmm"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1315"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbyqn"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5l0g8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ny0ss")
+"texture": SubResource("AtlasTexture_sun0w")
 }],
 "loop": true,
 "name": &"idle",
@@ -32,36 +50,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_epd70")
+"texture": SubResource("AtlasTexture_f1708")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fqbb5")
+"texture": SubResource("AtlasTexture_qtnfl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3tug5")
+"texture": SubResource("AtlasTexture_1q1iu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iym52")
+"texture": SubResource("AtlasTexture_1uvxe")
 }],
 "loop": true,
 "name": &"marche",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4cmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1315")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbyqn")
+}],
+"loop": true,
+"name": &"pointe",
+"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0ued"]
-size = Vector2(10, 16)
-
-[node name="Personnage" type="Node2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_wcgww")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_mask = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_fan0c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-sprite_frames = SubResource("SpriteFrames_0icr5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5l0g8")
 animation = &"marche"
-frame_progress = 0.206957
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-visible = false
-shape = SubResource("RectangleShape2D_d0ued")
+frame = 1
+frame_progress = 0.344883
