@@ -194,7 +194,14 @@ sources/1 = SubResource("TileSetAtlasSource_1par4")
 [node name="Quete Trigger" type="Area2D" parent="."]
 position = Vector2(170, 0)
 script = ExtResource("1_wun65")
-bind = "C IMPORTANT"
+bind = "quete de fou"
+dico_quete = {
+"Active": true,
+"Description": "vrai quete",
+"QueteSuivante": "",
+"Recompense": "une boite",
+"Titre": "quete de fou"
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quete Trigger"]
 shape = SubResource("RectangleShape2D_7bvtd")
