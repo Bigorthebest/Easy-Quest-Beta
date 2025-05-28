@@ -6,7 +6,7 @@ var vitesse = 80
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("Haut") :
 		velocity.y -= vitesse 

@@ -29,10 +29,7 @@ func _init():
 	hbox.add_child(nom)
 	hbox.add_child(property_control)
 	
-	if quete_courante == null :
-		information.text = ("Information : Pas de Quete")
-	else :
-		information.text = ("Information : " + quete_courante)
+	information.text = ("Information :" + "placeholder :)")
 	information.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	vbox.add_child(hbox)
@@ -40,6 +37,9 @@ func _init():
 	
 	add_child(vbox)
 	add_focusable(vbox)
+	
+func _update_property() -> void:
+	information.text = ("Information :" + quete_courante)
 
 func _notification(what):
 	if what == NOTIFICATION_RESIZED:

@@ -183,6 +183,8 @@ texture_region_size = Vector2i(32, 32)
 6:0/0/z_index = 2
 6:2/0 = 0
 6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -10.5, 16, -10.5, 16, 16, -16, 16)
 
 [sub_resource type="TileSet" id="TileSet_suorp"]
 tile_size = Vector2i(32, 32)
@@ -194,13 +196,13 @@ sources/1 = SubResource("TileSetAtlasSource_1par4")
 [node name="Quete Trigger" type="Area2D" parent="."]
 position = Vector2(170, 0)
 script = ExtResource("1_wun65")
-bind = "quete de fou"
+bind = "C IMPORTANT"
 dico_quete = {
 "Active": true,
-"Description": "vrai quete",
+"Description": "très important",
 "QueteSuivante": "",
-"Recompense": "une boite",
-"Titre": "quete de fou"
+"Recompense": "tanaka le goat",
+"Titre": "C IMPORTANT"
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quete Trigger"]
@@ -220,7 +222,7 @@ tile_map_data = PackedByteArray("AAADAP7/AQABAAEAAAADAP//AQABAAEAAAAEAP//AQABAAE
 tile_set = SubResource("TileSet_4go80")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+/wEAAQAGAAEAAAABAAMAAQAGAAEAAAAGAP7/AQAGAAEAAAACAPz/AQAGAAEAAAAAAP3/AQAGAAEAAAD///7/AQAGAAEAAAD+/wAAAQAGAAAAAAD///3/AQAGAAAAAAAAAPz/AQAGAAAAAAACAPv/AQAGAAAAAAAGAP3/AQAGAAAAAAABAAIAAQAGAAAAAAADAAMAAQAFAAIAAAD//wIAAQAFAAIAAAAFAPz/AQAFAAIAAAAEAPz/AQAFAAIAAAD+////AQAGAAIAAAD9/wAAAQAGAAIAAAAAAAQAAQAGAAIAAAAAAAMAAQAGAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEAAQAGAAEAAAABAAMAAQAGAAEAAAAGAP7/AQAGAAEAAAACAPz/AQAGAAEAAAAAAP3/AQAGAAEAAAD///7/AQAGAAEAAAD+/wAAAQAGAAAAAAD///3/AQAGAAAAAAAAAPz/AQAGAAAAAAACAPv/AQAGAAAAAAAGAP3/AQAGAAAAAAABAAIAAQAGAAAAAAADAAMAAQAFAAIAAAD//wIAAQAFAAIAAAAFAPz/AQAFAAIAAAAEAPz/AQAFAAIAAAD+////AQAGAAIAAAD9/wAAAQAGAAIAAAAAAAQAAQAGAAIAAAAAAAMAAQAHAAAAAAACAAQAAQAHAAAAAAAEAAMAAQAHAAAAAAAFAAIAAQAHAAAAAAAGAAIAAQAHAAAAAAABAPz/AQAGAAIAAAADAPv/AQAGAAIAAAAEAPv/AQAGAAIAAAAFAPv/AQAGAAIAAAAGAPz/AQAGAAIAAAAHAP3/AQAGAAIAAAA=")
 tile_set = SubResource("TileSet_suorp")
 
 [node name="Personnage" parent="." instance=ExtResource("3_002ju")]
