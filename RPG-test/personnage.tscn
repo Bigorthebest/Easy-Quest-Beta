@@ -1,10 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvhrko772an7l"]
+[gd_scene load_steps=10 format=3 uid="uid://cvhrko772an7l"]
 
 [ext_resource type="Script" path="res://RPG-test/personnage.gd" id="1_wcgww"]
 [ext_resource type="Texture2D" uid="uid://bhhy40dcx6dmg" path="res://RPG-test/sprites/cubien/apotre du cube1.png" id="2_ny0ss"]
-[ext_resource type="Texture2D" uid="uid://pbi15gbek3g7" path="res://RPG-test/sprites/cubien/apotre du cube3.png" id="3_2ybw3"]
-[ext_resource type="Texture2D" uid="uid://wxo723rw8kyc" path="res://RPG-test/sprites/cubien/apotre du cube4.png" id="4_rm3f8"]
-[ext_resource type="Texture2D" uid="uid://bltym5e3l5i3j" path="res://RPG-test/sprites/cubien/apotre du cube5.png" id="5_2rvqm"]
+[ext_resource type="Texture2D" uid="uid://bq8ptn4wvu7ec" path="res://RPG-test/sprites/cubien/apotre_du_cube_final.png" id="3_tb7sm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epd70"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqbb5"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tug5"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iym52"]
+atlas = ExtResource("3_tb7sm")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0icr5"]
 animations = [{
@@ -18,13 +32,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_2ybw3")
+"texture": SubResource("AtlasTexture_epd70")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_rm3f8")
+"texture": SubResource("AtlasTexture_fqbb5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_2rvqm")
+"texture": SubResource("AtlasTexture_3tug5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iym52")
 }],
 "loop": true,
 "name": &"marche",

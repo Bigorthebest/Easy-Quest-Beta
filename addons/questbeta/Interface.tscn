@@ -71,12 +71,11 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 5
-item_0/text = "C IMPORTANT"
-item_1/text = "Super quete"
-item_2/text = "autre quete"
-item_3/text = "ui"
-item_4/text = "zefzf"
+item_count = 4
+item_0/text = "hihihi"
+item_1/text = "quete de fou"
+item_2/text = "laalalala"
+item_3/text = "Mécépakomsa"
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
