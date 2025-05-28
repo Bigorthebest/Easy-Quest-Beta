@@ -55,6 +55,7 @@ size = Vector2(10, 16)
 script = ExtResource("1_wcgww")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_0icr5")

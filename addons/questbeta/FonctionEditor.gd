@@ -11,13 +11,19 @@ func set_noeud_courant(noeud):
 	noeud_courant = noeud 
 
 func _init():
-	add_child(property_control)
-	add_focusable(property_control)
-		
+	var hbox = HBoxContainer.new()
+	var label = Label.new()
+	label.text = "Option de quete :"
+
 	property_control.text = "Lier une Quete"
 	property_control.icon = icon
 	property_control.pressed.connect(_on_button_pressed)
 	
+	hbox.add_child(label)	
+	hbox.add_child(property_control)
+
+	add_child(hbox)
+	add_focusable(hbox)
 
 func _on_button_pressed():
 	print("Liée une quete cliquer")
