@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvhrko772an7l"]
+[gd_scene load_steps=15 format=3 uid="uid://cvhrko772an7l"]
 
 [ext_resource type="Script" path="res://RPG-test/personnage.gd" id="1_wcgww"]
 [ext_resource type="Texture2D" uid="uid://74wnkcxck1g1" path="res://RPG-test/sprites/chevalier d'Ocameloth/knight.png" id="2_x62f8"]
@@ -22,14 +22,6 @@ region = Rect2(0, 128, 32, 32)
 atlas = ExtResource("2_x62f8")
 region = Rect2(0, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_isxdb"]
-atlas = ExtResource("2_x62f8")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2gfw"]
-atlas = ExtResource("2_x62f8")
-region = Rect2(32, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw2k8"]
 atlas = ExtResource("2_x62f8")
 region = Rect2(0, 64, 32, 32)
@@ -38,13 +30,13 @@ region = Rect2(0, 64, 32, 32)
 atlas = ExtResource("2_x62f8")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqacb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_isxdb"]
 atlas = ExtResource("2_x62f8")
-region = Rect2(0, 96, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkh5f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2gfw"]
 atlas = ExtResource("2_x62f8")
-region = Rect2(32, 96, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynp2u"]
 atlas = ExtResource("2_x62f8")
@@ -90,6 +82,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yw2k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1s31")
+}],
+"loop": true,
+"name": &"marche",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_isxdb")
 }, {
 "duration": 1.0,
@@ -97,28 +100,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"marche_bas",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yw2k8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a1s31")
-}],
-"loop": true,
-"name": &"marche_droite",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kqacb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lkh5f")
-}],
-"loop": true,
-"name": &"marche_gauche",
 "speed": 5.0
 }, {
 "frames": [{
@@ -144,4 +125,4 @@ shape = SubResource("RectangleShape2D_fan0c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5l0g8")
-animation = &"marche_gauche"
+animation = &"gauche"
