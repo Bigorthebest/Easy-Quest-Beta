@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d361fkscvnpq7"]
 
-[ext_resource type="Script" uid="uid://in2723h7hmkd" path="res://addons/questbeta/interface_select.gd" id="1_m6gop"]
+[ext_resource type="Script" path="res://addons/questbeta/interface_select.gd" id="1_m6gop"]
 
 [node name="Interface-select" type="Control"]
 layout_mode = 3
@@ -25,11 +25,11 @@ offset_top = 34.0
 offset_right = 168.0
 offset_bottom = 108.0
 item_count = 5
-item_0/text = "C IMPORTANT"
-item_1/text = "Super quete"
-item_2/text = "autre quete"
-item_3/text = "ui"
-item_4/text = "zefzf"
+item_0/text = "super quete "
+item_1/text = "hihihi"
+item_2/text = "quete de fou"
+item_3/text = "laalalala"
+item_4/text = "Mécépakomsa"
 
 [node name="LineEditRecherche" type="LineEdit" parent="."]
 layout_mode = 1

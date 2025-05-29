@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bd8vi33gqplcn"]
+[gd_scene load_steps=14 format=4 uid="uid://bd8vi33gqplcn"]
 
-[ext_resource type="Script" uid="uid://bxwe8xcm2aht2" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
+[ext_resource type="Script" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
 [ext_resource type="Texture2D" uid="uid://cpevrn2nwywf3" path="res://icon.svg" id="2_vev7c"]
 [ext_resource type="Texture2D" uid="uid://tqpi3elefnu5" path="res://RPG-test/sprites/tileset/autotile_prairie.png" id="2_xdidp"]
 [ext_resource type="PackedScene" uid="uid://cvhrko772an7l" path="res://RPG-test/personnage.tscn" id="3_002ju"]
-[ext_resource type="Script" uid="uid://0xa0ohs4txur" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
+[ext_resource type="Script" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
+[ext_resource type="Script" path="res://addons/questbeta/Noeud-Manager.gd" id="6_sny0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bvtd"]
 size = Vector2(32, 32)
@@ -193,23 +194,30 @@ sources/1 = SubResource("TileSetAtlasSource_1par4")
 
 [node name="Monde" type="Node2D"]
 
-[node name="Quete Trigger" type="Area2D" parent="."]
+[node name="Quete Manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_sny0l")
+
+[node name="Quete Trigger" type="Area2D" parent="Quete Manager"]
 position = Vector2(170, 0)
 script = ExtResource("1_wun65")
-bind = "r"
+bind = "super quete "
 dico_quete = {
 "Active": true,
-"Description": "r",
+"Description": "un quete avec un texte",
 "QueteSuivante": "",
 "Recompense": "",
 "Timeline": "timeline",
-"Titre": "r"
+"Titre": "super quete "
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Quete Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quete Manager/Quete Trigger"]
 shape = SubResource("RectangleShape2D_7bvtd")
 
-[node name="Sprite2D" type="Sprite2D" parent="Quete Trigger"]
+[node name="Sprite2D" type="Sprite2D" parent="Quete Manager/Quete Trigger"]
 top_level = true
 visibility_layer = 2
 position = Vector2(170, 0)
@@ -251,4 +259,4 @@ color = Color(0.529, 0.808, 0.922, 1)
 z_index = -100
 script = ExtResource("6_clouds_spawner")
 
-[connection signal="body_entered" from="Quete Trigger" to="Quete Trigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Quete Manager/Quete Trigger" to="Quete Manager/Quete Trigger" method="_on_body_entered"]
