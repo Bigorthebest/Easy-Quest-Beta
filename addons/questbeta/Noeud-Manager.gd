@@ -24,7 +24,6 @@ func loadQuete(fichier):
 
 #Appelez quand une quete et terminer par un quest trigger
 func _update_quete_manager (dico_quete) :
-	print("Quete terminier surle quest manager : ",dico_quete)
 	#Update des propriété 
 	dico_quete["Active"] = false 
 	emit_signal("recompence",dico_quete["Recompense"])
@@ -33,6 +32,7 @@ func _update_quete_manager (dico_quete) :
 			all_quete[quete]["Active"] = true
 		if all_quete[quete]["Titre"] == dico_quete["Titre"] :
 			all_quete[quete]["Active"] = false
+			all_quete[quete]["Finie"] = true
 	#Transmision a tous
 	emit_signal("update_quete",all_quete)
 

@@ -18,7 +18,8 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 		'Active': $CheckBoxActive.button_pressed,
 		'Recompense': $LineEditRecompense.text,
 		'QueteSuivante': $LineEditQueteSuivante.text,
-		'Timeline': $LineEditTimeline.text  
+		'Timeline': $LineEditTimeline.text,  
+		'Finie': false 
 	}
 	
 	# Lire le fichier s'il existe
@@ -59,6 +60,7 @@ func modifier_quete_dans_json(fichier_path: String, ancien_nom: String) -> void:
 					parse_result[quete_id]["Recompense"] = $LineEditRecompense.text
 					parse_result[quete_id]["QueteSuivante"] = $LineEditQueteSuivante.text
 					parse_result[quete_id]["Timeline"] = $LineEditTimeline.text  # NOUVEAU CHAMP
+					parse_result[quete_id]["Finie"] = false 
 					break
 			
 			# Réécrire le fichier JSON

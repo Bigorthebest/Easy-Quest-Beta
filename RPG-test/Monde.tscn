@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://bd8vi33gqplcn"]
+[gd_scene load_steps=15 format=4 uid="uid://bd8vi33gqplcn"]
 
 [ext_resource type="Script" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
-[ext_resource type="Texture2D" uid="uid://cpevrn2nwywf3" path="res://icon.svg" id="2_vev7c"]
 [ext_resource type="Texture2D" uid="uid://tqpi3elefnu5" path="res://RPG-test/sprites/tileset/autotile_prairie.png" id="2_xdidp"]
 [ext_resource type="PackedScene" uid="uid://cvhrko772an7l" path="res://RPG-test/personnage.tscn" id="3_002ju"]
 [ext_resource type="Script" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
@@ -221,14 +220,6 @@ dico_quete = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quete Manager/Quete Trigger"]
 shape = SubResource("RectangleShape2D_7bvtd")
 
-[node name="Sprite2D" type="Sprite2D" parent="Quete Manager/Quete Trigger"]
-visible = false
-top_level = true
-visibility_layer = 2
-position = Vector2(170, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_vev7c")
-
 [node name="Quete El cube" type="Area2D" parent="Quete Manager"]
 position = Vector2(447, -214)
 script = ExtResource("1_wun65")
@@ -246,14 +237,6 @@ dico_quete = {
 position = Vector2(1, 1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_qf6td")
-
-[node name="Sprite2D" type="Sprite2D" parent="Quete Manager/Quete El cube"]
-visible = false
-top_level = true
-visibility_layer = 2
-position = Vector2(325, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_vev7c")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 light_mask = 4
