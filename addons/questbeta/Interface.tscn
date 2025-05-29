@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0mxxvnmd5n78"]
 
-[ext_resource type="Script" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
-[ext_resource type="Script" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
+[ext_resource type="Script" uid="uid://dw21vk13siy3r" path="res://addons/questbeta/interface.gd" id="1_l87gu"]
+[ext_resource type="Script" uid="uid://caqqppqxmp0j0" path="res://addons/questbeta/script-fenetre.gd" id="2_y6lw3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8xbd5"]
 font_color = Color(0.643254, 0, 0.0846696, 1)
@@ -71,12 +71,6 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 5
-item_0/text = "C IMPORTANT"
-item_1/text = "Super quete"
-item_2/text = "autre quete"
-item_3/text = "ui"
-item_4/text = "zefzf"
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
@@ -116,10 +110,15 @@ layout_mode = 2
 text = "Quête Suivante:"
 autowrap_mode = 3
 
+[node name="LabelTimeline" type="Label" parent="MainContainer/QuestDetailsContainer"]
+layout_mode = 2
+text = "Timeline:"
+autowrap_mode = 3
+
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -124)
-size = Vector2i(600, 250)
-min_size = Vector2i(500, 200)
+position = Vector2i(222, 171)
+size = Vector2i(600, 280)
+min_size = Vector2i(500, 250)
 script = ExtResource("2_y6lw3")
 
 [node name="Label" type="Label" parent="Window"]
@@ -154,9 +153,9 @@ placeholder_text = "Description : "
 
 [node name="ButtonValider" type="Button" parent="Window"]
 offset_left = 200.0
-offset_top = 142.0
+offset_top = 172.0
 offset_right = 400.0
-offset_bottom = 173.0
+offset_bottom = 203.0
 text = "Valider"
 
 [node name="CheckBoxActive" type="CheckBox" parent="Window"]
@@ -179,6 +178,13 @@ offset_top = 102.0
 offset_right = 565.0
 offset_bottom = 139.0
 placeholder_text = "Récompense "
+
+[node name="LineEditTimeline" type="LineEdit" parent="Window"]
+offset_left = 200.0
+offset_top = 128.0
+offset_right = 400.0
+offset_bottom = 159.0
+placeholder_text = "Timeline Dialogic (optionnel)"
 
 [connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonAddQuest" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonSupprimer" to="." method="_on_button_supprimer_pressed"]

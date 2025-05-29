@@ -1,7 +1,7 @@
 @tool
 extends Window
 
-var jsonfile = "user://bdd.json"#"res://addons/questbeta/data/bdd.json"
+var jsonfile = "user://bdd.json"
 
 var premiere_save = {
 	"nom": "Quete Principale",
@@ -17,7 +17,8 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 		'Description': $LineEditDescription.text,
 		'Active': $CheckBoxActive.button_pressed,
 		'Recompense': $LineEditRecompense.text,
-		'QueteSuivante': $LineEditQueteSuivante.text
+		'QueteSuivante': $LineEditQueteSuivante.text,
+		'Timeline': $LineEditTimeline.text  
 	}
 	
 	# Lire le fichier s'il existe
@@ -37,10 +38,9 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 	
 	# Réécrire le fichier JSON
 	var file = FileAccess.open(fichier_path, FileAccess.ModeFlags.WRITE)
-	file.store_string(JSON.stringify(data, "\t")) # "\t" pour indenter joliment
+	file.store_string(JSON.stringify(data, "\t"))
 	file.close()
 
-# pour modifier une quête existante
 func modifier_quete_dans_json(fichier_path: String, ancien_nom: String) -> void:
 	if FileAccess.file_exists(fichier_path):
 		var file = FileAccess.open(fichier_path, FileAccess.ModeFlags.READ)
@@ -58,6 +58,7 @@ func modifier_quete_dans_json(fichier_path: String, ancien_nom: String) -> void:
 					parse_result[quete_id]["Active"] = $CheckBoxActive.button_pressed
 					parse_result[quete_id]["Recompense"] = $LineEditRecompense.text
 					parse_result[quete_id]["QueteSuivante"] = $LineEditQueteSuivante.text
+					parse_result[quete_id]["Timeline"] = $LineEditTimeline.text  # NOUVEAU CHAMP
 					break
 			
 			# Réécrire le fichier JSON
@@ -72,30 +73,17 @@ func loadBDD(file):
 	print("renvois :" + str(json_as_dict))
 	return json_as_dict
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#On essaye de charger les données d'une configurations existante
 	move_to_center()
 	print("ready")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _enter_tree() -> void:
 	print("Enter tree...")
-	# Convertir le dictionnaire en chaîne JSON
-	#var json = JSON.new()
-	#var json_string = json.stringify(premiere_save)
 	var tab = loadBDD(jsonfile)
 	print(tab)
-	# Écrire la chaîne JSON dans un fichier
-	#var file = FileAccess.open("jsonfile", FileAccess.WRITE)
-	#if file.file_exists(jsonfile) :
-	# file.store_string(json_string)
-	# file.close()
-	#else :
-	# print("Impossible d'ouvrir le fichier :" + jsonfile)
 
 func _init() -> void:
 	print("init")
@@ -126,12 +114,11 @@ func _on_button_valider_pressed() -> void:
 		# pour empêcher les doublons de noms
 		var interface_node = get_parent()
 		
-		if interface_node.quete_en_modification == null: # mode création seulement
+		if interface_node.quete_en_modification == null:
 			if verifier_quete_existe($LineEditTitre.text):
 				$LabelErreur.text = "Erreur : Une quête avec ce nom existe déjà !"
 				return
-		else: # mode modification
-			# permettre de garder le même nom lors de la modification
+		else:
 			if verifier_quete_existe($LineEditTitre.text) and $LineEditTitre.text != interface_node.quete_en_modification:
 				$LabelErreur.text = "Erreur : Une quête avec ce nom existe déjà !"
 				return
@@ -140,35 +127,16 @@ func _on_button_valider_pressed() -> void:
 		if $LineEditQueteSuivante.text != "":
 			if not verifier_quete_existe($LineEditQueteSuivante.text):
 				$LabelErreur.text = "Attention : La quête suivante n'existe pas encore"
-				# la suite c'est si on veut empêcher de créer si y'a pas de quête suivante (au cas ou)
-				# return # bon c'est un peu bête, ça sera jamais utile
 		
 		print("Création de quête : " + $LineEditTitre.text)
-		$LabelErreur.text = "" #pour "cacher" la potentiel erreur
+		$LabelErreur.text = ""
 		
 		# vérifier si on est en mode modification ou création
 		if interface_node.quete_en_modification != null:
-			# mode modification
 			modifier_quete_dans_json(jsonfile, interface_node.quete_en_modification)
 			print("Quête modifiée : " + $LineEditTitre.text)
 		else:
-			# mode création
 			ajouter_dictionnaire_au_json(jsonfile)
 			print("Store in json")
 		
-		#$ItemList.add_item($Window/LineEditTitre.text)
-		#$ItemList.size.y += $Window/LineEditTitre.size.y
-		#Bdd.set_value($LineEditTitre.text, $LineEditDescription.text, "Vide")
-		#Bdd.save("res://bdd_quete.cfg")
-		#print("Donner sauvegarder dans la bdd")
-		#close_requested.emit()
-		#Etape de récupération
-		#var file = FileAccess.get_file_as_string(jsonfile)
-		#var tab = loadBDD(jsonfile)
-		#print(tab.size())
-		#Etape de stockage
-		#var file = FileAccess.open(jsonfile, FileAccess.ModeFlags.WRITE)
-		#var text_to_json = JSON.stringify(tab.merge(nouvelle_entrer))
-		#file.store_string(text_to_json)
-		#file.close()
 		close_requested.emit()

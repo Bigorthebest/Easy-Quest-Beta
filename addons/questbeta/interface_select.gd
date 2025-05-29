@@ -3,6 +3,7 @@ extends Control
 
 var fichier = "user://bdd.json"
 var toutes_les_quetes = {}  # pour stocker toutes les quêtes
+
 signal bind_quest(valeur)
 
 func afficher_quetes(quetes_a_afficher: Dictionary):
@@ -24,6 +25,7 @@ func afficher_quetes(quetes_a_afficher: Dictionary):
 func reloadQuete(fichier):
 	$ItemList.clear() # Vider la liste avant de la recharger
 	print("Reload interface fenetre appeler")
+	
 	if FileAccess.file_exists(fichier):
 		var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
 		var contenu = file.get_as_text()
@@ -107,6 +109,7 @@ func afficher_details_quete(nom_quete: String):
 					print("Récompense: ", quete_data.get("Recompense", "Aucune"))
 					print("Active: ", quete_data.get("Active", true))
 					print("Quête suivante: ", quete_data.get("QueteSuivante", "Aucune"))
+					print("Timeline: ", quete_data.get("Timeline", "Aucune"))
 					print("========================")
 					break
 
@@ -119,13 +122,15 @@ func _notification(what):
 		if is_visible_in_tree():
 			print("Fenetre afficher")
 			reloadQuete(fichier)
+			
 			# connecter le signal de sélection d'item
 			if not $ItemList.item_selected.is_connected(_on_item_list_item_selected):
 				$ItemList.item_selected.connect(_on_item_list_item_selected)
+			
 			# connecter le signal de recherche
 			if has_node("LineEditRecherche") and not $LineEditRecherche.text_changed.is_connected(_on_line_edit_recherche_text_changed):
 				$LineEditRecherche.text_changed.connect(_on_line_edit_recherche_text_changed)
-		
+			
 			$ButtonSelection.disabled = true
 		else:
 			print("Fenetre cacher")
