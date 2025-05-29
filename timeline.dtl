@@ -1,0 +1,8 @@
+join Ocamelot 1
+Ocamelot: Des îles flottantes... Les Terres du Bocal sont un endroit bien étrange.
+Ocamelot: Et ensuite?
+- Rebrousser Chemin
+	Ocamelot: Je ne peux pas avoir fait tout ça pour rien.
+	Ocamelot: Je vais continuer. Ma [color=red]mission[/color] ne fait que commencer.
+- Continuer
+	Ocamelot: Il y a sûrement[color=orange] quelque chose[/color] pour moi ici...

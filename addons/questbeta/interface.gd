@@ -26,7 +26,7 @@ func reloadQuete(fichier):
 		else:
 			push_warning("Le fichier existe mais ne contient pas un dictionnaire valide.")
 
-#obtenir l'ItemList
+# obtenir l'ItemList
 func get_itemlist() -> ItemList:
 	return $MainContainer/QuestListContainer/ItemList
 
@@ -75,7 +75,7 @@ func filtrer_quetes(texte_recherche: String) -> Dictionary:
 		if texte_recherche in titre:
 			quetes_filtrees[quete_id] = quete_data
 		else:
-			# verifier chaque mot du titre
+			# vérifier chaque mot du titre
 			var mots_titre = titre.split(" ")
 			for mot in mots_titre:
 				if texte_recherche in mot:
@@ -84,7 +84,7 @@ func filtrer_quetes(texte_recherche: String) -> Dictionary:
 	
 	return quetes_filtrees
 
-# e quand le texte de recherche change
+# appelée quand le texte de recherche change
 func _on_line_edit_recherche_text_changed(new_text: String) -> void:
 	var quetes_filtrees = filtrer_quetes(new_text)
 	afficher_quetes(quetes_filtrees)
@@ -96,7 +96,7 @@ func _on_line_edit_recherche_text_changed(new_text: String) -> void:
 	
 	print("Recherche : '", new_text, "' - ", quetes_filtrees.size(), " quête(s) trouvée(s)")
 
-# afficher les détails d'une quête (sous la liste)je pense qu'il faudrait en faire une autre fenêtre mais bon
+# afficher les détails d'une quête (sous la liste) je pense qu'il faudrait en faire une autre fenêtre mais bon
 func _on_item_list_item_selected(index: int) -> void:
 	var nom_quete = get_itemlist().get_item_text(index).split(" [")[0] # Enlever le statut
 	afficher_details_quete(nom_quete)
@@ -126,6 +126,8 @@ func afficher_details_quete(nom_quete: String):
 						$MainContainer/QuestDetailsContainer/LabelActive.text = "Statut: " + ("Active" if active else "Inactive")
 					if has_node("MainContainer/QuestDetailsContainer/LabelQueteSuivante"):
 						$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: " + quete_data.get("QueteSuivante", "Aucune")
+					if has_node("MainContainer/QuestDetailsContainer/LabelTimeline"):
+						$MainContainer/QuestDetailsContainer/LabelTimeline.text = "Timeline: " + quete_data.get("Timeline", "Aucune")
 					
 					print("=== DÉTAILS DE LA QUÊTE ===")
 					print("Titre: ", quete_data["Titre"])
@@ -133,6 +135,7 @@ func afficher_details_quete(nom_quete: String):
 					print("Récompense: ", quete_data.get("Recompense", "Aucune"))
 					print("Active: ", quete_data.get("Active", true))
 					print("Quête suivante: ", quete_data.get("QueteSuivante", "Aucune"))
+					print("Timeline: ", quete_data.get("Timeline", "Aucune"))
 					print("========================")
 					break
 
@@ -151,12 +154,13 @@ func charger_quete_pour_modification(nom_quete: String):
 					
 					quete_en_modification = nom_quete
 					
-					# remplir la fenêtre avec les données existantes (RETOUR AUX CHEMINS ORIGINAUX)
+					# remplir la fenêtre avec les données existantes
 					$Window/LineEditTitre.text = quete_data["Titre"]
 					$Window/LineEditDescription.text = quete_data["Description"]
 					$Window/CheckBoxActive.button_pressed = quete_data.get("Active", true)
 					$Window/LineEditRecompense.text = quete_data.get("Recompense", "")
 					$Window/LineEditQueteSuivante.text = quete_data.get("QueteSuivante", "")
+					$Window/LineEditTimeline.text = quete_data.get("Timeline", "") # NOUVEAU CHAMP
 					
 					$Window/Label.text = "Menu de modification de quête :"
 					$Window/ButtonValider.text = "Modifier"
@@ -184,7 +188,9 @@ func supprimer_quete(nom_quete: String):
 			var file_write = FileAccess.open(fichier, FileAccess.ModeFlags.WRITE)
 			file_write.store_string(JSON.stringify(parse_result, "\t"))
 			file_write.close()
+			
 			reloadQuete(fichier)
+			
 			if has_node("MainContainer/QuestDetailsContainer/LabelDescription"):
 				$MainContainer/QuestDetailsContainer/LabelDescription.text = "Description: "
 			if has_node("MainContainer/QuestDetailsContainer/LabelRecompense"):
@@ -193,6 +199,8 @@ func supprimer_quete(nom_quete: String):
 				$MainContainer/QuestDetailsContainer/LabelActive.text = "Statut: "
 			if has_node("MainContainer/QuestDetailsContainer/LabelQueteSuivante"):
 				$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: "
+			if has_node("MainContainer/QuestDetailsContainer/LabelTimeline"):
+				$MainContainer/QuestDetailsContainer/LabelTimeline.text = "Timeline: "
 			
 			# désactiver les boutons
 			get_modifier_button().disabled = true
@@ -220,11 +228,14 @@ func _on_button_pressed() -> void:
 	quete_en_modification = null
 	$Window/Label.text = "Menu de création de quêtes :"
 	$Window/ButtonValider.text = "Valider"
+	
+	# Vider les champs
 	$Window/LineEditTitre.text = ""
 	$Window/LineEditDescription.text = ""
 	$Window/CheckBoxActive.button_pressed = true
 	$Window/LineEditRecompense.text = ""
 	$Window/LineEditQueteSuivante.text = ""
+	$Window/LineEditTimeline.text = "" # NOUVEAU CHAMP
 	$Window/LabelErreur.text = ""
 	
 	#if ($LineEditTitre.text == ""):
@@ -260,7 +271,7 @@ func _on_button_supprimer_pressed() -> void:
 		print("Aucune quête sélectionnée")
 
 func _on_button_supr_all_pressed() -> void:
-	#Reset de la liste
+	# Reset de la liste
 	print("Bouton reset cliquer")
 	get_itemlist().clear()
 	
@@ -276,6 +287,8 @@ func _on_button_supr_all_pressed() -> void:
 		$MainContainer/QuestDetailsContainer/LabelActive.text = "Statut: "
 	if has_node("MainContainer/QuestDetailsContainer/LabelQueteSuivante"):
 		$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: "
+	if has_node("MainContainer/QuestDetailsContainer/LabelTimeline"):
+		$MainContainer/QuestDetailsContainer/LabelTimeline.text = "Timeline: "
 	
 	# Désactiver les boutons
 	get_modifier_button().disabled = true
@@ -284,7 +297,7 @@ func _on_button_supr_all_pressed() -> void:
 	# Vider le cache des quêtes
 	toutes_les_quetes = {}
 	
-	#Reset de la BDD
+	# Reset de la BDD
 	var quetes_vides = {}
 	var json_string = JSON.stringify(quetes_vides)
 	var file = FileAccess.open(fichier, FileAccess.ModeFlags.WRITE)
