@@ -14,6 +14,7 @@ func _update_quete(nouvelle_entree) :
 	for quete in nouvelle_entree : 
 		if nouvelle_entree[quete]["Titre"] == dico_quete["Titre"] :
 			dico_quete = nouvelle_entree[quete]
+			print("Update ",dico_quete)
 
 #Appelé par le fonctionEditorProprety pour connaitre sont nom de quete auquel ce 
 #noeud a été bind. Ainsi que récupérer tout les infos de cette quete dans la BDD

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://db3b5ed6r57y4"]
+
+[ext_resource type="Texture2D" uid="uid://bq8ptn4wvu7ec" path="res://RPG-test/sprites/cubien/apotre_du_cube_final.png" id="1_8oxov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew2t4"]
+size = Vector2(20, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tkyd"]
+atlas = ExtResource("1_8oxov")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25i85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tkyd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ElCube" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_ew2t4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_25i85")

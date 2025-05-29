@@ -1,0 +1,8 @@
+join ElCube center
+ElCube: O la chevalier !
+ElCube: Un chevalier d'Ocamelot n'a rien à faire sur ces terres ! 
+- *Attaquer*
+	Ocamelot: Bien c'est l'heure de la baston 
+- Pourquoi donc ?
+	Ocamelot: Pourquoi ? Ce n'est pas un pays acceuillant ? 
+	ElCube: Ah si ! Je trouvait juste ça stylé de dire ça.

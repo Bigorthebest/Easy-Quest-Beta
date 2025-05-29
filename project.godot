@@ -22,9 +22,11 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"ElCube": "res://ElCube.dch",
 "Ocamelot": "res://Ocamelot.dch"
 }
 directories/dtl_directory={
+"dialogueElCube": "res://dialogueElCube.dtl",
 "timeline": "res://timeline.dtl"
 }
 layout/style_directory={

@@ -38,8 +38,9 @@ func _update_quete_manager (dico_quete) :
 
 func _ready() -> void:
 	loadQuete(fichier)
-	for enfant in get_children() :
-		enfant.connect("update_quete", Callable(enfant, "_update_quete"))
+	for enfant in get_children():
+		if enfant.has_method("_update_quete"):
+			connect("update_quete", Callable(enfant, "_update_quete"))
 
 func _process(delta: float) -> void:
 	pass
