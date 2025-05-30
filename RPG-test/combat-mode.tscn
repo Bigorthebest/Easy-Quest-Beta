@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://ccbcnxn1641r8"]
 
-[ext_resource type="Shader" path="res://RPG-test/combat-mode.gdshader" id="1_g4x3o"]
-[ext_resource type="Script" path="res://RPG-test/mesh_instance_3d.gd" id="1_hqcja"]
-[ext_resource type="Shader" path="res://RPG-test/combat-mode-sol.gdshader" id="1_rw05b"]
-[ext_resource type="Shader" path="res://RPG-test/combat-mode-ciel.gdshader" id="4_yd5ob"]
+[ext_resource type="Shader" uid="uid://de18u0r0bleo0" path="res://RPG-test/combat-mode.gdshader" id="1_g4x3o"]
+[ext_resource type="Script" uid="uid://8evke8hkuxwq" path="res://RPG-test/mesh_instance_3d.gd" id="1_hqcja"]
+[ext_resource type="Shader" uid="uid://48nujwry57yb" path="res://RPG-test/combat-mode-sol.gdshader" id="1_rw05b"]
+[ext_resource type="Shader" uid="uid://myso81j3ol3m" path="res://RPG-test/combat-mode-ciel.gdshader" id="4_yd5ob"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lhlpo"]
 
