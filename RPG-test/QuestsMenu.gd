@@ -94,14 +94,25 @@ func create_quest_item(quest_data: Dictionary):
 	
 	# Récompense si disponible (plus grande, taille dynamique)
 	var reward = quest_data.get("Recompense", "")
-	if reward != "":
+	if reward != []:
 		var reward_label = Label.new()
-		var reward_text = "Récompense: " + reward
+		var reward_text = "Récompense: " + reward[2]
 		reward_label.text = reward_text
 		var reward_font_size = calculate_font_size_for_length(reward_text, 16, 40)  # Base 16, max 40 caractères
 		reward_label.add_theme_font_size_override("font_size", reward_font_size)
 		reward_label.add_theme_color_override("font_color", Color.LIGHT_GREEN)
 		quest_content.add_child(reward_label)
+	
+	var or_label = Label.new()
+	var xp_label = Label.new()
+	or_label.text = "Or : " + str(reward[0])
+	xp_label.text = "Xp : " + str(reward[1])
+	var reward_font_size_or = calculate_font_size_for_length(or_label.text, 16, 40)  # Base 16, max 40 caractères
+	or_label.add_theme_font_size_override("font_size", reward_font_size_or)
+	xp_label.add_theme_font_size_override("font_size", reward_font_size_or)
+	quest_content.add_child(or_label)
+	quest_content.add_child(xp_label)
+	
 	
 	quest_content.add_child(title_label)
 	quest_content.add_child(desc_label)
