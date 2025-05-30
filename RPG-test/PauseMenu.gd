@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var quests_menu = preload("res://RPG-test/QuestsMenu.tscn")
+@onready var quests_menu = preload("res://RPG-test/QuestsMenu.tscn") # menu pause
 var quests_menu_instance = null
 
 var is_paused = false : set = set_paused
