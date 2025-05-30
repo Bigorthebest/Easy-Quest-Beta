@@ -17,7 +17,7 @@ func afficher_inv() :
 func _get_reward(drop) :
 	OR += int(drop[0])
 	XP += int(drop[1])
-	objets.append(drop[2].split(","))
+	objets.append_array(drop[2].split(","))
 	afficher_inv()
 
 # Called when the node enters the scene tree for the first time.
