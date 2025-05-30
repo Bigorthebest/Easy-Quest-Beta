@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d361fkscvnpq7"]
 
-[ext_resource type="Script" path="res://addons/questbeta/interface_select.gd" id="1_m6gop"]
+[ext_resource type="Script" uid="uid://in2723h7hmkd" path="res://addons/questbeta/interface_select.gd" id="1_m6gop"]
 
 [node name="Interface-select" type="Control"]
 layout_mode = 3

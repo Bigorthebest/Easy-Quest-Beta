@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=4 uid="uid://bd8vi33gqplcn"]
 
-[ext_resource type="Script" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
-[ext_resource type="Script" path="res://addons/questbeta/Noeud-Inventaire.gd" id="2_e2nfa"]
+[ext_resource type="Script" uid="uid://bxwe8xcm2aht2" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
+[ext_resource type="Script" uid="uid://v3a8i7ptlxnq" path="res://addons/questbeta/Noeud-Inventaire.gd" id="2_e2nfa"]
 [ext_resource type="Texture2D" uid="uid://tqpi3elefnu5" path="res://RPG-test/sprites/tileset/autotile_prairie.png" id="2_xdidp"]
 [ext_resource type="PackedScene" uid="uid://cvhrko772an7l" path="res://RPG-test/personnage.tscn" id="3_002ju"]
-[ext_resource type="Script" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
-[ext_resource type="Script" path="res://addons/questbeta/Noeud-Manager.gd" id="6_sny0l"]
+[ext_resource type="Script" uid="uid://0xa0ohs4txur" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
+[ext_resource type="Script" uid="uid://hsgaoty1v2wg" path="res://addons/questbeta/Noeud-Manager.gd" id="6_sny0l"]
 [ext_resource type="PackedScene" uid="uid://db3b5ed6r57y4" path="res://RPG-test/elCube.tscn" id="7_vhqdr"]
 [ext_resource type="PackedScene" uid="uid://bb5h4gftxo68h" path="res://RPG-test/PauseMenu.tscn" id="8_pause_menu"]
 
