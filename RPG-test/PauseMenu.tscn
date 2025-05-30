@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb5h4gftxo68h"]
 
 [ext_resource type="Script" uid="uid://c5p5nowkpfqoe" path="res://RPG-test/PauseMenu.gd" id="1_pause"]
-[ext_resource type="Texture2D" uid="uid://bg1eybwk7p477" path="res://RPG-test/sprites/bouton_test.png" id="2_bouton"]
+[ext_resource type="Texture2D" uid="uid://580v0nfbm3m8" path="res://RPG-test/sprites/bouton_test.png" id="2_bouton"]
 [ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="3_font"]
 
 [sub_resource type="Theme" id="Theme_1"]
