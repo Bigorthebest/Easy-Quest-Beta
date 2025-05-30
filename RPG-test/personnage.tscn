@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://cvhrko772an7l"]
 
-[ext_resource type="Script" uid="uid://cwi1ei8da0fox" path="res://RPG-test/personnage.gd" id="1_wcgww"]
+[ext_resource type="Script" path="res://RPG-test/personnage.gd" id="1_wcgww"]
 [ext_resource type="Texture2D" uid="uid://dc52bii073x1q" path="res://RPG-test/sprites/chevalier d'Ocameloth/knight_final.png" id="2_rrlva"]
 [ext_resource type="Texture2D" uid="uid://74wnkcxck1g1" path="res://RPG-test/sprites/chevalier d'Ocameloth/knight.png" id="2_x62f8"]
 
