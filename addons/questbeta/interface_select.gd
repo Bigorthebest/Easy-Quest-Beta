@@ -97,7 +97,7 @@ func afficher_details_quete(nom_quete: String):
 					if has_node("LabelDescription"):
 						$LabelDescription.text = "Description: " + quete_data.get("Description", "Aucune")
 					if has_node("LabelRecompense"):
-						$LabelRecompense.text = "Récompense: " + quete_data.get("Recompense", "Aucune")
+						$LabelRecompense.text = "Récompense: " + quete_data.get("Recompense", "Aucune")[2]
 					if has_node("LabelTitre"):
 						$LabelTitre.text = "Titre: " + quete_data.get("Titre", "Aucune")
 					if has_node("LabelQueteSuivante"):

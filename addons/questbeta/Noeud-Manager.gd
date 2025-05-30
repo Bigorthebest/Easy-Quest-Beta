@@ -41,6 +41,8 @@ func _ready() -> void:
 	for enfant in get_children():
 		if enfant.has_method("_update_quete"):
 			connect("update_quete", Callable(enfant, "_update_quete"))
+		if enfant.has_method("_get_reward") :
+			connect("recompence", Callable(enfant,"_get_reward"))
 
 func _process(delta: float) -> void:
 	pass

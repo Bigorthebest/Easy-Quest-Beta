@@ -16,7 +16,7 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 		'Titre': $LineEditTitre.text,
 		'Description': $LineEditDescription.text,
 		'Active': $CheckBoxActive.button_pressed,
-		'Recompense': $LineEditRecompense.text,
+		'Recompense': [$SpinBoxOr.value, $SpinBoxXp.value, $LineEditRecompense.text],
 		'QueteSuivante': $LineEditQueteSuivante.text,
 		'Timeline': $LineEditTimeline.text,  
 		'Finie': false 
@@ -57,7 +57,7 @@ func modifier_quete_dans_json(fichier_path: String, ancien_nom: String) -> void:
 					parse_result[quete_id]["Titre"] = $LineEditTitre.text
 					parse_result[quete_id]["Description"] = $LineEditDescription.text
 					parse_result[quete_id]["Active"] = $CheckBoxActive.button_pressed
-					parse_result[quete_id]["Recompense"] = $LineEditRecompense.text
+					parse_result[quete_id]["Recompense"] = [$SpinBoxOr.value, $SpinBoxXp.value, $LineEditRecompense.text]
 					parse_result[quete_id]["QueteSuivante"] = $LineEditQueteSuivante.text
 					parse_result[quete_id]["Timeline"] = $LineEditTimeline.text  # NOUVEAU CHAMP
 					parse_result[quete_id]["Finie"] = false 

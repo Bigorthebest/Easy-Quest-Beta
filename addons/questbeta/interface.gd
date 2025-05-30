@@ -120,7 +120,7 @@ func afficher_details_quete(nom_quete: String):
 					if has_node("MainContainer/QuestDetailsContainer/LabelDescription"):
 						$MainContainer/QuestDetailsContainer/LabelDescription.text = "Description: " + quete_data.get("Description", "Aucune")
 					if has_node("MainContainer/QuestDetailsContainer/LabelRecompense"):
-						$MainContainer/QuestDetailsContainer/LabelRecompense.text = "Récompense: " + quete_data.get("Recompense", "Aucune")
+						$MainContainer/QuestDetailsContainer/LabelRecompense.text = "Récompense: " + quete_data.get("Recompense", "Aucune")[2]
 					if has_node("MainContainer/QuestDetailsContainer/LabelActive"):
 						var active = quete_data.get("Active", true)
 						$MainContainer/QuestDetailsContainer/LabelActive.text = "Statut: " + ("Active" if active else "Inactive")
@@ -128,6 +128,10 @@ func afficher_details_quete(nom_quete: String):
 						$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: " + quete_data.get("QueteSuivante", "Aucune")
 					if has_node("MainContainer/QuestDetailsContainer/LabelTimeline"):
 						$MainContainer/QuestDetailsContainer/LabelTimeline.text = "Timeline: " + quete_data.get("Timeline", "Aucune")
+					if has_node("MainContainer/QuestDetailsContainer/LabelOr") :
+						$MainContainer/QuestDetailsContainer/LabelOr.text = "Or : " + str(quete_data.get("Recompense", "Aucune")[0])
+					if has_node("MainContainer/QuestDetailsContainer/LabelXp") :
+						$MainContainer/QuestDetailsContainer/LabelXp.text = "Xp : " + str(quete_data.get("Recompense", "Aucune")[1])
 					
 					print("=== DÉTAILS DE LA QUÊTE ===")
 					print("Titre: ", quete_data["Titre"])
@@ -158,9 +162,11 @@ func charger_quete_pour_modification(nom_quete: String):
 					$Window/LineEditTitre.text = quete_data["Titre"]
 					$Window/LineEditDescription.text = quete_data["Description"]
 					$Window/CheckBoxActive.button_pressed = quete_data.get("Active", true)
-					$Window/LineEditRecompense.text = quete_data.get("Recompense", "")
+					$Window/LineEditRecompense.text = quete_data.get("Recompense", "")[2]
 					$Window/LineEditQueteSuivante.text = quete_data.get("QueteSuivante", "")
 					$Window/LineEditTimeline.text = quete_data.get("Timeline", "") # NOUVEAU CHAMP
+					$Window/SpinBoxOr.value = quete_data.get("Recompense","")[0]
+					$Window/SpinBoxXp.value = quete_data.get("Recompense","")[1]
 					
 					$Window/Label.text = "Menu de modification de quête :"
 					$Window/ButtonValider.text = "Modifier"
@@ -201,6 +207,10 @@ func supprimer_quete(nom_quete: String):
 				$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: "
 			if has_node("MainContainer/QuestDetailsContainer/LabelTimeline"):
 				$MainContainer/QuestDetailsContainer/LabelTimeline.text = "Timeline: "
+			if has_node("MainContainer/QuestDetailsContainer/LabelOr") :
+				$MainContainer/QuestDetailsContainer/LabelOr.text = "Or :"
+			if has_node("MainContainer/QuestDetailsContainer/LabelXp") :
+				$MainContainer/QuestDetailsContainer/LabelXp.text = "Xp :"
 			
 			# désactiver les boutons
 			get_modifier_button().disabled = true
@@ -289,6 +299,10 @@ func _on_button_supr_all_pressed() -> void:
 		$MainContainer/QuestDetailsContainer/LabelQueteSuivante.text = "Quête suivante: "
 	if has_node("MainContainer/QuestDetailsContainer/LabelTimeline"):
 		$MainContainer/QuestDetailsContainer/LabelTimeline.text = "Timeline: "
+	if has_node("MainContainer/QuestDetailsContainer/LabelOr") :
+		$MainContainer/QuestDetailsContainer/LabelOr.text = "Or : "
+	if has_node("MainContainer/QuestDetailsContainer/LabelXp") :
+		$MainContainer/QuestDetailsContainer/LabelXp.text = "Xp :"
 	
 	# Désactiver les boutons
 	get_modifier_button().disabled = true

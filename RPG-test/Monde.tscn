@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://bd8vi33gqplcn"]
+[gd_scene load_steps=16 format=4 uid="uid://bd8vi33gqplcn"]
 
 [ext_resource type="Script" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
+[ext_resource type="Script" path="res://addons/questbeta/Noeud-Inventaire.gd" id="2_e2nfa"]
 [ext_resource type="Texture2D" uid="uid://tqpi3elefnu5" path="res://RPG-test/sprites/tileset/autotile_prairie.png" id="2_xdidp"]
 [ext_resource type="PackedScene" uid="uid://cvhrko772an7l" path="res://RPG-test/personnage.tscn" id="3_002ju"]
 [ext_resource type="Script" path="res://RPG-test/CloudsSpawner.gd" id="6_clouds_spawner"]
@@ -204,6 +205,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_sny0l")
 
+[node name="Quete Inventaire" type="Control" parent="Quete Manager"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_e2nfa")
+
 [node name="Quete Trigger" type="Area2D" parent="Quete Manager"]
 position = Vector2(170, 0)
 script = ExtResource("1_wun65")
@@ -211,9 +218,10 @@ bind = "quete de fou"
 dico_quete = {
 "Active": true,
 "Description": "vrai quete",
+"Finie": false,
 "QueteSuivante": "Rencontre avec le cube",
-"Recompense": "une boite",
-"Timeline": "",
+"Recompense": [15.0, 30.0, "une boite"],
+"Timeline": "timeline",
 "Titre": "quete de fou"
 }
 

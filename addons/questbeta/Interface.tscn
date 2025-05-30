@@ -71,12 +71,13 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 5
-item_0/text = "super quete "
-item_1/text = "hihihi"
-item_2/text = "quete de fou"
-item_3/text = "laalalala"
-item_4/text = "Mécépakomsa"
+item_count = 6
+item_0/text = "hihihi"
+item_1/text = "quete de fou"
+item_2/text = "laalalala"
+item_3/text = "Mécépakomsa"
+item_4/text = "super quete "
+item_5/text = "Rencontre avec le cube"
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
@@ -121,8 +122,16 @@ layout_mode = 2
 text = "Timeline:"
 autowrap_mode = 3
 
+[node name="LabelOr" type="Label" parent="MainContainer/QuestDetailsContainer"]
+layout_mode = 2
+text = "Or :  "
+
+[node name="LabelXp" type="Label" parent="MainContainer/QuestDetailsContainer"]
+layout_mode = 2
+text = "Xp :"
+
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -139)
+position = Vector2i(0, 36)
 size = Vector2i(600, 280)
 min_size = Vector2i(500, 250)
 script = ExtResource("2_y6lw3")
@@ -166,9 +175,9 @@ text = "Valider"
 
 [node name="CheckBoxActive" type="CheckBox" parent="Window"]
 offset_left = 450.0
-offset_top = 61.0
+offset_top = 40.0
 offset_right = 577.0
-offset_bottom = 92.0
+offset_bottom = 71.0
 text = "Quête Active"
 
 [node name="LineEditQueteSuivante" type="LineEdit" parent="Window"]
@@ -180,9 +189,9 @@ placeholder_text = "Quête suivante"
 
 [node name="LineEditRecompense" type="LineEdit" parent="Window"]
 offset_left = 454.0
-offset_top = 102.0
+offset_top = 82.0
 offset_right = 565.0
-offset_bottom = 139.0
+offset_bottom = 119.0
 placeholder_text = "Récompense "
 
 [node name="LineEditTimeline" type="LineEdit" parent="Window"]
@@ -191,6 +200,33 @@ offset_top = 128.0
 offset_right = 400.0
 offset_bottom = 159.0
 placeholder_text = "Timeline Dialogic (optionnel)"
+
+[node name="SpinBoxOr" type="SpinBox" parent="Window"]
+offset_left = 500.0
+offset_top = 125.0
+offset_right = 583.062
+offset_bottom = 156.0
+
+[node name="SpinBoxXp" type="SpinBox" parent="Window"]
+offset_left = 500.0
+offset_top = 160.0
+offset_right = 583.062
+offset_bottom = 191.0
+
+[node name="Or" type="Label" parent="Window"]
+offset_left = 454.0
+offset_top = 129.0
+offset_right = 494.0
+offset_bottom = 152.0
+text = " Or :"
+
+[node name="Xp" type="Label" parent="Window"]
+offset_left = 454.0
+offset_top = 163.0
+offset_right = 494.0
+offset_bottom = 186.0
+pivot_offset = Vector2(1.845, 0)
+text = " Xp :"
 
 [connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonAddQuest" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonSupprimer" to="." method="_on_button_supprimer_pressed"]

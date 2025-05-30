@@ -64,7 +64,7 @@ func reset_dialogue():
 	print("Dialogue réinitialisé pour cette quête")
 	
 func _ready() -> void:
-	connect("quete_terminer",get_parent()._update_quete_manager)
+	connect("quete_terminer",Callable(get_parent(),"_update_quete_manager"))
 	if not Engine.is_editor_hint():
 		if not body_entered.is_connected(_on_body_entered):
 			body_entered.connect(_on_body_entered)
