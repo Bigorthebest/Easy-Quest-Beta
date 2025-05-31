@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ga05l80qol3m"]
+
+[ext_resource type="Texture2D" uid="uid://bnfrm86h0obij" path="res://RPG-test/sprites/items-icon/coin-icon.png" id="1_d2p3e"]
+[ext_resource type="Script" uid="uid://3ts2acb3ubpr" path="res://RPG-test/Item.gd" id="2_hmof8"]
+
+[resource]
+script = ExtResource("2_hmof8")
+item_name = "Lambda d'Or"
+description = "La monnais du royaume d'Ocamelot. Pas sûr qu'elle soit utile ici..."
+icon = ExtResource("1_d2p3e")
+is_stackable = true
+max_stack = 99999
+item_id = "coin_004"
+metadata/_custom_type_script = "uid://3ts2acb3ubpr"

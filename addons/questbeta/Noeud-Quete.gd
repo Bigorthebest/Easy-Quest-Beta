@@ -6,6 +6,7 @@ extends Area2D
 var fichier = "user://bdd.json"
 var dialogue_already_played = false
 var quest_to_activate = false
+var quest_to_end = false
 
 signal quete_terminer
 signal update_quete
@@ -15,6 +16,7 @@ func _transmettre_quest(valeur):
 	# Réinitialiser complètement l'état
 	dialogue_already_played = false
 	quest_to_activate = false
+	quest_to_end = false
 	dico_quete = {} # Vider le cache
 
 	if FileAccess.file_exists(fichier):
@@ -57,6 +59,8 @@ func _on_body_entered(body: Node2D) -> void:
 			# Si dialogue et quête inactive, marquer pour activation après dialogue
 			if dico_quete["Active"] == false:
 				quest_to_activate = true
+			if dico_quete["Active"] == true : 
+				quest_to_end = true 
 
 			print("Déclenchement du dialogue : ", timeline)
 			dialogue_already_played = true
@@ -66,13 +70,15 @@ func _on_body_entered(body: Node2D) -> void:
 				Dialogic.timeline_ended.connect(_on_dialogue_ended)
 
 			Dialogic.start(timeline)
-		else:
-			# Pas de dialogue, activer immédiatement
-			if dico_quete["Active"] == false:
-				activate_quest()
-
+		#else:
+			## Pas de dialogue, activer immédiatement
+			#if dico_quete["Active"] == false:
+				#activate_quest()
+			#if dico_quete["Active"] == true : 
+				#complete_quest()
 			# ne pas emettre quete_terminer ici car la quête vient juste de commencer
 			# emit_signal("quete_terminer", dico_quete)  # SUPPRIMÉ
+			
 
 func _on_dialogue_ended():
 	print("Dialogue terminé pour la quête : ", dico_quete["Titre"])
@@ -84,6 +90,8 @@ func _on_dialogue_ended():
 	# Activer la quête maintenant que le dialogue est fini
 	if quest_to_activate:
 		activate_quest()
+	if quest_to_end:
+		complete_quest()
 
 	# ne pas emettre quete_terminer ici non plus
 	# emit_signal("quete_terminer", dico_quete) 
@@ -125,6 +133,7 @@ func update_quest_in_database():
 			print("Quête mise à jour dans la base de données")
 
 func complete_quest():
+	quest_to_end = false 
 	dico_quete["Active"] = false
 	dico_quete["Finie"] = true
 	update_quest_in_database()
@@ -133,6 +142,7 @@ func complete_quest():
 func reset_dialogue():
 	dialogue_already_played = false
 	quest_to_activate = false
+	quest_to_end = false 
 	print("Dialogue réinitialisé pour cette quête")
 
 func _ready() -> void:

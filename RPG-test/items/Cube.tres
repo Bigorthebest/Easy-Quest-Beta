@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c7iqvejhbhstw"]
 
-[ext_resource type="Texture2D" uid="uid://c58ohlnws02ew" path="res://RPG-test/sprites/items-icon/pomme.png" id="1_fjlxx"]
+[ext_resource type="Texture2D" uid="uid://cs81w3d401328" path="res://RPG-test/sprites/items-icon/cube.png" id="1_fjlxx"]
 [ext_resource type="Script" uid="uid://3ts2acb3ubpr" path="res://RPG-test/Item.gd" id="2_nvofg"]
 
 [resource]
 script = ExtResource("2_nvofg")
-item_name = "Pomme"
-description = "Une pomme des Terres du Bocal. Elle devrait être comestible."
+item_name = "Cube"
+description = "Un petit cube donné par un habitant du Bocal. Il est considéré comme une idole par ici."
 icon = ExtResource("1_fjlxx")
-is_stackable = true
-max_stack = 10
-item_id = "apple_001"
+is_stackable = false
+max_stack = 1
+item_id = "cube_001"
 metadata/_custom_type_script = "uid://3ts2acb3ubpr"

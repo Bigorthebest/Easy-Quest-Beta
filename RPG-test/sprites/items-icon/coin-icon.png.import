@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6fyuf777g4va"
-path="res://.godot/imported/bug.png-256114f7e8655636b1c0aae7a2dee5a6.ctex"
+uid="uid://bnfrm86h0obij"
+path="res://.godot/imported/coin-icon.png-e1abe0ba34ebc02bc0952bff45b2bc4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RPG-test/sprites/items-icon/bug.png"
-dest_files=["res://.godot/imported/bug.png-256114f7e8655636b1c0aae7a2dee5a6.ctex"]
+source_file="res://RPG-test/sprites/items-icon/coin-icon.png"
+dest_files=["res://.godot/imported/coin-icon.png-e1abe0ba34ebc02bc0952bff45b2bc4e.ctex"]
 
 [params]
 
