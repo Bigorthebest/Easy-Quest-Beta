@@ -24,13 +24,9 @@ offset_left = 15.0
 offset_top = 34.0
 offset_right = 168.0
 offset_bottom = 108.0
-item_count = 6
-item_0/text = "Super quete"
-item_1/text = "autre quete"
-item_2/text = "ui"
-item_3/text = "zefzf"
-item_4/text = "C IMPORTANT"
-item_5/text = "test"
+item_count = 2
+item_0/text = "Premier Pas"
+item_1/text = "Rencontre"
 
 [node name="LineEditRecherche" type="LineEdit" parent="."]
 layout_mode = 1

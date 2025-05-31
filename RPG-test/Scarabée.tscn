@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://chvxcgxjfksmv"]
+
+[ext_resource type="Texture2D" uid="uid://dkjehp8ujidr7" path="res://RPG-test/sprites/bug/scarab.png" id="1_i3d4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyxal"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rcaf"]
+atlas = ExtResource("1_i3d4d")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nnlt"]
+atlas = ExtResource("1_i3d4d")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf6jk"]
+atlas = ExtResource("1_i3d4d")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkfoe"]
+atlas = ExtResource("1_i3d4d")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sci4b"]
+atlas = ExtResource("1_i3d4d")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puxy2"]
+atlas = ExtResource("1_i3d4d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjd2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rcaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nnlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf6jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkfoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sci4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puxy2")
+}],
+"loop": true,
+"name": &"marche",
+"speed": 5.0
+}]
+
+[node name="Scarabée" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cyxal")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sjd2l")
+animation = &"marche"
+frame_progress = 0.569662

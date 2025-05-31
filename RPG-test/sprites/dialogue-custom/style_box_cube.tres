@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c7mnsx5wjeby5"]
+
+[ext_resource type="Texture2D" uid="uid://t67ww030w8s3" path="res://RPG-test/sprites/dialogue-custom/encart.png" id="1_aiwnt"]
+
+[resource]
+texture = ExtResource("1_aiwnt")
+expand_margin_left = 30.0
+expand_margin_top = 20.0
+expand_margin_right = 30.0
+expand_margin_bottom = 15.0

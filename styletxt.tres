@@ -44,6 +44,12 @@ overrides = {
 "box_margin_bottom": "17.0",
 "box_panel": "\"res://RPG-test/sprites/dialogue-custom/style_box_ocameloth.tres\"",
 "box_size": "Vector2(512, 128)",
+"name_label_box_modulate": "Color(1, 1, 1, 1)",
+"name_label_box_panel": "\"res://RPG-test/sprites/dialogue-custom/style_box_cube.tres\"",
+"name_label_box_use_global_color": "false",
+"name_label_custom_color": "Color(0.0710206, 0.069519, 0.261719, 1)",
+"name_label_use_character_color": "false",
+"name_label_use_global_color": "false",
 "text_custom_color": "Color(0, 0, 0, 1)",
 "text_use_global_color": "false"
 }
@@ -56,7 +62,16 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_rsujc"]
 script = ExtResource("2_rspwt")
 scene = ExtResource("8_l3xmg")
-overrides = {}
+overrides = {
+"boxes_stylebox_hovered": "\"res://RPG-test/sprites/dialogue-custom/style_box_choix_bouton_survolée.tres\"",
+"boxes_stylebox_normal": "\"res://RPG-test/sprites/dialogue-custom/style_box_choix_bouton.tres\"",
+"boxes_stylebox_pressed": "\"res://RPG-test/sprites/dialogue-custom/style_box_choix_bouton_presser.tres\"",
+"boxes_v_separation": "30.0",
+"text_color_custom": "Color(0.0111084, 0, 0.355469, 1)",
+"text_color_focused": "Color(0.0117647, 0, 0.356863, 1)",
+"text_color_hovered": "Color(0.832031, 0.741028, 0, 1)",
+"text_color_use_global": "false"
+}
 
 [sub_resource type="Resource" id="Resource_78fqc"]
 script = ExtResource("2_rspwt")
@@ -85,4 +100,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("2_rspwt")]([])
-metadata/_latest_layer = "13"
+metadata/_latest_layer = "15"
