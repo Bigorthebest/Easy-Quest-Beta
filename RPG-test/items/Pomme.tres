@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bgmtwvomvv5tx"]
 
+[ext_resource type="Texture2D" uid="uid://c58ohlnws02ew" path="res://RPG-test/sprites/items-icon/pomme.png" id="1_rka3f"]
 [ext_resource type="Script" uid="uid://3ts2acb3ubpr" path="res://RPG-test/Item.gd" id="1_vh34t"]
-[ext_resource type="Texture2D" uid="uid://c58ohlnws02ew" path="res://RPG-test/sprites/pomme.png" id="2_icon"]
 
 [resource]
 script = ExtResource("1_vh34t")
-item_name = "Pomme"
-description = "Une pomme des Terres du Bocal. Elle devrait être comestible."
-icon = ExtResource("2_icon")
+item_name = "Bug"
+description = "Un scarabée trouvée sur le sol. Les habitants du bocal le considére comme invasif "
+icon = ExtResource("1_rka3f")
 is_stackable = true
 max_stack = 10
-item_id = "apple_001"
+item_id = "bug_001"
 metadata/_custom_type_script = "uid://3ts2acb3ubpr"

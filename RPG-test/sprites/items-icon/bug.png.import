@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c58ohlnws02ew"
-path="res://.godot/imported/pomme.png-0e2c9827f804ce009363759bcbef8e04.ctex"
+uid="uid://b6fyuf777g4va"
+path="res://.godot/imported/bug.png-256114f7e8655636b1c0aae7a2dee5a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RPG-test/sprites/pomme.png"
-dest_files=["res://.godot/imported/pomme.png-0e2c9827f804ce009363759bcbef8e04.ctex"]
+source_file="res://RPG-test/sprites/items-icon/bug.png"
+dest_files=["res://.godot/imported/bug.png-256114f7e8655636b1c0aae7a2dee5a6.ctex"]
 
 [params]
 
