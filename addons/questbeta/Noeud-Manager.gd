@@ -7,7 +7,7 @@ var quete_active : Array
 signal update_quete
 signal recompence
 
-# NOUVEAU : Précharger la scène de notification
+# Précharger la scène de notification
 var notification_scene = preload("res://RPG-test/QuestNotification.tscn")
 
 #Fonction de chargement de la BDD des quetes
@@ -21,7 +21,7 @@ func loadQuete(fichier):
 		if typeof(parse_result) == TYPE_DICTIONARY:
 			all_quete = parse_result
 			for quete in parse_result:
-				# MODIFIÉ : Ne pas ajouter automatiquement aux quêtes actives ici
+				# Ne pas ajouter automatiquement aux quêtes actives ici
 				# if parse_result[quete]["Active"] == true:
 				# 	quete_active.append(parse_result[quete])
 				pass # La gestion des quêtes actives se fera via les triggers
@@ -34,7 +34,7 @@ func _update_quete_manager (dico_quete) :
 	dico_quete["Active"] = false
 	dico_quete["Finie"] = true # Marquer comme finie
 	
-	# NOUVEAU : Logique pour trouver la quête dans all_quete et la mettre à jour
+	# Logique pour trouver la quête dans all_quete et la mettre à jour
 	for quete_id in all_quete:
 		if all_quete[quete_id]["Titre"] == dico_quete["Titre"]:
 			all_quete[quete_id]["Active"] = false
@@ -58,13 +58,13 @@ func _update_quete_manager (dico_quete) :
 	#Transmision a tous
 	emit_signal("update_quete",all_quete)
 
-# NOUVEAU : Fonction pour afficher la notification
+# Fonction pour afficher la notification
 func show_quest_notification(quest_name: String):
 	var notification_instance = notification_scene.instantiate()
 	get_tree().root.add_child(notification_instance)
 	notification_instance.show_notification(quest_name)
 
-# NOUVEAU : Fonction pour sauvegarder toutes les quêtes
+# Fonction pour sauvegarder toutes les quêtes
 func save_all_quetes():
 	if FileAccess.file_exists(fichier):
 		var file_write = FileAccess.open(fichier, FileAccess.ModeFlags.WRITE)
