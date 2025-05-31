@@ -5,6 +5,10 @@ var fichier = "user://bdd.json"
 var quete_en_modification = null # pour tracker la quête en cours de modification
 var toutes_les_quetes = {} # pour stocker toutes les quêtes
 
+#Pour expoter les quetes 
+@onready var file_export := $FileExport
+@onready var file_import := $FileImport
+
 func in_list(item_list: ItemList, valeur: String) -> bool:
 	for i in item_list.get_item_count():
 		if item_list.get_item_text(i) == valeur:
@@ -253,6 +257,21 @@ func _ready() -> void:
 	# désactiver les boutons au démarrage
 	get_modifier_button().disabled = true
 	get_supprimer_button().disabled = true
+	
+	#Config pour export 
+	file_export.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	file_export.access = FileDialog.ACCESS_FILESYSTEM
+	file_export.set_filters(["*.txt", "*.json"]) 
+	file_export.title = "Exporter vos quêtes sous forme de fichier"
+	file_export.ok_button_text = "Enregistrer"
+	file_export.file_selected.connect(_on_file_selected_to_save)
+	#Config pour import 
+	file_import.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_import.access = FileDialog.ACCESS_FILESYSTEM
+	file_import.set_filters(["*.txt", "*.json"])
+	file_import.title = "Importer un fichier de quêtes"
+	file_import.ok_button_text = "Importer"
+	file_import.file_selected.connect(_on_file_selected_to_open)
 
 func _process(delta: float) -> void:
 	pass
@@ -354,3 +373,45 @@ func _on_window_close_requested() -> void:
 	# $ButtonSuprAll.position.y += $LineEditTitre.size.y
 	
 	reloadQuete(fichier)
+
+#Quand le bouton export et cliquez
+func _on_button_export_pressed() -> void:
+	open_export_dialog()
+	
+func _on_file_selected_to_save(path: String) -> void:
+	var contenu = "Si vous voyez cette chaine, c'est que le fichier c'est mal enregistrer :) "
+	if FileAccess.file_exists(fichier):
+		var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
+		contenu = file.get_as_text()
+		file.close()
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		push_error("Erreur : impossible d’ouvrir le fichier à l’écriture.")
+		return
+	file.store_string(contenu)
+	file.close()
+	print("Fichier enregistré à : ", path)
+
+func _on_button_import_pressed() -> void:
+	open_import_dialog()
+	
+func _on_file_selected_to_open(path: String) -> void:
+	var contenu := "Si vous voyez cette chaine, c'est que le fichier c'est mal importé :("
+	if FileAccess.file_exists(path):
+		var file := FileAccess.open(path, FileAccess.READ)
+		contenu = file.get_as_text()
+		file.close()
+
+	var parse_result := JSON.parse_string(contenu)
+
+	var file = FileAccess.open(fichier, FileAccess.WRITE)
+	file.store_string(JSON.stringify(parse_result, "\t"))
+	file.close()
+
+	reloadQuete(fichier)
+	
+func open_export_dialog():
+	file_export.popup_centered()
+	
+func open_import_dialog():
+	file_import.popup_centered()

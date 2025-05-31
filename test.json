@@ -1,0 +1,28 @@
+{
+	"0": {
+		"Active": false,
+		"Description": "Bienvenue dans les Terres du Bocal !",
+		"Finie": true,
+		"QueteSuivante": "Rencontre",
+		"Recompense": [
+			5.0,
+			5.0,
+			""
+		],
+		"Timeline": "timeline",
+		"Titre": "Premier Pas"
+	},
+	"1": {
+		"Active": true,
+		"Description": "Rencontrez un mystérieux personnage",
+		"Finie": true,
+		"QueteSuivante": "",
+		"Recompense": [
+			10.0,
+			10.0,
+			"Cube"
+		],
+		"Timeline": "dialogueElCube",
+		"Titre": "Rencontre"
+	}
+}

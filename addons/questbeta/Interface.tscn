@@ -130,8 +130,19 @@ text = "Or :  "
 layout_mode = 2
 text = "Xp :"
 
+[node name="QuestImportExportContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+
+[node name="ButtonExport" type="Button" parent="MainContainer/QuestImportExportContainer"]
+layout_mode = 2
+text = "Exportez quetes"
+
+[node name="ButtonImport" type="Button" parent="MainContainer/QuestImportExportContainer"]
+layout_mode = 2
+text = "Importez quetes"
+
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -139)
+position = Vector2i(0, 36)
 size = Vector2i(600, 280)
 min_size = Vector2i(500, 250)
 script = ExtResource("2_y6lw3")
@@ -228,11 +239,17 @@ offset_bottom = 186.0
 pivot_offset = Vector2(1.845, 0)
 text = " Xp :"
 
+[node name="FileExport" type="FileDialog" parent="."]
+
+[node name="FileImport" type="FileDialog" parent="."]
+
 [connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonAddQuest" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MainContainer/TopButtonsContainer/ButtonSupprimer" to="." method="_on_button_supprimer_pressed"]
 [connection signal="text_changed" from="MainContainer/QuestListContainer/ListHeaderContainer/LineEditRecherche" to="." method="_on_line_edit_recherche_text_changed"]
 [connection signal="item_selected" from="MainContainer/QuestListContainer/ItemList" to="." method="_on_item_list_item_selected"]
 [connection signal="pressed" from="MainContainer/QuestListContainer/ListButtonsContainer/ButtonSuprAll" to="." method="_on_button_supr_all_pressed"]
 [connection signal="pressed" from="MainContainer/QuestListContainer/ListButtonsContainer/ButtonModifier" to="." method="_on_button_modifier_pressed"]
+[connection signal="pressed" from="MainContainer/QuestImportExportContainer/ButtonExport" to="." method="_on_button_export_pressed"]
+[connection signal="pressed" from="MainContainer/QuestImportExportContainer/ButtonImport" to="." method="_on_button_import_pressed"]
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
 [connection signal="pressed" from="Window/ButtonValider" to="Window" method="_on_button_valider_pressed"]
