@@ -218,11 +218,11 @@ script = ExtResource("1_wun65")
 bind = "Les débuts"
 dico_quete = {
 "Active": false,
-"Description": "J'AI REUSSI CE PTN DE MENU",
+"Description": "Je dois continuer dans ces îles.",
 "Finie": false,
 "QueteSuivante": "",
-"Recompense": [0.0, 0.0, ""],
-"Timeline": "timeline",
+"Recompense": [5.0, 5.0, ""],
+"Timeline": "",
 "Titre": "Les débuts"
 }
 
@@ -232,14 +232,15 @@ shape = SubResource("RectangleShape2D_7bvtd")
 [node name="Quete El cube" type="Area2D" parent="Quete Manager"]
 position = Vector2(447, -214)
 script = ExtResource("1_wun65")
-bind = "Rencontre avec le cube"
+bind = "Rencontre avec Le Cube"
 dico_quete = {
 "Active": false,
-"Description": "1er rencontre",
+"Description": "Qui est-ce?",
+"Finie": false,
 "QueteSuivante": "",
-"Recompense": "300 Exp",
+"Recompense": [10.0, 5.0, ""],
 "Timeline": "dialogueElCube",
-"Titre": "Rencontre avec le cube"
+"Titre": "Rencontre avec Le Cube"
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Quete Manager/Quete El cube"]
