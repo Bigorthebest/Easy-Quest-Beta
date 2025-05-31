@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://dma8pe31a0d4p"]
+
+[ext_resource type="Script" uid="uid://d0bm68j7kb4ie" path="res://RPG-test/InventoryUI.gd" id="1_inventory"]
+[ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="2_font"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_inventory")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="Panel" parent="Control/CenterContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/MainPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" type="VBoxContainer" parent="Control/CenterContainer/MainPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="Control/CenterContainer/MainPanel/HBoxContainer/LeftPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 32
+text = "INVENTAIRE"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/CenterContainer/MainPanel/HBoxContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="RightPanel" type="VBoxContainer" parent="Control/CenterContainer/MainPanel/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemInfoPanel" type="Panel" parent="Control/CenterContainer/MainPanel/HBoxContainer/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemInfoContainer" type="VBoxContainer" parent="Control/CenterContainer/MainPanel/HBoxContainer/RightPanel/ItemInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="Control/CenterContainer/MainPanel/HBoxContainer/RightPanel/ItemInfoPanel/ItemInfoContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemName" type="Label" parent="Control/CenterContainer/MainPanel/HBoxContainer/RightPanel/ItemInfoPanel/ItemInfoContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+text = "Nom de l'objet"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/CenterContainer/MainPanel/HBoxContainer/RightPanel/ItemInfoPanel/ItemInfoContainer"]
+layout_mode = 2
+
+[node name="ItemDescription" type="Label" parent="Control/CenterContainer/MainPanel/HBoxContainer/RightPanel/ItemInfoPanel/ItemInfoContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+text = "Description de l'objet..."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="Control/CenterContainer/MainPanel/HBoxContainer/RightPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "FERMER [I]"
