@@ -37,12 +37,16 @@ func _on_continuer_pressed():
 func _on_quetes_pressed():
 	print("Bouton Quêtes pressé")
 	if not quests_menu_instance:
-		# NOUVEAU : Cacher le menu pause quand on ouvre le menu quêtes
+		# Cacher le menu pause quand on ouvre le menu quêtes
 		visible = false
-		
+
 		quests_menu_instance = quests_menu.instantiate()
 		get_tree().root.add_child(quests_menu_instance)
 		quests_menu_instance.quest_menu_closed.connect(_on_quest_menu_closed)
+
+		# NOUVEAU : Recharger les quêtes à chaque ouverture
+		quests_menu_instance.load_active_quests()
+
 
 func _on_quitter_pressed():
 	print("Bouton Quitter pressé")
