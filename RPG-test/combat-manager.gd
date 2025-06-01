@@ -26,7 +26,7 @@ func show_player_choices(character):
 func player_attack():
 	next_turn()
 
-func enemy_act(character):
+func enemy_act(_character):
 	#L'ennemi attaque un joueur au hasard
 	await(1)
 	all_combatants[0].degat(10)
@@ -48,4 +48,5 @@ func _on_button_bouclier_pressed() -> void:
 
 func _on_button_attaque_pressed() -> void:
 	print("Coup de sabre")
+	
 	resolve_player_turn()

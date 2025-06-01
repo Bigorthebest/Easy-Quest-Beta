@@ -215,6 +215,11 @@ region = Rect2(96, 192, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0r7ve"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"attaque",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cxse4")
@@ -370,7 +375,7 @@ uppercase = true
 position = Vector2(152, 400)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0r7ve")
-animation = &"idle"
+animation = &"attaque"
 script = ExtResource("5_cxse4")
 
 [node name="Label" type="Label" parent="CanvasLayer/Chevalier"]

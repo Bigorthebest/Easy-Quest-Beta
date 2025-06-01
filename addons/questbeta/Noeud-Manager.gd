@@ -6,6 +6,7 @@ var quete_active : Array
 
 signal update_quete
 signal recompence
+signal update_quete_inv
 
 # Précharger la scène de notification
 var notification_scene = preload("res://RPG-test/QuestNotification.tscn")
@@ -64,6 +65,7 @@ func _update_quete_manager (dico_quete) :
 	emit_signal("recompence",dico_quete["Recompense"])
 	#Transmision a tous
 	emit_signal("update_quete",all_quete)
+	emit_signal("update_quete_inv",all_quete)
 
 # Fonction pour afficher la notification
 func show_quest_notification(quest_name: String):
@@ -86,8 +88,8 @@ func _ready() -> void:
 			connect("update_quete", Callable(enfant, "_update_quete"))
 		if enfant.has_method("_get_reward") :
 			connect("recompence", Callable(enfant,"_get_reward"))
-			connect("update_quete", Callable(enfant, "_update_quete"))
-			emit_signal("update_quete",all_quete)
+			connect("update_quete_inv", Callable(enfant, "_update_quete"))
+			emit_signal("update_quete_inv",all_quete)
 			
 func _process(delta: float) -> void:
 	pass
