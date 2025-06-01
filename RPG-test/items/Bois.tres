@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bfwdix4apxwph"]
+
+[ext_resource type="Texture2D" uid="uid://d4jpdskw4oppp" path="res://RPG-test/sprites/items-icon/icon_bois.png" id="1_0rm55"]
+[ext_resource type="Script" uid="uid://3ts2acb3ubpr" path="res://RPG-test/Item.gd" id="2_vf85v"]
+
+[resource]
+script = ExtResource("2_vf85v")
+item_name = "Planches en bois"
+description = "Du bois solide, parfaitement adéquoit pour faire un pont. Qui les a laisser ici ? "
+icon = ExtResource("1_0rm55")
+is_stackable = true
+max_stack = 3
+item_id = "bois_005"
+metadata/_custom_type_script = "uid://3ts2acb3ubpr"

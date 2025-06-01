@@ -140,7 +140,11 @@ layout_mode = 2
 text = "Importez quetes"
 
 [node name="Window" type="Window" parent="."]
+<<<<<<< Updated upstream
 position = Vector2i(188, 94)
+=======
+position = Vector2i(0, 36)
+>>>>>>> Stashed changes
 size = Vector2i(600, 280)
 min_size = Vector2i(500, 250)
 script = ExtResource("2_y6lw3")

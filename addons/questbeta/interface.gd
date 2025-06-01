@@ -203,7 +203,7 @@ func charger_quete_pour_modification(nom_quete: String):
 					if itemWanted[0] != "" :
 						$Window/CheckBoxItemsWanted.button_pressed = true 
 						$Window/LineEditItemsWanted.text = itemWanted[0]
-						$Window/SpinBoxNbrItem.value + itemWanted[1]
+						$Window/SpinBoxNbrItem.value = itemWanted[1]
 					
 					$Window.show()
 					break

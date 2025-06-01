@@ -10,6 +10,7 @@ signal update_quete_inv
 
 # Précharger la scène de notification
 var notification_scene = preload("res://RPG-test/QuestNotification.tscn")
+var notificationfin_scene = preload("res://RPG-test/QuestNotificationFin.tscn")
 
 #Fonction de chargement de la BDD des quetes
 func loadQuete(fichier):
@@ -66,10 +67,17 @@ func _update_quete_manager (dico_quete) :
 	#Transmision a tous
 	emit_signal("update_quete",all_quete)
 	emit_signal("update_quete_inv",all_quete)
+	#show_end_quest_notification(dico_quete["Titre"])
 
 # Fonction pour afficher la notification
 func show_quest_notification(quest_name: String):
 	var notification_instance = notification_scene.instantiate()
+	get_tree().root.add_child(notification_instance)
+	notification_instance.show_notification(quest_name)
+	
+# Fonction pour afficher la notification de fin
+func show_end_quest_notification(quest_name: String):
+	var notification_instance = notificationfin_scene.instantiate()
 	get_tree().root.add_child(notification_instance)
 	notification_instance.show_notification(quest_name)
 

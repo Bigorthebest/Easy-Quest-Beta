@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://k23y2e0mu4m4"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://cyiekvn3yp4pj"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://dl2fimh7y5l6y" path="res://RPG-test/QuestNotification.gd" id="1_xvyv0"]
 [ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="2_y2i1m"]

@@ -5,8 +5,8 @@ var direction = 0 #0 face, 1 droite, 2 gauche, 3 dos
 var dialogue_deja_lance = false
 
 #Gestion de l'inventaire
-var tableau_items = ["Cube","Pomme","Scarabée","Respect"]
-var tableau_lien = ["res://RPG-test/items/Cube.tres","res://RPG-test/items/Pomme.tres","res://RPG-test/items/Bug.tres","res://RPG-test/items/Respect.tres"]
+var tableau_items = ["Cube","Pomme","Scarabée","Respect","Bois"]
+var tableau_lien = ["res://RPG-test/items/Cube.tres","res://RPG-test/items/Pomme.tres","res://RPG-test/items/Bug.tres","res://RPG-test/items/Respect.tres","res://RPG-test/items/Bois.tres"]
 # Référence à l'inventaire
 @onready var inventory_ui = preload("res://RPG-test/InventoryUI.tscn")
 var inventory_instance = null
@@ -155,3 +155,8 @@ func _on_scarabée_scaranbee_ramasse() -> void:
 	#emit_signal("give",[0,0,"Scarabée"])
 	var manager = get_parent().get_node("Quete Manager")
 	manager._give_stuff([0,0,"Scarabée"])
+
+
+func _on_bois_bois_ramasse() -> void:
+	var manager = get_parent().get_node("Quete Manager")
+	manager._give_stuff([0,0,"Bois"])

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://cov0p3or38uni"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://bycf14u4uirex"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://c3jlc2m7rwymb" path="res://RPG-test/scarabée.gd" id="1_sx5xt"]
 
