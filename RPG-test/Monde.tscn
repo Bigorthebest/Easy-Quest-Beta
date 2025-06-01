@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bd8vi33gqplcn"]
+[gd_scene load_steps=19 format=4 uid="uid://bd8vi33gqplcn"]
 
 [ext_resource type="Script" uid="uid://bxwe8xcm2aht2" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
 [ext_resource type="Script" uid="uid://v3a8i7ptlxnq" path="res://addons/questbeta/Noeud-Inventaire.gd" id="2_e2nfa"]
@@ -8,12 +8,16 @@
 [ext_resource type="Script" uid="uid://hsgaoty1v2wg" path="res://addons/questbeta/Noeud-Manager.gd" id="6_sny0l"]
 [ext_resource type="PackedScene" uid="uid://db3b5ed6r57y4" path="res://RPG-test/elCube.tscn" id="7_vhqdr"]
 [ext_resource type="PackedScene" uid="uid://bb5h4gftxo68h" path="res://RPG-test/PauseMenu.tscn" id="8_pause_menu"]
+[ext_resource type="PackedScene" uid="uid://chvxcgxjfksmv" path="res://RPG-test/Scarabée.tscn" id="9_agt7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bvtd"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qf6td"]
 size = Vector2(90, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agt7f"]
+size = Vector2(64, 64)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0ikpj"]
 tile_data = PackedInt32Array(0, 393217, 0)
@@ -273,6 +277,25 @@ position = Vector2(1, 1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_qf6td")
 
+[node name="Bug quest" type="Area2D" parent="Quete Manager"]
+position = Vector2(480, -464)
+script = ExtResource("1_wun65")
+bind = "Retrouver les Bugs"
+dico_quete = {
+"Active": false,
+"Description": "Le cube à besoin d'aide pour chasser les petites bestioles",
+"Finie": false,
+"ItemsDemandes": ["Scarabée", 5.0],
+"QueteSuivante": "",
+"Recompense": [5.0, 30.0, "Le respect du Bocal"],
+"Timeline": "Bugquest",
+"Titre": "Retrouver les Bugs"
+}
+metadata/_custom_type_script = "uid://bxwe8xcm2aht2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quete Manager/Bug quest"]
+shape = SubResource("RectangleShape2D_agt7f")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 light_mask = 4
 visibility_layer = 4
@@ -296,10 +319,10 @@ z_index = -100
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1275.0
-offset_top = -2000.0
-offset_right = 2725.0
-offset_bottom = 2000.0
+offset_left = -1288.0
+offset_top = -1992.0
+offset_right = 2712.0
+offset_bottom = 2008.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.529, 0.808, 0.922, 1)
@@ -316,5 +339,41 @@ position = Vector2(558, -238)
 [node name="PauseMenu" parent="." instance=ExtResource("8_pause_menu")]
 visible = false
 
+[node name="Scarabée" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(528, -512)
+
+[node name="Scarabée8" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(488, -552)
+
+[node name="Scarabée7" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(464, -536)
+
+[node name="Scarabée6" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(472, -512)
+
+[node name="Scarabée2" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(16, -568)
+rotation = 1.54883
+
+[node name="Scarabée3" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(1536, -576)
+rotation = -3.13103
+
+[node name="Scarabée4" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(1472, -416)
+rotation = -4.70254
+
+[node name="Scarabée5" parent="." instance=ExtResource("9_agt7f")]
+position = Vector2(2016, -304)
+rotation = -6.34567
+
 [connection signal="recompence" from="Quete Manager" to="Personnage" method="_on_quete_manager_recompence"]
 [connection signal="body_entered" from="Quete Manager/Quete Trigger" to="Quete Manager/Quete Trigger" method="_on_body_entered"]
+[connection signal="scaranbee_ramasse" from="Scarabée" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
+[connection signal="scaranbee_ramasse" from="Scarabée8" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
+[connection signal="scaranbee_ramasse" from="Scarabée7" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
+[connection signal="scaranbee_ramasse" from="Scarabée6" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
+[connection signal="scaranbee_ramasse" from="Scarabée2" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
+[connection signal="scaranbee_ramasse" from="Scarabée3" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
+[connection signal="scaranbee_ramasse" from="Scarabée4" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
+[connection signal="scaranbee_ramasse" from="Scarabée5" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]

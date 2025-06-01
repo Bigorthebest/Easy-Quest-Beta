@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://chvxcgxjfksmv"]
+[gd_scene load_steps=12 format=3 uid="uid://chvxcgxjfksmv"]
 
+[ext_resource type="Script" uid="uid://c3jlc2m7rwymb" path="res://RPG-test/scarabée.gd" id="1_cyxal"]
 [ext_resource type="Texture2D" uid="uid://dkjehp8ujidr7" path="res://RPG-test/sprites/bug/scarab.png" id="1_i3d4d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyxal"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rcaf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rcaf"]
 atlas = ExtResource("1_i3d4d")
@@ -54,12 +55,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyxal"]
+
 [node name="Scarabée" type="AnimatableBody2D"]
+collision_mask = 2
+script = ExtResource("1_cyxal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cyxal")
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_5rcaf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sjd2l")
 animation = &"marche"
 frame_progress = 0.569662
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cyxal")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

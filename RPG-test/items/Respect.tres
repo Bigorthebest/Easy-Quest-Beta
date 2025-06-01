@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bapbvp725w78r"]
+
+[ext_resource type="Texture2D" uid="uid://k1abpgrdfvwb" path="res://RPG-test/sprites/items-icon/cube_brillant.png" id="1_gvt8b"]
+[ext_resource type="Script" uid="uid://3ts2acb3ubpr" path="res://RPG-test/Item.gd" id="2_uqgpq"]
+
+[resource]
+script = ExtResource("2_uqgpq")
+item_name = "Cube de Respect"
+description = "Ce cube est chargée d'énérgie de Respect du Bocal. Il est donné pour grand service rendu."
+icon = ExtResource("1_gvt8b")
+is_stackable = false
+max_stack = 1
+item_id = "respect_001"
+metadata/_custom_type_script = "uid://3ts2acb3ubpr"

@@ -19,7 +19,8 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 		'Recompense': [$SpinBoxOr.value, $SpinBoxXp.value, $LineEditRecompense.text],
 		'QueteSuivante': $LineEditQueteSuivante.text,
 		'Timeline': $LineEditTimeline.text,  
-		'Finie': false 
+		'Finie': false,
+		'ItemsDemandes' : [$LineEditItemsWanted.text,$SpinBoxNbrItem]
 	}
 	
 	# Lire le fichier s'il existe
@@ -61,6 +62,7 @@ func modifier_quete_dans_json(fichier_path: String, ancien_nom: String) -> void:
 					parse_result[quete_id]["QueteSuivante"] = $LineEditQueteSuivante.text
 					parse_result[quete_id]["Timeline"] = $LineEditTimeline.text  # NOUVEAU CHAMP
 					parse_result[quete_id]["Finie"] = false 
+					parse_result[quete_id]["ItemsDemandes"] = [$LineEditItemsWanted.text,$SpinBoxNbrItem.value]
 					break
 			
 			# Réécrire le fichier JSON
@@ -142,3 +144,15 @@ func _on_button_valider_pressed() -> void:
 			print("Store in json")
 		
 		close_requested.emit()
+
+#Si c'est une quete d'inventaire
+func _on_check_box_items_wanted_toggled(toggled_on: bool) -> void:
+	if toggled_on :
+		$LineEditItemsWanted.show()
+		$Nbr.show()
+		$SpinBoxNbrItem.show()
+	else : 
+		$LineEditItemsWanted.hide()
+		$Nbr.hide()
+		$SpinBoxNbrItem.hide()
+		

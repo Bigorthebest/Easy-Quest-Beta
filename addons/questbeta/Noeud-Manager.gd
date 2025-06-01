@@ -28,10 +28,17 @@ func loadQuete(fichier):
 		else:
 			push_warning("Le fichier existe mais ne contient pas un dictionnaire valide.")
 
+func _give_stuff (arrayStuff) : 
+	print("Du stuff a été give :" , arrayStuff) 
+	emit_signal("recompence",arrayStuff)
+	
 #Appelez quand une quete et terminer par un quest trigger
 func _update_quete_manager (dico_quete) :
 	#Update des propriété
 	dico_quete["Active"] = false
+	if dico_quete["Finie"] == true : 
+		print("Anti recursion")
+		return 
 	dico_quete["Finie"] = true # Marquer comme finie
 	
 	# Logique pour trouver la quête dans all_quete et la mettre à jour
@@ -79,6 +86,8 @@ func _ready() -> void:
 			connect("update_quete", Callable(enfant, "_update_quete"))
 		if enfant.has_method("_get_reward") :
 			connect("recompence", Callable(enfant,"_get_reward"))
-
+			connect("update_quete", Callable(enfant, "_update_quete"))
+			emit_signal("update_quete",all_quete)
+			
 func _process(delta: float) -> void:
 	pass

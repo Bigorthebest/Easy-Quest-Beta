@@ -156,6 +156,7 @@ func afficher_details_quete(nom_quete: String):
 					print("Active: ", quete_data.get("Active", true))
 					print("Quête suivante: ", quete_data.get("QueteSuivante", "Aucune"))
 					print("Timeline: ", quete_data.get("Timeline", "Aucune"))
+					print("Items Demandés: ", quete_data.get("ItemsDemandes","Aucune"))
 					print("========================")
 					break
 
@@ -197,6 +198,12 @@ func charger_quete_pour_modification(nom_quete: String):
 					
 					$Window/Label.text = "Menu de modification de quête :"
 					$Window/ButtonValider.text = "Modifier"
+					
+					var itemWanted =  quete_data.get("ItemsDemandes","")
+					if itemWanted[0] != "" :
+						$Window/CheckBoxItemsWanted.button_pressed = true 
+						$Window/LineEditItemsWanted.text = itemWanted[0]
+						$Window/SpinBoxNbrItem.value + itemWanted[1]
 					
 					$Window.show()
 					break
@@ -290,6 +297,10 @@ func _on_button_pressed() -> void:
 	$Window/LineEditQueteSuivante.text = ""
 	$Window/LineEditTimeline.text = "" # NOUVEAU CHAMP
 	$Window/LabelErreur.text = ""
+	$Window/LineEditItemsWanted.text = ""
+	$Window/SpinBoxNbrItem.value = 0 
+	$Window/SpinBoxOr.value = 0 
+	$Window/SpinBoxXp.value = 0 
 	
 	#if ($LineEditTitre.text == ""):
 	# $LabelErreur.show()

@@ -71,9 +71,10 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 2
+item_count = 3
 item_0/text = "Premier Pas"
 item_1/text = "Rencontre"
+item_2/text = "Retrouver les Bugs"
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
@@ -138,7 +139,7 @@ layout_mode = 2
 text = "Importez quetes"
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -139)
+position = Vector2i(0, 36)
 size = Vector2i(600, 280)
 min_size = Vector2i(500, 250)
 script = ExtResource("2_y6lw3")
@@ -158,10 +159,10 @@ offset_bottom = 61.0
 placeholder_text = "Nom de quete :"
 
 [node name="LabelErreur" type="Label" parent="Window"]
-offset_left = 16.0
-offset_top = 36.0
-offset_right = 171.0
-offset_bottom = 177.0
+offset_left = 134.0
+offset_top = 215.0
+offset_right = 466.0
+offset_bottom = 269.0
 label_settings = SubResource("LabelSettings_8xbd5")
 autowrap_mode = 3
 clip_text = true
@@ -201,6 +202,29 @@ offset_right = 565.0
 offset_bottom = 119.0
 placeholder_text = "Récompense "
 
+[node name="CheckBoxItemsWanted" type="CheckBox" parent="Window"]
+offset_left = 27.0
+offset_top = 40.0
+offset_right = 156.0
+offset_bottom = 71.0
+text = "Items à avoir"
+
+[node name="LineEditItemsWanted" type="LineEdit" parent="Window"]
+visible = false
+offset_left = 36.0
+offset_top = 77.0
+offset_right = 149.0
+offset_bottom = 114.0
+placeholder_text = "Items  "
+
+[node name="Nbr" type="Label" parent="Window"]
+visible = false
+offset_left = 32.0
+offset_top = 129.0
+offset_right = 75.0
+offset_bottom = 152.0
+text = " Nbr :"
+
 [node name="LineEditTimeline" type="LineEdit" parent="Window"]
 offset_left = 200.0
 offset_top = 128.0
@@ -235,6 +259,13 @@ offset_bottom = 186.0
 pivot_offset = Vector2(1.845, 0)
 text = " Xp :"
 
+[node name="SpinBoxNbrItem" type="SpinBox" parent="Window"]
+visible = false
+offset_left = 85.0
+offset_top = 121.0
+offset_right = 172.0
+offset_bottom = 157.0
+
 [node name="FileExport" type="FileDialog" parent="."]
 title = "Exporter vos quêtes sous forme de fichier"
 ok_button_text = "Enregistrer"
@@ -258,3 +289,4 @@ filters = PackedStringArray("*.txt", "*.json")
 [connection signal="pressed" from="MainContainer/QuestImportExportContainer/ButtonImport" to="." method="_on_button_import_pressed"]
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
 [connection signal="pressed" from="Window/ButtonValider" to="Window" method="_on_button_valider_pressed"]
+[connection signal="toggled" from="Window/CheckBoxItemsWanted" to="Window" method="_on_check_box_items_wanted_toggled"]
