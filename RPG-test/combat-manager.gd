@@ -1,13 +1,10 @@
 extends CanvasLayer
 
-@export var player_party : Array[CombatCharacter] 
-@export var enemy_party : Array[CombatCharacter] 
-
 var current_turn = 0
-var all_combatants = []
+var pj = preload("res://RPG-test/chevalier.gd")
+var all_combatants = [pj.new()]
 
 func _ready():
-	all_combatants = player_party + enemy_party
 	start_turn()
 
 func start_turn():
@@ -15,15 +12,10 @@ func start_turn():
 		print("Combat terminé.")
 		return
 
-	var current = all_combatants[current_turn % all_combatants.size()]
-	if !current.is_alive():
-		next_turn()
-		return
-
-	if current.is_player:
-		show_player_choices(current)
+	if current_turn % 2 == 0 :
+		show_player_choices(all_combatants[0])
 	else:
-		enemy_act(current)
+		enemy_act(all_combatants[0])
 
 func show_player_choices(character):
 	print("C’est à", character.name, "de jouer.")
@@ -31,27 +23,29 @@ func show_player_choices(character):
 	$ButtonAttaque.show()
 	$ButtonBouclier.show()
 
-func player_attack(target: CombatCharacter):
-	var attacker = all_combatants[current_turn % all_combatants.size()]
-	target.take_damage(attacker.attack_power)
+func player_attack():
 	next_turn()
 
 func enemy_act(character):
 	#L'ennemi attaque un joueur au hasard
-	var target = player_party.filter(func(p): return p.is_alive()).pick_random()
-	if target:
-		target.take_damage(character.attack_power)
-	await get_tree().create_timer(1.0).timeout
+	await(1)
+	all_combatants[0].degat(10)
 	next_turn()
 
 func next_turn():
 	current_turn += 1
 	start_turn()
-
+	
+func resolve_player_turn():
+	$ButtonAttaque.hide()
+	$ButtonBouclier.hide()
+	next_turn()
 
 func _on_button_bouclier_pressed() -> void:
-	pass # Replace with function body.
+	print("Coup de bouclier")
+	resolve_player_turn()
 
 
 func _on_button_attaque_pressed() -> void:
-	pass # Replace with function body.
+	print("Coup de sabre")
+	resolve_player_turn()

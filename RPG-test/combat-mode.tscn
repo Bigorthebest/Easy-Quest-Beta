@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccbcnxn1641r8"]
+[gd_scene load_steps=31 format=3 uid="uid://ccbcnxn1641r8"]
 
 [ext_resource type="Shader" uid="uid://de18u0r0bleo0" path="res://RPG-test/combat-mode.gdshader" id="1_g4x3o"]
 [ext_resource type="Script" uid="uid://8evke8hkuxwq" path="res://RPG-test/mesh_instance_3d.gd" id="1_hqcja"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b2p1kvqskfkoi" path="res://RPG-test/combat-manager.gd" id="3_4lbwc"]
 [ext_resource type="Texture2D" uid="uid://dc52bii073x1q" path="res://RPG-test/sprites/chevalier d'Ocameloth/knight_final.png" id="3_ad4sn"]
 [ext_resource type="Texture2D" uid="uid://cu0ubtenkoi5" path="res://RPG-test/sprites/cubien/apotre_du_cube_final_bonus_extra.png" id="4_4lbwc"]
+[ext_resource type="Script" uid="uid://b1nrllghhhk44" path="res://RPG-test/chevalier.gd" id="5_cxse4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lhlpo"]
 
@@ -370,6 +371,16 @@ position = Vector2(152, 400)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0r7ve")
 animation = &"idle"
+script = ExtResource("5_cxse4")
+
+[node name="Label" type="Label" parent="CanvasLayer/Chevalier"]
+offset_left = -18.6667
+offset_top = 16.0
+offset_right = 21.3333
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 1
 
 [node name="Elcube" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(984, 400)

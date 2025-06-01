@@ -4,21 +4,24 @@ var vitesse = 80
 var direction = 0 #0 face, 1 droite, 2 gauche, 3 dos
 var dialogue_deja_lance = false
 
+#Gestion de l'inventaire
+var tableau_items = ["Cube","Pomme","Scarabée"]
+var tableau_lien = ["res://RPG-test/items/Cube.tres","res://RPG-test/items/Pomme.tres","res://RPG-test/items/Bug.tres"]
 # Référence à l'inventaire
-#@onready var inventory_ui = preload("res://RPG-test/InventoryUI.tscn")
-#var inventory_instance = null
+@onready var inventory_ui = preload("res://RPG-test/InventoryUI.tscn")
+var inventory_instance = null
 
 func _ready() -> void:
 	# Connecter le signal de fin de dialogue si Dialogic est disponible
 	if Dialogic:
 		Dialogic.timeline_ended.connect(_on_dialogue_ended)
-	
-	# Créer l'instance d'inventaire
-	#inventory_instance = inventory_ui.instantiate()
+		
+	#Créer l'instance d'inventaire
+	inventory_instance = inventory_ui.instantiate()
 	# Utiliser call_deferred au lieu de add_child direct
-	#get_tree().root.call_deferred("add_child", inventory_instance)
+	get_tree().root.call_deferred("add_child", inventory_instance)
 	
-	#call_deferred("add_test_items")
+	call_deferred("add_test_items") #Donne 3 pommes
 	
 func _physics_process(_delta: float) -> void:
 	# vérifier si un dialogue est en cours
@@ -77,49 +80,47 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
-## Ajouter un objet .tres à l'inventaire
-#func add_tres_inventaire(item_path: String, quantity: int = 1) -> bool:
-	## Charger la ressource .tres
-	#var item_resource = load(item_path) as Item
-	#if item_resource == null:
-		#print("Erreur : Impossible de charger l'objet : ", item_path)
-		#return false
-#
-	## Vérifier que l'inventaire existe
-	#if inventory_instance == null:
-		#print("Erreur : Instance d'inventaire non trouvée")
-		#return false
-#
-	## Attendre que l'inventaire soit prêt
-	#if not inventory_instance.is_inside_tree():
-		#await get_tree().process_frame
-#
-	## Ajouter l'objet à l'inventaire
-	#var success = inventory_instance.add_item(item_resource, quantity)
-	#if success:
-		#print("Ajouté : ", item_resource.item_name, " x", quantity, " à l'inventaire")
-	#else:
-		#print("Échec : Inventaire plein ou erreur lors de l'ajout")
-#
-	#return success
-#
-## Ajouter plusieurs objets .tres (pas encore essayé"
-#func add_multiple_tres_items(items_data: Array):
-	#for item_data in items_data:
-		#var path = item_data.get("path", "")
-		#var quantity = item_data.get("quantity", 1)
-		#if path != "":
-			#add_tres_inventaire(path, quantity)
-#
-#func add_test_items():
-	## Attendre que l'inventaire soit prêt
-	#if not inventory_instance or not inventory_instance.is_inside_tree():
-		#await get_tree().process_frame
-#
-	## Utiliser les objets .tres (chemin de la ressource + quantité)
-	#add_tres_inventaire("res://RPG-test/items/Pomme.tres", 3)
+# Ajouter un objet .tres à l'inventaire
+func add_tres_inventaire(item_path: String, quantity: int = 1) -> bool:
+	# Charger la ressource .tres
+	var item_resource = load(item_path) as Item
+	if item_resource == null:
+		print("Erreur : Impossible de charger l'objet : ", item_path)
+		return false
 
+	# Vérifier que l'inventaire existe
+	if inventory_instance == null:
+		print("Erreur : Instance d'inventaire non trouvée")
+		return false
 
+	# Attendre que l'inventaire soit prêt
+	if not inventory_instance.is_inside_tree():
+		await get_tree().process_frame
+
+	# Ajouter l'objet à l'inventaire
+	var success = inventory_instance.add_item(item_resource, quantity)
+	if success:
+		print("Ajouté : ", item_resource.item_name, " x", quantity, " à l'inventaire")
+	else:
+		print("Échec : Inventaire plein ou erreur lors de l'ajout")
+
+	return success
+
+# Ajouter plusieurs objets .tres (pas encore essayé"
+func add_multiple_tres_items(items_data: Array):
+	for item_data in items_data:
+		var path = item_data.get("path", "")
+		var quantity = item_data.get("quantity", 1)
+		if path != "":
+			add_tres_inventaire(path, quantity)
+
+func add_test_items():
+	# Attendre que l'inventaire soit prêt
+	if not inventory_instance or not inventory_instance.is_inside_tree():
+		await get_tree().process_frame
+
+	# Utiliser les objets .tres (chemin de la ressource + quantité)
+	add_tres_inventaire("res://RPG-test/items/Pomme.tres", 3)
 
 func start_dialogue():
 	print("Démarrage du dialogue...")
@@ -133,3 +134,15 @@ func _on_dialogue_ended():
 	print("Dialogue terminé")
 	dialogue_deja_lance = false
 	# Le personnage peut bouger à nouveau
+
+#Appeler quand le quest manager detecte une récompence
+func _on_quete_manager_recompence(drop) -> void:
+	var i = 0 
+	var nouveau_items = drop[2].split(",")
+	for items in nouveau_items :
+		for tab in tableau_items : 
+			if items == tab : 
+				add_tres_inventaire(tableau_lien[i])
+			i+= 1
+	#Maj de l'or 
+	add_tres_inventaire("res://RPG-test/items/Lambda-coin.tres",int(drop[0]))

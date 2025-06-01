@@ -316,4 +316,5 @@ position = Vector2(558, -238)
 [node name="PauseMenu" parent="." instance=ExtResource("8_pause_menu")]
 visible = false
 
+[connection signal="recompence" from="Quete Manager" to="Personnage" method="_on_quete_manager_recompence"]
 [connection signal="body_entered" from="Quete Manager/Quete Trigger" to="Quete Manager/Quete Trigger" method="_on_body_entered"]
