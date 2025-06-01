@@ -10,7 +10,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="QuestNotification2" type="CanvasLayer"]
+[node name="QuestNotification" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_notif")
 

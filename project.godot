@@ -26,7 +26,6 @@ directories/dch_directory={
 "Ocamelot": "res://Ocamelot.dch"
 }
 directories/dtl_directory={
-"BoisQuest": "res://BoisQuest.dtl",
 "Bugquest": "res://Bugquest.dtl",
 "dialogueElCube": "res://dialogueElCube.dtl",
 "timeline": "res://timeline.dtl"

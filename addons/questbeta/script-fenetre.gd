@@ -20,7 +20,7 @@ func ajouter_dictionnaire_au_json(fichier_path: String) -> void:
 		'QueteSuivante': $LineEditQueteSuivante.text,
 		'Timeline': $LineEditTimeline.text,  
 		'Finie': false,
-		'ItemsDemandes' : [$LineEditItemsWanted.text,$SpinBoxNbrItem.value]
+		'ItemsDemandes' : [$LineEditItemsWanted.text,$SpinBoxNbrItem]
 	}
 	
 	# Lire le fichier s'il existe

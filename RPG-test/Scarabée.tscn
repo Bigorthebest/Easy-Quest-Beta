@@ -56,7 +56,6 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyxal"]
-size = Vector2(18, 18)
 
 [node name="Scarabée" type="AnimatableBody2D"]
 collision_mask = 2
