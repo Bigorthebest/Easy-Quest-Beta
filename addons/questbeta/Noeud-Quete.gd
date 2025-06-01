@@ -134,8 +134,6 @@ func update_quest_in_database():
 
 func complete_quest():
 	quest_to_end = false 
-	dico_quete["Active"] = false
-	dico_quete["Finie"] = true
 	update_quest_in_database()
 	emit_signal("quete_terminer", dico_quete)
 
