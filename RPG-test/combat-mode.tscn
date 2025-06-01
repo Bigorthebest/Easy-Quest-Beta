@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccbcnxn1641r8"]
+[gd_scene load_steps=30 format=3 uid="uid://ccbcnxn1641r8"]
 
 [ext_resource type="Shader" uid="uid://de18u0r0bleo0" path="res://RPG-test/combat-mode.gdshader" id="1_g4x3o"]
 [ext_resource type="Script" uid="uid://8evke8hkuxwq" path="res://RPG-test/mesh_instance_3d.gd" id="1_hqcja"]
 [ext_resource type="Shader" uid="uid://48nujwry57yb" path="res://RPG-test/combat-mode-sol.gdshader" id="1_rw05b"]
-[ext_resource type="Shader" uid="uid://myso81j3ol3m" path="res://RPG-test/combat-mode-ciel.gdshader" id="4_yd5ob"]
+[ext_resource type="Script" uid="uid://b2p1kvqskfkoi" path="res://RPG-test/combat-manager.gd" id="3_4lbwc"]
+[ext_resource type="Texture2D" uid="uid://dc52bii073x1q" path="res://RPG-test/sprites/chevalier d'Ocameloth/knight_final.png" id="3_ad4sn"]
+[ext_resource type="Texture2D" uid="uid://cu0ubtenkoi5" path="res://RPG-test/sprites/cubien/apotre_du_cube_final_bonus_extra.png" id="4_4lbwc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lhlpo"]
 
@@ -12,6 +14,9 @@ render_priority = 0
 shader = ExtResource("1_g4x3o")
 
 [sub_resource type="FontFile" id="FontFile_oeeur"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -191,6 +196,139 @@ cache/0/36/0/scale = 1.0
 [sub_resource type="Theme" id="Theme_shuug"]
 default_font = SubResource("FontFile_oeeur")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxse4"]
+atlas = ExtResource("3_ad4sn")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qssej"]
+atlas = ExtResource("3_ad4sn")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhn7w"]
+atlas = ExtResource("3_ad4sn")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bey4"]
+atlas = ExtResource("3_ad4sn")
+region = Rect2(96, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0r7ve"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxse4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qssej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhn7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bey4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlra3"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duggn"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq3w5"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pydm2"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laklm"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2tih"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljwl6"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3fmf"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(96, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgjsj"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(128, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fhcx"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(160, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyrp7"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(192, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dluu6"]
+atlas = ExtResource("4_4lbwc")
+region = Rect2(224, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6fl8k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlra3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duggn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq3w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pydm2")
+}],
+"loop": true,
+"name": &"attaque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laklm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2tih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljwl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3fmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgjsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fhcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyrp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dluu6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lhm55"]
 render_priority = 0
 shader = ExtResource("1_rw05b")
@@ -198,18 +336,10 @@ shader_parameter/grass_color = Color(0.2, 0.6, 0.2, 1)
 shader_parameter/dirt_color = Color(0.25, 0.2, 0.1, 1)
 shader_parameter/contrast = 4.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjh26"]
-render_priority = 0
-shader = ExtResource("4_yd5ob")
-shader_parameter/cloud_scale = 1.5
-shader_parameter/cloud_speed = 0.1
-shader_parameter/sky_color = Color(0.4, 0.7, 1, 1)
-shader_parameter/cloud_color = Color(1, 1, 1, 1)
-shader_parameter/softness = 0.15
-
 [node name="Combat-mode" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="CubeCentral" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0.000627382, -0.000331065, -0.000627228, 1, 0.000477777, 0.000331358, -0.000477573, 1, 0, 0.500782, 0)
 mesh = SubResource("BoxMesh_lhlpo")
 surface_material_override/0 = SubResource("ShaderMaterial_etlo8")
 script = ExtResource("1_hqcja")
@@ -222,6 +352,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0050869, 2.40034, 3.52854)
 omni_range = 12.1501
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_4lbwc")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 463.0
@@ -230,17 +361,49 @@ offset_right = 708.0
 offset_bottom = 497.0
 theme = SubResource("Theme_shuug")
 theme_override_font_sizes/font_size = 36
-text = "Ici git le cube"
+text = "Fight ! "
+horizontal_alignment = 1
 uppercase = true
 
+[node name="Chevalier" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(152, 400)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_0r7ve")
+animation = &"idle"
+
+[node name="Elcube" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(984, 400)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6fl8k")
+animation = &"attaque"
+
+[node name="ButtonAttaque" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 256.0
+offset_top = 560.0
+offset_right = 364.0
+offset_bottom = 591.0
+text = "Coup d'épée "
+
+[node name="ButtonBouclier" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 384.0
+offset_top = 560.0
+offset_right = 528.0
+offset_bottom = 591.0
+text = "Levée de Bouclier"
+
 [node name="Sol3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 10, 0.386025, -1.6292, -2.9732)
+transform = Transform3D(30, 0, 0, 0, 0.800846, -6.58757, 0, 0.59887, 8.80931, 0.386025, -1.6292, -2.9732)
 mesh = SubResource("BoxMesh_lhlpo")
-skeleton = NodePath("../MeshInstance3D")
+skeleton = NodePath("../CubeCentral")
 surface_material_override/0 = SubResource("ShaderMaterial_lhm55")
 
-[node name="Ciel3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(40, 0, 0, 0, 25, 0, 0, 0, 1, 0.572243, -1.38586, -8.75009)
+[node name="Sol3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(30, 1.13369e-06, -0.000317817, 0.000372389, 0.885637, 5.10815, 0.000783441, -0.464377, 9.74201, 0.386025, 4.83331, -2.9732)
 mesh = SubResource("BoxMesh_lhlpo")
-skeleton = NodePath("../MeshInstance3D")
-surface_material_override/0 = SubResource("ShaderMaterial_cjh26")
+skeleton = NodePath("../CubeCentral")
+surface_material_override/0 = SubResource("ShaderMaterial_lhm55")
+
+[connection signal="pressed" from="CanvasLayer/ButtonAttaque" to="CanvasLayer" method="_on_button_attaque_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonBouclier" to="CanvasLayer" method="_on_button_bouclier_pressed"]

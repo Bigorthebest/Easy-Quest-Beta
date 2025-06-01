@@ -1,10 +1,8 @@
 shader_type spatial;
 
-uniform float cloud_scale = 1.5;
-uniform float cloud_speed = 0.1;
-uniform vec3 sky_color : source_color = vec3(0.4, 0.7, 1.0);
-uniform vec3 cloud_color : source_color = vec3(1.0, 1.0, 1.0);
-uniform float softness = 0.15;
+uniform vec3 grass_color : source_color = vec3(0.2, 0.6, 0.2);
+uniform vec3 dirt_color : source_color = vec3(0.25, 0.2, 0.1);
+uniform float contrast = 4.0;
 
 varying vec3 world_pos;
 
@@ -13,31 +11,18 @@ void vertex() {
 }
 
 float hash(vec2 p) {
+	// Génère un pseudo bruit simple
 	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
 }
 
-float noise(vec2 p) {
-	vec2 i = floor(p);
-	vec2 f = fract(p);
-	
-	float a = hash(i);
-	float b = hash(i + vec2(1.0, 0.0));
-	float c = hash(i + vec2(0.0, 1.0));
-	float d = hash(i + vec2(1.0, 1.0));
-	
-	vec2 u = f * f * (3.0 - 2.0 * f);
-	
-	return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
-}
-
 void fragment() {
-	vec2 uv = world_pos.yz * cloud_scale;
-	uv.y += TIME * cloud_speed;
+	vec2 coord = world_pos.xz * 10.0 + vec2(0.0,TIME) + 0.7 ;
+	float noise = hash(floor(coord));
 
-	float n = noise(uv);
-	float cloud_mask = smoothstep(0.5, 0.5 + softness, n);
+	// Mélange entre herbe et terre selon le bruit
+	float t = smoothstep(0.4, 0.6, noise * 1.5);
+	vec3 color = mix(grass_color, dirt_color, t);
 
-	vec3 color = mix(sky_color, cloud_color, cloud_mask);
 	ALBEDO = color;
 }
 
