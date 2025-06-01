@@ -24,10 +24,11 @@ offset_left = 15.0
 offset_top = 34.0
 offset_right = 168.0
 offset_bottom = 108.0
-item_count = 3
+item_count = 4
 item_0/text = "Premier Pas"
 item_1/text = "Rencontre"
 item_2/text = "Retrouver les Bugs"
+item_3/text = "Réparation du pont "
 
 [node name="LineEditRecherche" type="LineEdit" parent="."]
 layout_mode = 1

@@ -71,10 +71,11 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 3
+item_count = 4
 item_0/text = "Premier Pas"
 item_1/text = "Rencontre"
 item_2/text = "Retrouver les Bugs"
+item_3/text = "Réparation du pont "
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
@@ -139,7 +140,7 @@ layout_mode = 2
 text = "Importez quetes"
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -139)
+position = Vector2i(188, 94)
 size = Vector2i(600, 280)
 min_size = Vector2i(500, 250)
 script = ExtResource("2_y6lw3")

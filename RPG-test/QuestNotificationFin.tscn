@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8etcidembh1w"]
+[gd_scene load_steps=4 format=3 uid="uid://k23y2e0mu4m4"]
 
-[ext_resource type="Script" uid="uid://dl2fimh7y5l6y" path="res://RPG-test/QuestNotification.gd" id="1_notif"]
-[ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="2_font"]
+[ext_resource type="Script" uid="uid://dl2fimh7y5l6y" path="res://RPG-test/QuestNotification.gd" id="1_xvyv0"]
+[ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="2_y2i1m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
 bg_color = Color(0, 0, 0, 0.7)
@@ -10,9 +10,9 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="QuestNotification2" type="CanvasLayer"]
+[node name="QuestNotification" type="CanvasLayer"]
 layer = 100
-script = ExtResource("1_notif")
+script = ExtResource("1_xvyv0")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -50,15 +50,15 @@ alignment = 1
 [node name="TitleLabel" type="Label" parent="Control/Background/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
-theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font = ExtResource("2_y2i1m")
 theme_override_font_sizes/font_size = 42
-text = "Nouvelle Quête:"
+text = "Quête Complétée:"
 horizontal_alignment = 1
 
 [node name="QuestNameLabel" type="Label" parent="Control/Background/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_font")
+theme_override_fonts/font = ExtResource("2_y2i1m")
 theme_override_font_sizes/font_size = 35
 text = "Nom de la Quête"
 horizontal_alignment = 1
