@@ -1,0 +1,150 @@
+[gd_scene load_steps=6 format=3 uid="uid://co4f3qwsscrit"]
+
+[ext_resource type="Script" uid="uid://nyjvtl022jyx" path="res://RPG-test/TitleScreen.gd" id="1_title"]
+[ext_resource type="Texture2D" uid="uid://8dka736cnldv" path="res://RPG-test/sprites/Summer4.png" id="2_background"]
+[ext_resource type="Texture2D" uid="uid://580v0nfbm3m8" path="res://RPG-test/sprites/bouton_test.png" id="3_button"]
+[ext_resource type="Texture2D" uid="uid://bp347s8b376i6" path="res://RPG-test/sprites/dragonheader.png" id="4_dragon_header"]
+[ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="5_font"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_title")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleContainer" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+
+[node name="DragonHeader" type="TextureRect" parent="CenterContainer/VBoxContainer/TitleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dragon_header")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GameTitle" type="Label" parent="CenterContainer/VBoxContainer/TitleContainer/DragonHeader"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -25.0
+offset_right = 150.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 96
+text = "Ocaml RPG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="JouerButton" type="TextureButton" parent="CenterContainer/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_button")
+stretch_mode = 5
+
+[node name="JouerLabel" type="Label" parent="CenterContainer/VBoxContainer/ButtonsContainer/JouerButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 36
+text = "JOUER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsButton" type="TextureButton" parent="CenterContainer/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_button")
+stretch_mode = 5
+
+[node name="CreditsLabel" type="Label" parent="CenterContainer/VBoxContainer/ButtonsContainer/CreditsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 36
+text = "CRÉDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitterButton" type="TextureButton" parent="CenterContainer/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_button")
+stretch_mode = 5
+
+[node name="QuitterLabel" type="Label" parent="CenterContainer/VBoxContainer/ButtonsContainer/QuitterButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 36
+text = "QUITTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/JouerButton" to="." method="_on_jouer_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/CreditsButton" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/QuitterButton" to="." method="_on_quitter_pressed"]
