@@ -342,15 +342,6 @@ visible = false
 [node name="Scarabée" parent="." instance=ExtResource("9_agt7f")]
 position = Vector2(528, -512)
 
-[node name="Scarabée8" parent="." instance=ExtResource("9_agt7f")]
-position = Vector2(488, -552)
-
-[node name="Scarabée7" parent="." instance=ExtResource("9_agt7f")]
-position = Vector2(464, -536)
-
-[node name="Scarabée6" parent="." instance=ExtResource("9_agt7f")]
-position = Vector2(472, -512)
-
 [node name="Scarabée2" parent="." instance=ExtResource("9_agt7f")]
 position = Vector2(16, -568)
 rotation = 1.54883
@@ -370,9 +361,6 @@ rotation = -6.34567
 [connection signal="recompence" from="Quete Manager" to="Personnage" method="_on_quete_manager_recompence"]
 [connection signal="body_entered" from="Quete Manager/Quete Trigger" to="Quete Manager/Quete Trigger" method="_on_body_entered"]
 [connection signal="scaranbee_ramasse" from="Scarabée" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
-[connection signal="scaranbee_ramasse" from="Scarabée8" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
-[connection signal="scaranbee_ramasse" from="Scarabée7" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
-[connection signal="scaranbee_ramasse" from="Scarabée6" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
 [connection signal="scaranbee_ramasse" from="Scarabée2" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
 [connection signal="scaranbee_ramasse" from="Scarabée3" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
 [connection signal="scaranbee_ramasse" from="Scarabée4" to="Personnage" method="_on_scarabée_scaranbee_ramasse"]
