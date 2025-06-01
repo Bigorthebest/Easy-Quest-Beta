@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="test_quete_beta"
-run/main_scene="uid://bd8vi33gqplcn"
+run/main_scene="res://RPG-test/TitleScreen.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -39,7 +39,7 @@ layout/style_list=["res://styletxt.tres"]
 layout/default_style="res://styletxt.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"
-text/letter_speed=0.01
+text/letter_speed=0.04
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
