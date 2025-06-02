@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dma8pe31a0d4p"]
+[gd_scene load_steps=4 format=3 uid="uid://dma8pe31a0d4p"]
 
 [ext_resource type="Script" uid="uid://d0bm68j7kb4ie" path="res://RPG-test/InventoryUI.gd" id="1_inventory"]
 [ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="2_font"]
+[ext_resource type="AudioStream" uid="uid://hoa0un1cgdkn" path="res://RPG-test/music/Woodland Fantasy.mp3" id="3_qfckq"]
 
 [node name="InventoryUI" type="CanvasLayer"]
 process_mode = 2
@@ -116,3 +117,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 28
 text = "FERMER [I]"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qfckq")
+volume_db = -10.0

@@ -126,4 +126,5 @@ func remove_item(slot_index: int, quantity: int = 1) -> bool:
 	return true
 
 func _on_close_button_pressed():
+	$AudioStreamPlayer.stop()
 	toggle_inventory()

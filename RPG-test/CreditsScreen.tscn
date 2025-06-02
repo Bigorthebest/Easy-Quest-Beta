@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvrnvdpghi5cb"]
+[gd_scene load_steps=5 format=3 uid="uid://bvrnvdpghi5cb"]
 
 [ext_resource type="Script" uid="uid://cyvfojg2jid2c" path="res://RPG-test/CreditsScreen.gd" id="1_credits"]
 [ext_resource type="Texture2D" uid="uid://580v0nfbm3m8" path="res://RPG-test/sprites/bouton_test.png" id="2_button"]
 [ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="3_font"]
+[ext_resource type="AudioStream" uid="uid://cr248c2k2n4r" path="res://RPG-test/music/awesomeness.wav" id="4_c8wy3"]
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
@@ -68,7 +69,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 1, 1)
 theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 28
-text = "Sprites monde et personnage: Julien Bouticourt et Wight (wightiswight sur Discord)"
+text = "Sprites monde et personnage: Julien Bouticourt et Wight (wightiswight sur Instagram)"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -89,10 +90,6 @@ theme_override_font_sizes/font_size = 28
 text = "Sprites bouton et boites de dialogue: Julien Bouticourt"
 horizontal_alignment = 1
 autowrap_mode = 2
-
-[node name="Spacer3" type="Control" parent="ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
 
 [node name="AdditionalSpritesTitle" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -134,6 +131,30 @@ theme_override_font_sizes/font_size = 24
 text = "- Cellule Inventaire: ozanoyunbozan"
 horizontal_alignment = 1
 
+[node name="AdditionalSpritesTitleMusic" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 32
+text = "Music & Son:"
+horizontal_alignment = 1
+
+[node name="MusicCredit" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 24
+text = "- Main menu: awesomeness.wav par mrpoly sur OpenGameArt.org"
+horizontal_alignment = 1
+
+[node name="MusicCredit2" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.9, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 24
+text = "- In game: 	Woodland Fantasy par Matthew Pablo sur OpenGameArt.org"
+horizontal_alignment = 1
+
 [node name="Spacer4" type="Control" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -149,22 +170,6 @@ horizontal_alignment = 1
 [node name="Spacer5" type="Control" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-
-[node name="MusicTitle" type="Label" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 32
-text = "Musique et sons:"
-horizontal_alignment = 1
-
-[node name="MusicPlaceholder" type="Label" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 24
-text = "(à compléter plus tard)"
-horizontal_alignment = 1
 
 [node name="Spacer6" type="Control" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -208,5 +213,9 @@ theme_override_font_sizes/font_size = 24
 text = "RETOUR"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c8wy3")
+volume_db = -20.0
 
 [connection signal="pressed" from="RetourButton" to="." method="_on_retour_pressed"]

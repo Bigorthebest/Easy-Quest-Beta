@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://co4f3qwsscrit"]
+[gd_scene load_steps=7 format=3 uid="uid://co4f3qwsscrit"]
 
 [ext_resource type="Script" uid="uid://nyjvtl022jyx" path="res://RPG-test/TitleScreen.gd" id="1_title"]
 [ext_resource type="Texture2D" uid="uid://8dka736cnldv" path="res://RPG-test/sprites/Summer4.png" id="2_background"]
 [ext_resource type="Texture2D" uid="uid://580v0nfbm3m8" path="res://RPG-test/sprites/bouton_test.png" id="3_button"]
 [ext_resource type="Texture2D" uid="uid://bp347s8b376i6" path="res://RPG-test/sprites/dragonheader.png" id="4_dragon_header"]
 [ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="5_font"]
+[ext_resource type="AudioStream" uid="uid://cr248c2k2n4r" path="res://RPG-test/music/awesomeness.wav" id="6_45ms5"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -144,6 +145,10 @@ theme_override_font_sizes/font_size = 36
 text = "QUITTER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_45ms5")
+autoplay = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/JouerButton" to="." method="_on_jouer_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/CreditsButton" to="." method="_on_credits_pressed"]

@@ -1,7 +1,11 @@
 extends Control
 
 func _ready():
-	pass
+	$AudioStreamPlayer.stop()
+	await get_tree().create_timer(0.1).timeout
+	$AudioStreamPlayer.seek(DataBridge.audio_timing)
+	print(DataBridge.audio_timing)
+	$AudioStreamPlayer.play()
 
 func _on_retour_pressed():
 	print("Retour au menu principal...")

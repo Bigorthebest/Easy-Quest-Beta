@@ -31,10 +31,12 @@ func set_paused(value: bool):
 			quests_menu_instance = null
 
 func _on_continuer_pressed():
+	$AudioStreamPlayer.stop()
 	print("Bouton Continuer pressé")
 	set_paused(false)
 
 func _on_quetes_pressed():
+	$AudioStreamPlayer.stop()
 	print("Bouton Quêtes pressé")
 	if not quests_menu_instance:
 		# Cacher le menu pause quand on ouvre le menu quêtes
@@ -49,10 +51,12 @@ func _on_quetes_pressed():
 
 
 func _on_quitter_pressed():
+	$AudioStreamPlayer.stop()
 	print("Bouton Quitter pressé")
 	get_tree().quit()
 
 func _on_quest_menu_closed():
+	$AudioStreamPlayer.stop()
 	if quests_menu_instance:
 		quests_menu_instance.queue_free()
 		quests_menu_instance = null

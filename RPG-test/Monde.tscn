@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bd8vi33gqplcn"]
+[gd_scene load_steps=31 format=4 uid="uid://bd8vi33gqplcn"]
 
 [ext_resource type="Script" uid="uid://bxwe8xcm2aht2" path="res://addons/questbeta/Noeud-Quete.gd" id="1_wun65"]
 [ext_resource type="Script" uid="uid://v3a8i7ptlxnq" path="res://addons/questbeta/Noeud-Inventaire.gd" id="2_e2nfa"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://chvxcgxjfksmv" path="res://RPG-test/Scarabée.tscn" id="9_agt7f"]
 [ext_resource type="Script" uid="uid://u76pt8ck3kcw" path="res://RPG-test/el_cube.gd" id="9_il6ge"]
 [ext_resource type="Texture2D" uid="uid://cu0ubtenkoi5" path="res://RPG-test/sprites/cubien/apotre_du_cube_final_bonus_extra.png" id="10_prdpy"]
+[ext_resource type="AudioStream" uid="uid://hoa0un1cgdkn" path="res://RPG-test/music/Woodland Fantasy.mp3" id="11_prdpy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bvtd"]
 size = Vector2(32, 32)
@@ -450,6 +451,10 @@ shape = SubResource("RectangleShape2D_ew2t4")
 sprite_frames = SubResource("SpriteFrames_25i85")
 animation = &"idle"
 frame_progress = 0.801689
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_prdpy")
+autoplay = true
 
 [connection signal="recompence" from="Quete Manager" to="Personnage" method="_on_quete_manager_recompence"]
 [connection signal="body_entered" from="Quete Manager/Quete Trigger" to="Quete Manager/Quete Trigger" method="_on_body_entered"]

@@ -132,6 +132,7 @@ func create_quest_item(quest_data: Dictionary):
 
 func _on_retour_pressed():
 	print("Retour au menu pause")
+	$AudioStreamPlayer.stop()
 	quest_menu_closed.emit()
 
 func _unhandled_input(event):
