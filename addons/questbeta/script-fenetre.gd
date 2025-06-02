@@ -106,13 +106,13 @@ func verifier_quete_existe(nom_quete: String) -> bool:
 	return false
 
 func _on_button_valider_pressed() -> void:
-	print("Bouton valider presser")
+	print("Bouton valider pressé")
 	
 	if ($LineEditTitre.text == ""):
-		print("Bouton valider presser et sans Titre")
+		print("Bouton valider pressé et sans Titre")
 		$LabelErreur.text = "Erreur : Pas de titre !"
 	elif ($LineEditDescription.text == ""):
-		print("Bouton valider presser et sans Description")
+		print("Bouton valider pressé et sans Description")
 		$LabelErreur.text = "Erreur : Pas de Description "
 	else:
 		# pour empêcher les doublons de noms

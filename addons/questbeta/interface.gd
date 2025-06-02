@@ -337,7 +337,7 @@ func _on_button_supprimer_pressed() -> void:
 
 func _on_button_supr_all_pressed() -> void:
 	#Reset de la liste
-	print("Bouton reset cliquer")
+	print("Bouton reset pressé")
 	get_itemlist().clear()
 	
 	# vider la barre de recherche
@@ -391,7 +391,7 @@ func _on_button_export_pressed() -> void:
 	open_export_dialog()
 	
 func _on_file_selected_to_save(path: String) -> void:
-	var contenu = "Si vous voyez cette chaine, c'est que le fichier c'est mal enregistrer :) "
+	var contenu = "Si vous voyez cette chaine, c'est que le fichier s'est mal enregistré :) "
 	if FileAccess.file_exists(fichier):
 		var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
 		contenu = file.get_as_text()
@@ -408,7 +408,7 @@ func _on_button_import_pressed() -> void:
 	open_import_dialog()
 	
 func _on_file_selected_to_open(path: String) -> void:
-	var contenu := "Si vous voyez cette chaine, c'est que le fichier c'est mal importé :("
+	var contenu := "Si vous voyez cette chaine, c'est que le fichier s'est mal importé :("
 	if FileAccess.file_exists(path):
 		var file := FileAccess.open(path, FileAccess.READ)
 		contenu = file.get_as_text()

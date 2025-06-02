@@ -35,7 +35,7 @@ size_flags_horizontal = 3
 [node name="ButtonAddQuest" type="Button" parent="MainContainer/TopButtonsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Ajoutez quetes [+]"
+text = "Ajouter quête [+]"
 
 [node name="ButtonSupprimer" type="Button" parent="MainContainer/TopButtonsContainer"]
 layout_mode = 2
@@ -60,7 +60,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MainContainer/QuestListContainer/ListHeaderContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Listes des quetes :"
+text = "Listes des quêtes :"
 
 [node name="LineEditRecherche" type="LineEdit" parent="MainContainer/QuestListContainer/ListHeaderContainer"]
 layout_mode = 2
@@ -71,11 +71,10 @@ placeholder_text = "Rechercher"
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
-item_count = 4
+item_count = 3
 item_0/text = "Premier Pas"
 item_1/text = "Rencontre"
 item_2/text = "Retrouver les Bugs"
-item_3/text = "Réparation du pont "
 
 [node name="ListButtonsContainer" type="HBoxContainer" parent="MainContainer/QuestListContainer"]
 layout_mode = 2
@@ -133,14 +132,14 @@ layout_mode = 2
 
 [node name="ButtonExport" type="Button" parent="MainContainer/QuestImportExportContainer"]
 layout_mode = 2
-text = "Exportez quetes"
+text = "Exporter quêtes"
 
 [node name="ButtonImport" type="Button" parent="MainContainer/QuestImportExportContainer"]
 layout_mode = 2
-text = "Importez quetes"
+text = "Importer quêtes"
 
 [node name="Window" type="Window" parent="."]
-position = Vector2i(-299, -139)
+position = Vector2i(222, 155)
 size = Vector2i(600, 280)
 min_size = Vector2i(500, 250)
 script = ExtResource("2_y6lw3")
@@ -149,7 +148,7 @@ script = ExtResource("2_y6lw3")
 offset_left = 200.0
 offset_right = 425.0
 offset_bottom = 23.0
-text = "Menu de création de quetes :"
+text = "Menu de création de quêtes :"
 horizontal_alignment = 1
 
 [node name="LineEditTitre" type="LineEdit" parent="Window"]
@@ -157,7 +156,7 @@ offset_left = 200.0
 offset_top = 30.0
 offset_right = 400.0
 offset_bottom = 61.0
-placeholder_text = "Nom de quete :"
+placeholder_text = "Nom de quête :"
 
 [node name="LabelErreur" type="Label" parent="Window"]
 offset_left = 134.0

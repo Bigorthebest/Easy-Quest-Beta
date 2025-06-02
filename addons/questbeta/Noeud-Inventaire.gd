@@ -11,7 +11,7 @@ signal recompence
 func afficher_inv() :
 	print("======INVENTAIRE ACTUEL=======")
 	print("OR : ",OR,"\nXP : ",XP)
-	print("Inventaire du Joueurs :",objets)
+	print("Inventaire du Joueur :",objets)
 	print("==============================")
 
 func check_quete_items () :

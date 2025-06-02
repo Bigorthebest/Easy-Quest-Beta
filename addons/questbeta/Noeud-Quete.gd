@@ -115,7 +115,7 @@ func _on_dialogue_ended():
 
 func activate_quest():
 	if dico_quete["Active"] == false:
-		print("🚀 Activation de la quête : ", dico_quete["Titre"])
+		print("Activation de la quête : ", dico_quete["Titre"])
 		dico_quete["Active"] = true
 		dico_quete["Finie"] = false  # IMPORTANT : S'assurer que la quête n'est pas finie
 		quest_to_activate = false

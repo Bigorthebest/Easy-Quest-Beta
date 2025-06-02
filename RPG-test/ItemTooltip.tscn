@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs6sdocltw8uh"]
+
+[ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="2_font"]
+
+[sub_resource type="GDScript" id="GDScript_t4c0m"]
+script/source = "extends Control
+
+@onready var item_name_label = $Background/VBoxContainer/ItemName
+@onready var item_description_label = $Background/VBoxContainer/ItemDescription
+@onready var interaction_hint_label = $Background/VBoxContainer/InteractionHint
+
+func _ready():
+	# Animation d'apparition
+	modulate.a = 0.0
+	var tween = create_tween()
+	tween.tween_property(self, \"modulate:a\", 1.0, 0.3)
+
+func setup_tooltip(item_name: String, description: String, key_hint: String):
+	item_name_label.text = item_name
+	item_description_label.text = description
+	interaction_hint_label.text = \"Appuyez sur [\" + key_hint + \"] pour ramasser\"
+	
+	# Ajuster la taille selon le contenu
+	await get_tree().process_frame
+	var content_size = $Background/VBoxContainer.get_combined_minimum_size()
+	custom_minimum_size = content_size + Vector2(16, 16)  # Padding
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0, 0, 0, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.6)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ItemTooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 80.0
+script = SubResource("GDScript_t4c0m")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemName" type="Label" parent="Background/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Nom de l'objet"
+horizontal_alignment = 1
+
+[node name="ItemDescription" type="Label" parent="Background/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 12
+text = "Description de l'objet"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InteractionHint" type="Label" parent="Background/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "Appuyez sur [E] pour ramasser"
+horizontal_alignment = 1
