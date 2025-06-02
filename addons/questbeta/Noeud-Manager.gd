@@ -64,7 +64,7 @@ func _update_quete_manager (dico_quete) :
 			break
 	
 	# Sauvegarder les changements dans la base de données
-	save_all_quetes()
+	#save_all_quetes() NON ON NE FAIT PAS SA
 	
 	emit_signal("recompence",dico_quete["Recompense"])
 	#Transmision a tous

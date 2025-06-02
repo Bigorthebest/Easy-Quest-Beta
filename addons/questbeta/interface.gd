@@ -156,6 +156,7 @@ func afficher_details_quete(nom_quete: String):
 					print("Active: ", quete_data.get("Active", true))
 					print("Quête suivante: ", quete_data.get("QueteSuivante", "Aucune"))
 					print("Timeline: ", quete_data.get("Timeline", "Aucune"))
+					print("Finie: ", quete_data.get("Finie", "Aucune"))
 					print("Items Demandés: ", quete_data.get("ItemsDemandes","Aucune"))
 					print("========================")
 					break

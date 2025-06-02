@@ -329,9 +329,10 @@ position = Vector2(170, 0)
 script = ExtResource("1_wun65")
 bind = "Premier Pas"
 dico_quete = {
-"Active": true,
+"Active": false,
 "Description": "Bienvenue dans les Terres du Bocal !",
 "Finie": false,
+"ItemsDemandes": ["", 0.0],
 "QueteSuivante": "Rencontre",
 "Recompense": [5.0, 5.0, ""],
 "Timeline": "timeline",
@@ -349,6 +350,7 @@ dico_quete = {
 "Active": true,
 "Description": "Rencontrez un mystérieux personnage",
 "Finie": false,
+"ItemsDemandes": ["", 0.0],
 "QueteSuivante": "",
 "Recompense": [10.0, 10.0, "Cube"],
 "Timeline": "dialogueElCube",
@@ -370,7 +372,7 @@ dico_quete = {
 "Finie": false,
 "ItemsDemandes": ["Scarabée", 5.0],
 "QueteSuivante": "",
-"Recompense": [5.0, 30.0, "Le respect du Bocal"],
+"Recompense": [5.0, 30.0, "Respect"],
 "Timeline": "Bugquest",
 "Titre": "Retrouver les Bugs"
 }
