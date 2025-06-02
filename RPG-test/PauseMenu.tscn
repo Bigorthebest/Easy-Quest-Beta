@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb5h4gftxo68h"]
+[gd_scene load_steps=4 format=3 uid="uid://bb5h4gftxo68h"]
 
 [ext_resource type="Script" uid="uid://c5p5nowkpfqoe" path="res://RPG-test/PauseMenu.gd" id="1_pause"]
 [ext_resource type="Texture2D" uid="uid://580v0nfbm3m8" path="res://RPG-test/sprites/bouton_test.png" id="2_bouton"]
 [ext_resource type="FontFile" uid="uid://cv8fr2efk7sj" path="res://m5x7.ttf" id="3_font"]
-[ext_resource type="AudioStream" uid="uid://hoa0un1cgdkn" path="res://RPG-test/music/Woodland Fantasy.mp3" id="4_mv84o"]
 
 [sub_resource type="Theme" id="Theme_1"]
 default_font = ExtResource("3_font")
@@ -108,10 +107,6 @@ theme_override_font_sizes/font_size = 28
 text = "QUITTER"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_mv84o")
-volume_db = -10.0
 
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/ButtonsContainer/ContinuerButton" to="." method="_on_continuer_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/ButtonsContainer/QuestesButton" to="." method="_on_quetes_pressed"]

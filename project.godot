@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 DataBridge="*res://RPG-test/DataBridge.gd"
+MusicManager="*res://RPG-test/MusicManager.gd"
 
 [dialogic]
 
