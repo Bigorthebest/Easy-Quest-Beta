@@ -454,9 +454,7 @@ sprite_frames = SubResource("SpriteFrames_25i85")
 animation = &"idle"
 frame_progress = 0.801689
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_prdpy")
-autoplay = true
+
 
 [connection signal="recompence" from="Quete Manager" to="Personnage" method="_on_quete_manager_recompence"]
 [connection signal="body_entered" from="Quete Manager/Quete Trigger" to="Quete Manager/Quete Trigger" method="_on_body_entered"]

@@ -73,7 +73,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 96
-text = "Ocaml RPG"
+text = "RPG Tutoré"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -9,32 +9,24 @@ extends CanvasLayer
 var inventory_data: Array = []
 var slot_scene = preload("res://RPG-test/InventorySlotUI.tscn")
 var slots: Array = []
-
 var is_open = false
 
 func _ready():
 	visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	close_button.pressed.connect(_on_close_button_pressed)
-	
-	# Initialiser l'inventaire avec 20 slots
-	initialize_inventory(20)
+	initialize_inventory(20) #on initialise l'inventaire avec 20 slots
 	clear_item_info()
-
-
-
 
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory"):
 		toggle_inventory()
 
-func initialize_inventory(slot_count: int):
-	# Créer les données d'inventaire
-	inventory_data.resize(slot_count)
+func initialize_inventory(slot_count: int): # Créer les données d'inventaire
+	inventory_data.resize(slot_count) 
 	for i in range(slot_count):
 		inventory_data[i] = {}
 	
-	# Créer les slots UI
 	for i in range(slot_count):
 		var slot_ui = slot_scene.instantiate()
 		grid_container.add_child(slot_ui)
@@ -46,6 +38,9 @@ func toggle_inventory():
 	is_open = !is_open
 	visible = is_open
 	get_tree().paused = is_open
+	
+	# NOUVEAU : Gérer le volume de la musique via le singleton
+	MusicManager.set_menu_mode(is_open)
 	
 	if is_open:
 		refresh_inventory()
@@ -81,8 +76,7 @@ func clear_item_info():
 	item_description.text = "Cliquez sur un objet dans l'inventaire pour voir ses détails."
 
 func add_item(item: Item, quantity: int = 1) -> bool:
-	# vérifier si l'objet peut être stacké avec un existant
-	if item.is_stackable:
+	if item.is_stackable: # vérifier si l'objet peut être stacké avec un existant
 		for i in range(inventory_data.size()):
 			var slot_data = inventory_data[i]
 			if slot_data.has("item") and slot_data["item"] != null:
@@ -93,7 +87,6 @@ func add_item(item: Item, quantity: int = 1) -> bool:
 						slot_data["quantity"] = new_quantity
 						refresh_inventory()
 						return true
-	
 	# trouver un slot vide
 	for i in range(inventory_data.size()):
 		if inventory_data[i].is_empty() or not inventory_data[i].has("item"):
@@ -126,5 +119,4 @@ func remove_item(slot_index: int, quantity: int = 1) -> bool:
 	return true
 
 func _on_close_button_pressed():
-	$AudioStreamPlayer.stop()
 	toggle_inventory()
