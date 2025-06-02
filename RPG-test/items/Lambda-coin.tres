@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_hmof8")
 item_name = "Lambda d'Or"
-description = "La monnais du royaume d'Ocamelot. Pas sûr qu'elle soit utile ici..."
+description = "La monnaie du royaume d'Ocamelot. Pas sûr qu'elle soit utile ici..."
 icon = ExtResource("1_d2p3e")
 is_stackable = true
 max_stack = 99999
