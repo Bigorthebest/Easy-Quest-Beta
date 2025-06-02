@@ -24,7 +24,7 @@ func afficher_quetes(quetes_a_afficher: Dictionary):
 
 func reloadQuete(fichier):
 	$ItemList.clear() # Vider la liste avant de la recharger
-	print("Reload interface fenetre appeler")
+	print("Reload interface fenêtre appelée")
 	
 	if FileAccess.file_exists(fichier):
 		var file = FileAccess.open(fichier, FileAccess.ModeFlags.READ)
@@ -120,7 +120,7 @@ func _ready() -> void:
 func _notification(what):
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if is_visible_in_tree():
-			print("Fenetre afficher")
+			print("Fenetre affichée")
 			reloadQuete(fichier)
 			
 			# connecter le signal de sélection d'item
@@ -133,7 +133,7 @@ func _notification(what):
 			
 			$ButtonSelection.disabled = true
 		else:
-			print("Fenetre cacher")
+			print("Fenêtre cachée")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -144,7 +144,7 @@ func _on_button_selection_pressed() -> void:
 	if selected_index.size() > 0:
 		var nom_quete = $ItemList.get_item_text(selected_index[0]).split(" [")[0]
 		emit_signal("bind_quest", nom_quete)
-		print("signal envoyée et fenètre fermé")
+		print("signal envoyé et fenêtre fermée")
 		get_parent().hide()
 	else:
 		print("Aucune quête sélectionnée")

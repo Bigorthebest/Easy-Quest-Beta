@@ -49,11 +49,11 @@ func _notification(what):
 		#hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 func _on_button_pressed():
-	print("Liée une quete cliquer")
+	print("Lier une quete cliquée")
 	if fenetre == null : 
-		print("fenetre ouverte")
+		print("Fenêtre ouverte")
 		fenetre = Window.new()
-		fenetre.title = "Menu de Selection de quete"
+		fenetre.title = "Menu de séléction de quête"
 		fenetre.size = Vector2(600, 200)
 		
 		#var scene_instance = scene_fen.instantiate()
