@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_nvofg")
 item_name = "Cube"
-description = "Un petit cube donné par un habitant du Bocal. Il est considéré comme une idole par ici."
+description = "Un petit cube donné par un habitant du Bocal. Il sert d'idole dans ces terres."
 icon = ExtResource("1_fjlxx")
 is_stackable = false
 max_stack = 1
