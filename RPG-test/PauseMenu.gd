@@ -50,10 +50,9 @@ func _on_quetes_pressed():
 		quests_menu_instance = quests_menu.instantiate()
 		get_tree().root.add_child(quests_menu_instance)
 		quests_menu_instance.quest_menu_closed.connect(_on_quest_menu_closed)
-
 		# NOUVEAU : Recharger les quêtes à chaque ouverture
 		quests_menu_instance.load_active_quests()
-
+		
 
 func _on_quitter_pressed():
 	$AudioStreamPlayer.stop()

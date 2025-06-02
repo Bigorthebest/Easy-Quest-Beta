@@ -69,6 +69,8 @@ func _update_quete_manager (dico_quete) :
 	emit_signal("recompence",dico_quete["Recompense"])
 	#Transmision a tous
 	emit_signal("update_quete",all_quete)
+	#Pour le menue
+	DataBridge.all_quetes = all_quete
 
 # FONCTION MODIFIÉE : Utiliser l'instance unique de notification
 func show_quest_notification(quest_name: String):
@@ -98,8 +100,8 @@ func _ready() -> void:
 		if enfant.has_method("_get_reward"):
 			if not recompence.is_connected(Callable(enfant, "_get_reward")):
 				connect("recompence", Callable(enfant,"_get_reward"))
-	
 	emit_signal("update_quete",all_quete)
+	DataBridge.all_quetes = all_quete
 
 func _process(delta: float) -> void:
 	pass

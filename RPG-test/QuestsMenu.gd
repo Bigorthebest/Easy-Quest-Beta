@@ -12,30 +12,32 @@ func _ready():
 
 func load_active_quests():
 	# Vider la liste existante (sauf le label "Aucune quête")
+	#for child in quests_list.get_children():
+		#if child != no_quests_label:
+			#child.queue_free()
+	#
+	#if not FileAccess.file_exists(quest_file):
+		#no_quests_label.visible = true
+		#return
+	#
+	#var file = FileAccess.open(quest_file, FileAccess.ModeFlags.READ)
+	#var content = file.get_as_text()
+	#file.close()
+	#
+	#var quests_data = JSON.parse_string(content)
+	#if typeof(quests_data) != TYPE_DICTIONARY:
+		#no_quests_label.visible = true
+		#return
 	for child in quests_list.get_children():
-		if child != no_quests_label:
-			child.queue_free()
+		child.queue_free()
 	
-	if not FileAccess.file_exists(quest_file):
-		no_quests_label.visible = true
-		return
-	
-	var file = FileAccess.open(quest_file, FileAccess.ModeFlags.READ)
-	var content = file.get_as_text()
-	file.close()
-	
-	var quests_data = JSON.parse_string(content)
-	if typeof(quests_data) != TYPE_DICTIONARY:
-		no_quests_label.visible = true
-		return
-	
+	var quests_data = DataBridge.all_quetes
 	var active_quests = []
 	
 	# Filtrer les quêtes actives
 	for quest_id in quests_data:
-		var quest = quests_data[quest_id]
-		if quest.get("Active", false):
-			active_quests.append(quest)
+		if quests_data[quest_id]["Active"] == true:
+			active_quests.append(quests_data[quest_id])
 	
 	if active_quests.size() == 0:
 		no_quests_label.visible = true
@@ -43,6 +45,7 @@ func load_active_quests():
 	
 	no_quests_label.visible = false
 	
+	print("Active quest ",active_quests)
 	# Créer les éléments de quête
 	for quest in active_quests:
 		create_quest_item(quest)
