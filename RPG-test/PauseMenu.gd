@@ -8,6 +8,8 @@ var is_paused = false : set = set_paused
 func _ready():
 	visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if !$AudioStreamPlayer.playing: 
+		$AudioStreamPlayer.play()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):  # Échap
@@ -23,9 +25,12 @@ func set_paused(value: bool):
 	
 	if is_paused:
 		print("Jeu en pause")
+		if !$AudioStreamPlayer.playing: 
+			$AudioStreamPlayer.play()
 	else:
 		print("Jeu repris")
 		# Fermer le menu quêtes si ouvert
+		$AudioStreamPlayer.stop()
 		if quests_menu_instance:
 			quests_menu_instance.queue_free()
 			quests_menu_instance = null
@@ -64,3 +69,7 @@ func _on_quest_menu_closed():
 		# NOUVEAU : Réafficher le menu pause quand le menu quêtes se ferme
 		if is_paused:
 			visible = true
+			
+func _process(delta: float) -> void:
+	if !$AudioStreamPlayer.playing: 
+			$AudioStreamPlayer.play()
