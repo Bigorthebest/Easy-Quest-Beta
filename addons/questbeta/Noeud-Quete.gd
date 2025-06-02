@@ -135,8 +135,7 @@ func complete_quest():
 	# Le Manager s'en occupera
 	emit_signal("quete_terminer", dico_quete)
 	var manager = get_parent()
-	if manager and manager.has_method("show_quest_notification"):
-		manager.show_quest_notification(dico_quete["Titre"])
+
 
 func update_quest_in_database():
 	if FileAccess.file_exists(fichier):

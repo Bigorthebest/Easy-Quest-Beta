@@ -76,8 +76,8 @@ func _update_quete_manager (dico_quete) :
 						all_quete[next_quete_id]["Active"] = true
 						print("HAHAHAHAHAHA")
 						# MODIFIÉ : Afficher la notification pour la nouvelle quête activée
-						#if notification_instance:
-						#	notification_instance.show_notification(quete_suivante_titre)
+						if notification_instance:
+							notification_instance.show_notification(quete_suivante_titre)
 						break
 			break
 	
