@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_oh2xf")
 item_name = "Bug"
-description = "Un scarabée trouvée sur le sol. Les habitants du bocal le considère comme invasif"
+description = "Un scarabée trouvé sur le sol. Les habitants du Bocal les considérent comme invasifs."
 icon = ExtResource("1_x7uvb")
 is_stackable = true
 max_stack = 10
