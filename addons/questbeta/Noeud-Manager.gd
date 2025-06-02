@@ -29,7 +29,25 @@ func loadQuete(fichier):
 func _give_stuff (arrayStuff) :
 	print("Du stuff a été give :" , arrayStuff)
 	emit_signal("recompence",arrayStuff)
-
+	
+func _update_begin_quete_manager (dico_quete) : 
+	dico_quete["Active"] = true 
+	if dico_quete["Finie"] == true :
+		print("Anti recursion")
+		return
+	print("🎉 Quête Commencer hihi : ", dico_quete["Titre"])
+	if notification_instance:
+		notification_instance.show_notification(dico_quete["Titre"])
+		
+	print("🎉 Quête terminée : ", dico_quete["Titre"])
+	for quete_id in all_quete:
+		if all_quete[quete_id]["Titre"] == dico_quete["Titre"]:
+			all_quete[quete_id] = dico_quete
+	#Transmision a tous
+	emit_signal("update_quete",all_quete)
+	print(all_quete) 
+	#Pour le menue
+	DataBridge.all_quetes = all_quete
 #Appelez quand une quete et terminer par un quest trigger
 func _update_quete_manager (dico_quete) :
 	#Update des propriété
@@ -38,8 +56,6 @@ func _update_quete_manager (dico_quete) :
 		print("Anti recursion")
 		return
 	dico_quete["Finie"] = true # Marquer comme finie
-	
-	print("🎉 Quête terminée : ", dico_quete["Titre"])
 	
 	# NOUVEAU : Afficher la notification de quête terminée
 	if notification_instance:
@@ -53,13 +69,15 @@ func _update_quete_manager (dico_quete) :
 			
 			# Activer la quête suivante
 			var quete_suivante_titre = dico_quete.get("QueteSuivante", "")
+			print("Quete et quete suivante", dico_quete["Titre"],quete_suivante_titre)
 			if quete_suivante_titre != "":
 				for next_quete_id in all_quete:
 					if all_quete[next_quete_id]["Titre"] == quete_suivante_titre:
 						all_quete[next_quete_id]["Active"] = true
+						print("HAHAHAHAHAHA")
 						# MODIFIÉ : Afficher la notification pour la nouvelle quête activée
-						if notification_instance:
-							notification_instance.show_notification(quete_suivante_titre)
+						#if notification_instance:
+						#	notification_instance.show_notification(quete_suivante_titre)
 						break
 			break
 	
@@ -69,6 +87,7 @@ func _update_quete_manager (dico_quete) :
 	emit_signal("recompence",dico_quete["Recompense"])
 	#Transmision a tous
 	emit_signal("update_quete",all_quete)
+	print(all_quete) 
 	#Pour le menue
 	DataBridge.all_quetes = all_quete
 

@@ -10,6 +10,7 @@ var quest_to_end = false
 
 signal quete_terminer
 signal update_quete
+signal quete_commencer
 
 func _transmettre_quest(valeur):
 	bind = valeur
@@ -61,11 +62,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 	if bind == "" or bind == "null":
 		print("Aucune quête n'est liée")
-		return
-	
-	# NOUVEAU : Recharger l'état de la quête depuis le fichier avant toute vérification
-	if not reload_quest_data():
-		print("Erreur lors du rechargement des données de la quête")
 		return
 	
 	# vérifier si la quête est déjà terminée
@@ -125,12 +121,12 @@ func activate_quest():
 		quest_to_activate = false
 
 		# Mettre à jour dans la base de données
-		update_quest_in_database()
-
+		#update_quest_in_database() NON : désactiver pour ne pas que ça créer des problèmes quand on relance le jeu
+		emit_signal("quete_commencer", dico_quete)
 		# Afficher la notification de nouvelle quête
-		var manager = get_parent()
-		if manager and manager.has_method("show_quest_notification"):
-			manager.show_quest_notification(dico_quete["Titre"])
+		#var manager = get_parent()
+		#if manager and manager.has_method("show_quest_notification"):
+			#manager.show_quest_notification(dico_quete["Titre"])
 
 func complete_quest():
 	print("🏁 Complétion de la quête : ", dico_quete["Titre"])
@@ -138,6 +134,9 @@ func complete_quest():
 	# NE PAS modifier ici dico_quete["Active"] et dico_quete["Finie"]
 	# Le Manager s'en occupera
 	emit_signal("quete_terminer", dico_quete)
+	var manager = get_parent()
+	if manager and manager.has_method("show_quest_notification"):
+		manager.show_quest_notification(dico_quete["Titre"])
 
 func update_quest_in_database():
 	if FileAccess.file_exists(fichier):
@@ -166,8 +165,17 @@ func reset_dialogue():
 	quest_to_end = false
 	print("Dialogue réinitialisé pour cette quête")
 
+func _update_quete(quete) : 
+	print("HEELOOOOOOOOOOOOOOOO")
+	for quete_id in quete : 
+		if quete[quete_id]["Titre"] == dico_quete["Titre"] : 
+			dico_quete = quete[quete_id]
+			print(dico_quete)
+	
+
 func _ready() -> void:
 	connect("quete_terminer", Callable(get_parent(), "_update_quete_manager"))
+	connect("quete_commencer", Callable(get_parent(), "_update_begin_quete_manager"))
 	if not Engine.is_editor_hint():
 		if not body_entered.is_connected(_on_body_entered):
 			body_entered.connect(_on_body_entered)
