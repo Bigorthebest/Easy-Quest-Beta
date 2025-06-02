@@ -1,0 +1,53 @@
+{
+	"0": {
+		"Active": true,
+		"Description": "Bienvenue dans les Terres du Bocal !",
+		"Finie": false,
+		"ItemsDemandes": [
+			"",
+			0.0
+		],
+		"QueteSuivante": "Rencontre",
+		"Recompense": [
+			5.0,
+			5.0,
+			""
+		],
+		"Timeline": "timeline",
+		"Titre": "Premier Pas"
+	},
+	"1": {
+		"Active": false,
+		"Description": "Rencontrez un mystérieux personnage",
+		"Finie": false,
+		"ItemsDemandes": [
+			"",
+			0.0
+		],
+		"QueteSuivante": "",
+		"Recompense": [
+			10.0,
+			10.0,
+			"Cube"
+		],
+		"Timeline": "dialogueElCube",
+		"Titre": "Rencontre"
+	},
+	"2": {
+		"Active": false,
+		"Description": "Le cube à besoin d'aide pour chasser les petites bestioles",
+		"Finie": false,
+		"ItemsDemandes": [
+			"Scarabée",
+			1.0
+		],
+		"QueteSuivante": "",
+		"Recompense": [
+			5.0,
+			30.0,
+			"Respect"
+		],
+		"Timeline": "Bugquest",
+		"Titre": "Retrouver les Bugs"
+	}
+}
